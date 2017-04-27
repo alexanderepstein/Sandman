@@ -7,6 +7,7 @@ let win = null;
 
 app.on('ready', function(){
   win = new BrowserWindow({width: 800, height: 400, resizable: false});
+
   win.setMenu(null);
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -33,6 +34,16 @@ app.on('ready', function(){
 
           { label: 'Show App', click:  function(){
               win.show();
+          } },
+          { label: 'About Insomnia', click:  function(){
+            abt = new BrowserWindow({width: 400, height: 400, resizable: false});
+            abt.setMenu(null);
+            abt.loadURL(url.format({
+              pathname: path.join(__dirname, 'about.html'),
+              protocol: 'file:',
+              slashes: true
+            }))
+
           } },
           { label: 'Quit', click:  function(){
               app.isQuiting = true;
