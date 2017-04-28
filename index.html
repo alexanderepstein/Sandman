@@ -14,7 +14,38 @@
     <!-- All of the Node.js APIs are available in this renderer process. -->
     <center><input type="time" id="alarmTime" />
     <button onclick="setTime()">Set wakeup time</button> </center>
-    <label id="lblTime"></label><br />
+    <script type="text/javascript"> document.getElementById("alarmTime").value = "07:30:00"; </script>
+    <center><label id="lblTime"></label><br /></center>
+    <table border="0" width="100%" border-left-width="50px">
+    <tr>
+    <td>
+    <input type="checkbox" id = "check0" name="time" value=""><br>
+    <label id= "lblcheck0" for="check0"</label>
+    </td>
+    <td>
+    <input type="checkbox" id = "check1" name="time" value=""><br>
+    <label id= "lblcheck1" for="check1"</label>
+    </td>
+    <td>
+    <input type="checkbox" id = "check2" name="time" value=""><br>
+    <label id= "lblcheck2" for="check2"</label>
+    </td>
+    </tr>
+    <tr>
+      <td>
+    <input type="checkbox" id = "check3" name="time" value=""><br>
+    <label id= "lblcheck3" for="check3"</label>
+    </td>
+    <td>
+    <input type="checkbox" id = "check4" name="time" value=""><br>
+    <label id= "lblcheck4" for="check4"</label>
+    </td>
+    <td>
+    <input type="checkbox" id = "check5" name="time" value=""><br>
+    <label id= "lblcheck5" for="check5"</label>
+    </td>
+    </tr>
+  </table>
     <script src="./js/script.js"></script>
 
   </body>

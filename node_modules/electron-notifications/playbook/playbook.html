@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Notification Playbook</title>
+  </head>
+  <body>
+    <div id="playbook">
+      <h2>Electron Notification Playbook</h2>
+      <section class="sample">
+        <div class="talk">
+          <h3>Simple Example</h3>
+          <p>The minimum requirements.</p>
+          <button for="simple">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="simple">
+const notifier = require('electron-notifications')
+notifier.notify('Calendar')
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Full options</h3>
+          <p>Shows you the full array of options you can use.</p>
+          <button for="full">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="full">
+const notifier = require('electron-notifications')
+notifier.notify('Calendar', {
+  message: 'Event begins in 10 minutes',
+  icon: 'http://cl.ly/J49B/3951818241085781941.png',
+  buttons: ['Dismiss', 'Snooze'],
+  duration : 60000
+})
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Stacking</h3>
+          <p>Shows you the full array of options you can use with stacking</p>
+          <p>{i} will be replaced with the count</p>
+          # of notifications <input type="text" id="stack-num" value="10"/>
+          <br/>
+          delay bewteen (ms) <input type="text" id="stack-delay" value="1000"/>
+          <br/>
+          <button for="stacking">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="stacking">
+const notifier = require('electron-notifications')
+notifier.notify('Calendar {i}', {
+  message: 'Event begins in 10 minutes',
+  icon: 'http://cl.ly/J49B/3951818241085781941.png',
+  buttons: ['Dismiss', 'Snooze'],
+  duration : 10000
+})
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Vertical Buttons</h3>
+          <p>If you prefer to use the vertical buttons style.</p>
+          <button for="vertical">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="vertical">
+const notifier = require('electron-notifications')
+notifier.notify('Calendar', {
+  message: 'Event begins in 10 minutes',
+  icon: 'http://cl.ly/J49B/3951818241085781941.png',
+  buttons: ['Dismiss', 'Snooze'],
+  vertical: true,
+})
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Click event</h3>
+          <p>Click on the notifiation to see the alert.</p>
+          <button for="click">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="click">
+const notifier = require('electron-notifications')
+
+const notification = notifier.notify('Calendar')
+
+notification.on('clicked', () => {
+  notification.close()
+  alert('I was clicked!')
+})
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Swipe right event</h3>
+          <p>Swipe the notification right to trigger the alert.</p>
+          <button for="swipeRight">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="swipeRight">
+const notifier = require('electron-notifications')
+
+const notification = notifier.notify('Calendar')
+
+notification.on('swipedRight', () => {
+  notification.close()
+  alert('I was swiped!')
+})
+          </textarea>
+        </div>
+      </section>
+      <section class="sample">
+        <div class="talk">
+          <h3>Click button</h3>
+          <p>Click a button to see the action</p>
+          <button for="clickButton">Try it!</button>
+        </div>
+        <div class="code">
+          <textarea id="clickButton">
+const notifier = require('electron-notifications')
+
+const notification = notifier.notify('Calendar', {
+  buttons: ['Dismiss', 'Snooze'],
+})
+
+notification.on('buttonClicked', (text, index) => {
+  notification.close()
+  alert('You clicked "' + text + '" at index ' + index)
+})
+          </textarea>
+        </div>
+      </section>
+    </div>
+    <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
+    <link href="assets/vendor/codemirror.css" rel="stylesheet" />
+    <link href="assets/run.css" rel="stylesheet" />
+    <script src="assets/vendor/codemirror.js"></script>
+    <script src="assets/vendor/codemirror-js.js"></script>
+    <script src="assets/run.js"></script>
+  </body>
+</html>
