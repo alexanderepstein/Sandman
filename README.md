@@ -26,7 +26,8 @@ Otherwise to just get the application click the respective download link extract
 * Mac: Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the previously extracted folder to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
 * Linux: Open up a terminal and navigate to the folder containing the Insomnia_1.0.0.deb (open up a terminal at the location of the extracted folder from the previous step) and run
-            sudo dpkg -i Insomnia_1.0.0.deb
+           
+           sudo dpkg -i Insomnia_1.0.0.deb
 this will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
 
 * Windows: Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant).  Now drag the entire Insomnia Windows 32 & 64 Bit folder you extracted in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Insomnia.exe and run it. Now the application will show up in the dock where it can be pinned.
