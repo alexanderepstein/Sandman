@@ -1,0 +1,10 @@
+{
+  "name": "Insomnia",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^1.6.6",
+    "electron-notifications": "^1.0.0",
+    "node-schedule": "^1.2.1"
+  }
+}
