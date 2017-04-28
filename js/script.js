@@ -4,7 +4,8 @@ const path = require('path');
 const iconPath = path.join(__dirname, 'sleep.png');
 var exec = require('child_process').exec;
 var schedule = require('node-schedule');
-
+var mins = [];
+var hours = [];
 var jobs=[];
 
 var sleepTimes = [];
@@ -17,6 +18,7 @@ function setTime(){
   document.getElementById('lblTime').innerHTML = "Notifications set.";
   //showNotification();
   generateSleepTimes();
+  setSleepTimes();
   nodeJobs();
   console.log(sleepTimes);
 
@@ -42,15 +44,36 @@ function generateSleepTimes()
     sleepTimes[i]= new Date(wakeUpDate);
   }
   sleepTimes = sleepTimes.reverse();
-  document.getElementById('lblcheck0').innerHTML = sleepTimes[0].getHours()+":"+sleepTimes[0].getMinutes();
-  document.getElementById('lblcheck1').innerHTML = sleepTimes[1].getHours()+":"+sleepTimes[1].getMinutes();
-  document.getElementById('lblcheck2').innerHTML = sleepTimes[2].getHours()+":"+sleepTimes[2].getMinutes();
-  document.getElementById('lblcheck3').innerHTML = sleepTimes[3].getHours()+":"+sleepTimes[3].getMinutes();
-  document.getElementById('lblcheck4').innerHTML = sleepTimes[4].getHours()+":"+sleepTimes[4].getMinutes();
-  document.getElementById('lblcheck5').innerHTML = sleepTimes[5].getHours()+":"+sleepTimes[5].getMinutes();
+
 }
 
+function setSleepTimes()
+{
+  for (i = 0;i<=6;i++)
+  {
+    if (sleepTimes[i].getHours() <10)
+    {
+      hours[i] = "0" + sleepTimes[i].getHours();
+    }
+    else {
+        hours[i] = sleepTimes[i].getHours();
+    }
+    if (sleepTimes[i].getMinutes()<10)
+    {
+      mins[i] = "0" + sleepTimes[i].getMinutes()
+    }
+    else {
+      mins[i] = sleepTimes[i].getMinutes();
+    }
+  }
 
+  document.getElementById('lblcheck0').innerHTML = hours[0]+":"+mins[0];
+  document.getElementById('lblcheck1').innerHTML = hours[1]+":"+mins[1];
+  document.getElementById('lblcheck2').innerHTML = hours[2]+":"+mins[2];
+  document.getElementById('lblcheck3').innerHTML = hours[3]+":"+mins[3];
+  document.getElementById('lblcheck4').innerHTML = hours[4]+":"+mins[4];
+  document.getElementById('lblcheck5').innerHTML = hours[5]+":"+mins[5];
+}
 
 function nodeJobs()
 {
