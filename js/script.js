@@ -3,18 +3,18 @@ const notifier = require('electron-notifications');
 const path = require('path');
 const iconPath = path.join(__dirname, 'icon.png');
 var exec = require('child_process').exec;
-var cron = require('node-cron');
-var task0,task1,task2,task3,task4,task5;
-var cronStarted = 0;
-var sleepTimes = [];
 
+
+var sleepTimes = [];
+var checked = [];
+var audio = new Audio('alert.mp3');
 function setTime(){
   time=document.getElementById('alarmTime').value;
   document.getElementById('lblTime').innerHTML = "WakeUp Time: " + time;
-  showNotification();
+  //showNotification();
   generateSleepTimes();
-  console.log(sleepTimes);
-  startCronJobs();
+  //console.log(sleepTimes);
+
  }
 
 function generateSleepTimes()
@@ -24,6 +24,8 @@ function generateSleepTimes()
   wakeUpDate.setDate(wakeUpDate.getDate() +1);
   wakeUpDate.setHours(splitTime[0]);
   wakeUpDate.setMinutes(splitTime[1]-15);
+  wakeUpDate.setSeconds(0);
+  wakeUpDate.setMilliseconds(0);
 
   for(i=0;i<=6;i++)
   {
@@ -40,31 +42,21 @@ function generateSleepTimes()
   document.getElementById('lblcheck5').innerHTML = sleepTimes[5].getHours()+":"+sleepTimes[5].getMinutes();
 }
 
-function startCronJobs()
+function checkTimes()
 {
-  if (cronStarted==1)
-  {
-    task0.stop();
-    task1.stop();
-    task2.stop();
-    task3.stop();
-    task4.stop();
-    task5.stop();
-  }
-  if (document.getElementById('check0').checked)
-  {
-    var tempDate = log(sleepTimes[0]).split(" ");
-    var tempTime = tempDate[4].split(":");
-    console.log(tempTime)
-
-  }
-  cronStarted = 1;
+  checked[0] = document.getElementById('check0').checked
+  checked[1] = document.getElementById('check1').checked
+  checked[2] = document.getElementById('check2').checked
+  checked[3] = document.getElementById('check3').checked
+  checked[4] = document.getElementById('check4').checked
+  checked[5] = document.getElementById('check5').checked
 }
+
 
 
 function showNotification()
 {
-
+  audio.play()
   const notification = notifier.notify('Insomnia', {
   message: 'Time to rest',
   icon: iconPath,
