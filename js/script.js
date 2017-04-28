@@ -26,7 +26,10 @@ function generateSleepTimes()
 {
   var splitTime = time.split(":")
   var wakeUpDate = new Date();
-  wakeUpDate.setDate(wakeUpDate.getDate() +1);
+  if (!(splitTime[0]>= 0 && splitTime[0] <=12))
+  {
+    wakeUpDate.setDate(wakeUpDate.getDate() +1);
+  }
   wakeUpDate.setHours(splitTime[0]);
   wakeUpDate.setMinutes(splitTime[1]-15);
   wakeUpDate.setSeconds(0);
@@ -74,7 +77,7 @@ function showNotification()
   }
   catch (e)
   {
-    
+
   }
   const notification = notifier.notify('Insomnia', {
   message: 'Time to rest',
