@@ -24,7 +24,7 @@ function setTime() { //called when set wakeup time button is pressed
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
     var wakeUpDate = new Date(); //set a new date object
-    if (!(splitTime[0] >= 0 && splitTime[0] <= 12)) //if condition met
+    if (splitTime[0] < wakeUpDate.getHours() ||(splitTime[0] == wakeUpDate.getHours() && splitTime[1] < wakeUpDate.getMinutes())) //if condition met
     {
         wakeUpDate.setDate(wakeUpDate.getDate() + 1); //the alarm is for the next day
     }
@@ -33,7 +33,7 @@ function generateSleepTimes() {
     wakeUpDate.setSeconds(0); //set just in case its anything but
     wakeUpDate.setMilliseconds(0); //set just in case its anything but
 
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i < 6; i++) {
         wakeUpDate.setHours(wakeUpDate.getHours() - 1); //subtract 1 hour from perviously determined sleeptime
         wakeUpDate.setMinutes(wakeUpDate.getMinutes() - 30); //subtract 30 mins from perviously determined sleeptime
         sleepTimes[i] = new Date(wakeUpDate); //determine new sleeptime
@@ -44,29 +44,29 @@ function generateSleepTimes() {
 
 function setSleepTimes() //just setting the sleep times the user sees (special formatting exists here)
     {
-    for (i = 0; i <= 6; i++) {
-        if (sleepTimes[i].getHours() < 10) {
-            hours[i] = "0" + sleepTimes[i].getHours();
+    for (i = 0; i < 6; i++) {
+        if (sleepTimes[i].getHours() < 10) { //if hours is less than 10
+            hours[i] = "0" + sleepTimes[i].getHours(); //put a zero in front of the string
         } else {
-            hours[i] = sleepTimes[i].getHours();
+            hours[i] = sleepTimes[i].getHours(); //else just the hours
         }
-        if (sleepTimes[i].getMinutes() < 10) {
-            mins[i] = "0" + sleepTimes[i].getMinutes()
+        if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
+            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
         } else {
-            mins[i] = sleepTimes[i].getMinutes();
+            mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
     }
 
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0];
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1];
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2];
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3];
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4];
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5];
+    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
 }
 
 function nodeJobs() {
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i < 6; i++) {
         try {
             jobs[i].cancel(); //try to cancel respective job
         } catch (e) {
