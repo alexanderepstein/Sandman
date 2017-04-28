@@ -1,0 +1,10 @@
+{
+  "dest": "dist/installers/",
+  "icon": "sleep.png",
+  "categories": [
+    "Utility"
+  ],
+  "lintianOverrides": [
+    "changelog-file-missing-in-native-package"
+  ]
+}
