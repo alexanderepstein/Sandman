@@ -1,4 +1,4 @@
-# Insomnia <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep.png" alt="Insomnia Logo" style="width:50px;height:50px;">
+# Insomnia <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;">
 
 Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
