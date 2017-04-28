@@ -10,42 +10,44 @@
     <div class="image">
     <center> <img src="sleep.png" alt="sleep" style="width:200px;height:200px;"> </center>
 </div>
-
+<div style="margin-top:-35px">
     <!-- All of the Node.js APIs are available in this renderer process. -->
     <center><input type="time" id="alarmTime" />
     <button onclick="setTime()">Set wakeup time</button> </center>
     <script type="text/javascript"> document.getElementById("alarmTime").value = "07:30:00"; </script>
-    <center><label id="lblTime"></label><br /></center>
-    <table border="0" width="100%" border-left-width="50px">
-    <tr>
+</div>
+    <div style="margin-top:32px">
+      <center><label style="color:white ;font-size:35px; font-weight:bold" id="sleepTimes"> </label></center>
+    </div>
+    <div style="text-align:center;margin-top:15px">
+    <table border="0" width="100%" >
+
     <td>
-    <input type="checkbox" id = "check0" name="time" value=""><br>
-    <label id= "lblcheck0" for="check0"</label>
+    <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck0" </label>
     </td>
     <td>
-    <input type="checkbox" id = "check1" name="time" value=""><br>
-    <label id= "lblcheck1" for="check1"</label>
+    <label style="color:white ;font-size:20px; font-weight:bold" id= "lblcheck1"  </label>
     </td>
     <td>
-    <input type="checkbox" id = "check2" name="time" value=""><br>
-    <label id= "lblcheck2" for="check2"</label>
+    <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck2" </label>
     </td>
-    </tr>
-    <tr>
+  </table>
+  <table border="0" width="100%" style="margin-top:10px" >
       <td>
-    <input type="checkbox" id = "check3" name="time" value=""><br>
-    <label id= "lblcheck3" for="check3"</label>
+    <label style="color:white; font-size:20px ; font-weight:bold" id= "lblcheck3" </label>
     </td>
     <td>
-    <input type="checkbox" id = "check4" name="time" value=""><br>
-    <label id= "lblcheck4" for="check4"</label>
+    <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck4" </label>
     </td>
     <td>
-    <input type="checkbox" id = "check5" name="time" value=""><br>
-    <label id= "lblcheck5" for="check5"</label>
+    <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck5" </label>
     </td>
     </tr>
   </table>
+</div>
+<div style="margin-top:15px">
+  <center><label style="color:white ;font-size:12px; font-weight:bold" id="lblTime"> </label></center>
+</div>
     <script src="./js/script.js"></script>
 
   </body>
