@@ -14,7 +14,7 @@ app.on('ready', function(){
     protocol: 'file:',
     slashes: true
   }))
-  win.openDevTools(); //starts the application with developer tools open
+  //win.openDevTools(); //starts the application with developer tools open
 
   win.on('minimize',function(event){ //prevents standard minimize function of a main window
         event.preventDefault()
