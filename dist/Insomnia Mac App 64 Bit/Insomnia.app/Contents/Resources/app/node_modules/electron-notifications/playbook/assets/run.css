@@ -1,0 +1,37 @@
+body {
+  background-color: #eeeeee;
+  font-size: 15px;
+  font-family: 'Lora', serif;
+}
+
+h2 {
+  font-family: 'Istok Web', sans-serif;
+}
+
+.sample {
+  display: flex;
+  padding: 20px 0;
+}
+
+.sample div.talk {
+  flex: 1;
+}
+
+.sample div.code {
+  flex: 2;
+  height: 200px;
+  padding: 15px;
+}
+
+.CodeMirror {
+  height: 200px;
+  font-size: 14px;
+}
+
+#stack-num {
+	width : 50px;
+}
+
+#stack-delay {
+	width : 50px;
+}
