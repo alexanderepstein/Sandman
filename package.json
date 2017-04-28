@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "main.js",
   "devDependencies": {
+    "cron": "^1.2.1",
     "electron": "^1.6.6",
-    "electron-notifications": "^1.0.0",
-    "node-cron": "^1.1.3"
+    "electron-notifications": "^1.0.0"
   }
 }
