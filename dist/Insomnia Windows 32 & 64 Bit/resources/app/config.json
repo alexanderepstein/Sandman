@@ -1,0 +1,7 @@
+{
+  "dest": "dist/installers/",
+  "icon": "resources/icon.ico",
+  "tags": [
+    "Utility"
+  ]
+}
