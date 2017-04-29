@@ -1,7 +1,8 @@
-var time = null; //wakeuptime to be set by user
 const notifier = require('electron-notifications'); //allow for notifications
 const path = require('path'); //allow for use of path
 const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
+
+var time = null; //wakeuptime to be set by user
 var exec = require('child_process').exec; //allows the shutdown of the host machine
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
 var mins = []; //array to hold the mins for formatting
@@ -22,6 +23,25 @@ function setTime() { //called when set wakeup time button is pressed
     //console.log(sleepTimes); //use this line to determine issue of timing
 
 }
+
+
+function storeTimePreference()
+{
+  storage.set('militaryTime', {militaryTime: document.getElementById('timeType').checked }, function(error) {
+  if (error)
+  {
+    throw error;
+  }
+  else {
+    storage.get('militaryTime', function(error, data) {
+  if (error) throw error;
+
+  console.log(data);
+});
+  }
+})
+}
+
 
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
