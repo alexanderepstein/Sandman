@@ -7,20 +7,21 @@
    <body BGCOLOR="#02D9CC" >
       </div>
       <center> <img src="sleep.png" alt="sleep" style="width:100px;height:100px;"> </center>
-      <div>
+      <div style="position:absolute;bottom:250px;margin-left:110px">
       <center>
         <input type="radio" id="timeType" name="timeType" value="Military"> Military </input>
         <input type="radio" id ="timeType" name="timeType" value="Standard" checked="checked"> Standard </input>
       </center>
     </div>
-    <div style="position:absolute;bottom:30px;">
-      <center><input type="time" id="defaultTime" />
+    <div style="position:absolute;bottom:150px;margin-left:110px">
+      <center><input type="time" id="defaultTime" /><br>
          <button onclick="setTime()">Set Default Wake Up Time</button>
       </center>
     </div>
-      <div class ="electron" style="color:white">
-      <center style="position:absolute;bottom:5px;style="color:white"">
+      <div class ="version" style="position:absolute;bottom:5px;color:white;margin-left:225px">
+      <center >
         Insomnia Version 1.0.0
+
       </center>
     </div>
    </body>
