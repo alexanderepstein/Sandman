@@ -9,6 +9,8 @@ var hours = []; //array to hold the hours for formatting
 var jobs = []; //array of node schedule jobs to be ran
 var sleepTimes = []; //array of times to rest determined by algorithm
 var audio = new Audio('alert.mp3'); //set up notification sound
+var militaryTime = false;
+var meridans = [];
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -44,6 +46,9 @@ function generateSleepTimes() {
 
 function setSleepTimes() //just setting the sleep times the user sees (special formatting exists here)
     {
+
+  if (militaryTime)
+  {
     for (i = 0; i < 6; i++) {
         if (sleepTimes[i].getHours() < 10) { //if hours is less than 10
             hours[i] = "0" + sleepTimes[i].getHours(); //put a zero in front of the string
@@ -56,13 +61,35 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
     }
-
     document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
+  }
+  else
+  {
+    for (i = 0; i < 6; i++) {
+        if (militaryToStandard(sleepTimes[i].getHours()) < 10) { //if hours is less than 10
+            hours[i] = "0" + militaryToStandard(sleepTimes[i].getHours()); //put a zero in front of the string
+        } else {
+            hours[i] = militaryToStandard(sleepTimes[i].getHours()); //else just the hours
+        }
+        if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
+            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
+        } else {
+            mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
+        }
+        meridans[i] = ampm(sleepTimes[i].getHours());
+    }
+    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridans[0]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridans[1]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2] + meridans[2]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3] + meridans[3]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4] + meridans[4]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5] + meridans[5]; //add optimal sleep times to the HTML
+}
 }
 
 function nodeJobs() {
@@ -109,6 +136,26 @@ function showNotification() {
     })
 }
 
+//from @charlietfl on StackOverflow
+function militaryToStandard(hours) {
+    /* make sure add radix*/
+    var hours = ((hours + 11) % 12) + 1;
+    return hours;
+}
+
+
+function ampm(hours24)
+{
+  hours24 = parseInt(hours24,10);
+  if (hours24 > 11)
+  {
+    return "pm";
+  }
+  else
+  {
+    return "am";
+  }
+}
 function shutdown(callback) {
     exec('shutdown now', function(error, stdout, stderr) {
         callback(stdout);
