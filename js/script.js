@@ -1,9 +1,10 @@
 var time = null;
 const notifier = require('electron-notifications');
 const path = require('path');
-const iconPath = path.join(__dirname, 'icon.png');
+const iconPath = path.join(__dirname, 'sleep.png');
 var exec = require('child_process').exec;
 var schedule = require('node-schedule');
+
 var jobs=[];
 
 var sleepTimes = [];
@@ -17,7 +18,7 @@ function setTime(){
   //showNotification();
   generateSleepTimes();
   nodeJobs();
-  //console.log(sleepTimes);
+  console.log(sleepTimes);
 
  }
 
@@ -52,13 +53,29 @@ function nodeJobs()
 {
 for (i = 0;i<=6;i++)
   {
+    try
+    {
+      jobs[i].cancel();
+    }
+    catch (e)
+    {
+
+    }
+
     jobs[i] = schedule.scheduleJob(sleepTimes[i],showNotification);
   }
 }
 
 function showNotification()
 {
+  try
+  {
   audio.play()
+  }
+  catch (e)
+  {
+    
+  }
   const notification = notifier.notify('Insomnia', {
   message: 'Time to rest',
   icon: iconPath,

@@ -6,7 +6,7 @@ let tray = null;
 let win = null;
 
 app.on('ready', function(){
-  win = new BrowserWindow({width: 800, height: 400, resizable: false});
+  win = new BrowserWindow({width: 600, height: 400, resizable: false});
 
   win.setMenu(null);
   win.loadURL(url.format({
