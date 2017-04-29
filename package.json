@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "electron": "^1.6.6",
-    "electron-json-storage": "^3.0.5",
     "electron-notifications": "^1.0.0",
     "node-schedule": "^1.2.1"
   }
