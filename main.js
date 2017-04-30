@@ -4,7 +4,8 @@ const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
-
+let pref = null;
+let abt = null;
 app.on('ready', function(){
   win = new BrowserWindow({width: 600, height: 400, resizable: false}); //create main window
 
@@ -14,7 +15,10 @@ app.on('ready', function(){
     protocol: 'file:',
     slashes: true
   }))
-  //win.openDevTools(); //starts the application with developer tools open
+
+
+
+  win.openDevTools(); //starts the application with developer tools open
 
   win.on('minimize',function(event){ //prevents standard minimize function of a main window
         event.preventDefault()
@@ -52,7 +56,7 @@ app.on('ready', function(){
                 protocol: 'file:',
                 slashes: true
               }))
-
+                pref.openDevTools();
             }
           },
           { label: 'Quit', click:  function(){ //quit the application

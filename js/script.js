@@ -1,10 +1,12 @@
 const notifier = require('electron-notifications'); //allow for notifications
 const path = require('path'); //allow for use of path
 const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
-
+const fs = require('fs');
+const filePath = path.join(__dirname, 'settings.txt');
 var time = null; //wakeuptime to be set by user
 var exec = require('child_process').exec; //allows the shutdown of the host machine
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
+
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
 var jobs = []; //array of node schedule jobs to be ran
@@ -12,6 +14,8 @@ var sleepTimes = []; //array of times to rest determined by algorithm
 var audio = new Audio('alert.mp3'); //set up notification sound
 var militaryTime = false;
 var meridans = [];
+var mySettings = null;
+var tempTime = [];
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -25,23 +29,106 @@ function setTime() { //called when set wakeup time button is pressed
 }
 
 
-function storeTimePreference()
-{
-  storage.set('militaryTime', {militaryTime: document.getElementById('timeType').checked }, function(error) {
-  if (error)
-  {
-    throw error;
-  }
-  else {
-    storage.get('militaryTime', function(error, data) {
-  if (error) throw error;
 
-  console.log(data);
-});
+function readPreferences()
+{
+  readFile();
+  mySettings = (mySettings).split(" ");
+  if (mySettings[0] === "true")
+  {
+    militaryTime = true;
   }
-})
+  else
+  {
+    militaryTime = false;
+  }
+  time = mySettings[1];
+  document.getElementById('alarmTime').value = time;
+  setTime();
 }
 
+function loadPreferences()
+{
+  readFile();
+  mySettings = (mySettings).split(" ");
+  if (mySettings[0] === "true")
+  {
+    militaryTime = true;
+  }
+  else
+  {
+    militaryTime = false;
+  }
+  if (militaryTime)
+  {
+    document.getElementById('timeType').checked = true;
+    document.getElementById('timeType2').checked = false;
+  }
+  else
+  {
+    document.getElementById('timeType').checked = false;
+    document.getElementById('timeType2').checked = true;
+  }
+  var setterTime;
+  tempTime = mySettings[1].split(":")
+  if (parseInt(tempTime[0],10) < 10)
+  {
+    setterTime = "0"+tempTime[0];
+  }
+  else
+  {
+    setterTime = tempTime[0];
+  }
+  setterTime = setterTime + ":";
+  if (parseInt(tempTime[1]) < 10)
+  {
+    setterTime = setterTime + "0" + tempTime[1];
+  }
+  else
+  {
+    setterTime = setterTime + tempTime[1];
+  }
+  document.getElementById('defaultTime').value = setterTime;
+}
+
+function readFile()
+{
+  //console.log("Running readfile");
+  mySettings = fs.readFileSync(filePath,'utf8');
+}
+
+function setPreferences()
+{
+  var mytempstring = "";
+  mytempstring = document.getElementById('timeType').checked + " ";
+  tempTime = (document.getElementById('defaultTime').value).split(":");
+  if (parseInt(tempTime[0],10) < 10)
+  {
+    mytempstring = mytempstring + "0" + tempTime[0] +":"
+  }
+  else
+  {
+    mytempstring = mytempstring + tempTime[0] +":"
+  }
+  if (parseInt(tempTime[1],10) < 10)
+  {
+    mytempstring = mytempstring + "0" + tempTime[1]+ " ";
+  }
+  else
+  {
+      mytempstring = mytempstring + tempTime[1] + " ";
+  }
+  mytempstring = mytempstring + "Insomniav1.0.0";
+  writeFile(mytempstring);
+
+}
+
+function writeFile(settingsData)
+{
+  fs.writeFile(filePath, settingsData, (err) => {
+  if (err) throw err;
+});
+}
 
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
