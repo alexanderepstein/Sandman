@@ -83,25 +83,20 @@ function setPreferences()
   var mytempstring = "";
   mytempstring = document.getElementById('timeType').checked + " ";
   tempTime = (document.getElementById('defaultTime').value).split(":");
-  if (parseInt(tempTime[0],10) < 10)
-  {
-    mytempstring = mytempstring + "0" + tempTime[0] +":"
-  }
-  else
-  {
-    mytempstring = mytempstring + tempTime[0] +":"
-  }
-  if (parseInt(tempTime[1],10) < 10)
-  {
-    mytempstring = mytempstring + "0" + tempTime[1]+ " ";
-  }
-  else
-  {
-      mytempstring = mytempstring + tempTime[1] + " ";
-  }
+  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " ";
   mytempstring = mytempstring + "Insomniav1.1.0";
   writeFile(mytempstring);
-
+  readFile();
+  mySettings = (mySettings).split(" ");
+  if (mySettings[0] === "true")
+  {
+    militaryTime = true;
+  }
+  else
+  {
+    militaryTime = false;
+  }
+  setSleepTimes();
 }
 
 function writeFile(settingsData)
