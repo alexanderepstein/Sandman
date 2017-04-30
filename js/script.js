@@ -118,7 +118,7 @@ function setPreferences()
   {
       mytempstring = mytempstring + tempTime[1] + " ";
   }
-  mytempstring = mytempstring + "Insomniav1.0.0";
+  mytempstring = mytempstring + "Insomniav1.1.0";
   writeFile(mytempstring);
 
 }
