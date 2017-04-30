@@ -103,6 +103,14 @@ function writeFile(settingsData)
   fs.writeFile(filePath, settingsData, (err) => {
   if (err) throw err;
 });
+try
+{
+fs.chmodSync(filePath, '777');
+}
+catch (e)
+{
+  console.log("Error setting permissions on settings.txt")
+}
 }
 
 function generateSleepTimes() {
