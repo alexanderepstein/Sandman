@@ -13,7 +13,7 @@ var jobs = []; //array of node schedule jobs to be ran
 var sleepTimes = []; //array of times to rest determined by algorithm
 var audio = new Audio('alert.mp3'); //set up notification sound
 var militaryTime = false;
-var meridans = [];
+var meridians = [];
 var mySettings = null;
 var tempTime = [];
 
@@ -32,84 +32,84 @@ function setTime() { //called when set wakeup time button is pressed
 
 function readPreferences()
 {
-  readFile();
-  mySettings = (mySettings).split(" ");
-  if (mySettings[0] === "true")
+  readFile(); //set up the mySettings variable by reading the settings file
+  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
+  if (mySettings[0] === "true") //if militaryTime preference is set to true
   {
-    militaryTime = true;
+    militaryTime = true; //set the preference in the code
   }
-  else
+  else //if standard time preference
   {
-    militaryTime = false;
+    militaryTime = false; //set the military time perference in the code to false
   }
-  time = mySettings[1];
-  document.getElementById('alarmTime').value = time;
-  setTime();
+  time = mySettings[1]; //set time variable
+  document.getElementById('alarmTime').value = time; //set the time on the DOM
+  setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  readFile();
-  mySettings = (mySettings).split(" ");
-  if (mySettings[0] === "true")
+  readFile(); //read the settings text
+  mySettings = (mySettings).split(" "); //split up the settings by spaces
+  if (mySettings[0] === "true") //mySettings[0] is where the military time setting is stored
   {
-    militaryTime = true;
+    militaryTime = true; //set prefrence to military time
   }
   else
   {
-    militaryTime = false;
+    militaryTime = false; //set preference to standard time
   }
-  if (militaryTime)
+  if (militaryTime)  //if militaryTime preference
   {
-    document.getElementById('timeType').checked = true;
-    document.getElementById('timeType2').checked = false;
+    document.getElementById('timeType').checked = true; //set radio button
+    document.getElementById('timeType2').checked = false; //dont set this button
   }
-  else
+  else //if standard time preference
   {
-    document.getElementById('timeType').checked = false;
-    document.getElementById('timeType2').checked = true;
+    document.getElementById('timeType').checked = false; //dont set this button
+    document.getElementById('timeType2').checked = true; //set radio button
   }
-  document.getElementById('defaultTime').value = mySettings[1];
+  document.getElementById('defaultTime').value = mySettings[1]; //set time to preference time
 }
 
 function readFile()
 {
   //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8');
+  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
 }
 
 function setPreferences()
 {
-  var mytempstring = "";
-  mytempstring = document.getElementById('timeType').checked + " ";
-  tempTime = (document.getElementById('defaultTime').value).split(":");
-  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " ";
-  mytempstring = mytempstring + "Insomniav1.1.0";
-  writeFile(mytempstring);
-  readFile();
-  mySettings = (mySettings).split(" ");
-  if (mySettings[0] === "true")
+  var mytempstring = ""; //set up specially formatted string to write to settings
+  mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
+  tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
+  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
+  mytempstring = mytempstring + "Insomniav1.1.0"; //add version to get rid of \n error when reading a setting
+  writeFile(mytempstring); //write out the new settings file
+  readFile(); //set up the mySettings variable for the new preferences
+  mySettings = (mySettings).split(" "); //split up the settings
+  if (mySettings[0] === "true") //check if military time
   {
-    militaryTime = true;
+    militaryTime = true; //set the preference
   }
   else
   {
-    militaryTime = false;
+    militaryTime = false; //set the preference
   }
 }
 
 function writeFile(settingsData)
 {
-  fs.writeFile(filePath, settingsData, (err) => {
+  fs.writeFile(filePath, settingsData, (err) => {  //write the settings file that will contain the settingsData parameter
   if (err) throw err;
 });
-try
+try //for error catching
 {
-fs.chmodSync(filePath, '777');
+fs.chmodSync(filePath, '777'); //set up permissions (seems to fix issue of linux reading settings after install)
 }
 catch (e)
 {
-  console.log("Error setting permissions on settings.txt")
+  console.log("Error setting permissions on settings.txt") //log this error to the console (basically occurs everytime after the first run)
 }
 }
 
@@ -171,14 +171,14 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
-        meridans[i] = ampm(sleepTimes[i].getHours());
+        meridians[i] = ampm(sleepTimes[i].getHours());
     }
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridans[0]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridans[1]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2] + meridans[2]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3] + meridans[3]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4] + meridans[4]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5] + meridans[5]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2] + meridians[2]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3] + meridians[3]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
 }
 }
 
@@ -226,24 +226,24 @@ function showNotification() {
     })
 }
 
-//from @charlietfl on StackOverflow
+
 function militaryToStandard(hours) {
     /* make sure add radix*/
-    var hours = ((hours + 11) % 12) + 1;
-    return hours;
+    var hours = ((hours + 11) % 12) + 1; //determine standard version of military time
+    return hours; //return the hours in this new formatting
 }
 
 
 function ampm(hours24)
 {
-  hours24 = parseInt(hours24,10);
-  if (hours24 > 11)
+  hours24 = parseInt(hours24,10); //grab hours in military time version
+  if (hours24 > 11) //determine meridian
   {
-    return "pm";
+    return "pm"; //return meridian string
   }
   else
   {
-    return "am";
+    return "am"; //return meridian string
   }
 }
 function shutdown(callback) {
