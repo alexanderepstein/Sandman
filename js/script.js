@@ -69,26 +69,7 @@ function loadPreferences()
     document.getElementById('timeType').checked = false;
     document.getElementById('timeType2').checked = true;
   }
-  var setterTime;
-  tempTime = mySettings[1].split(":")
-  if (parseInt(tempTime[0],10) < 10)
-  {
-    setterTime = "0"+tempTime[0];
-  }
-  else
-  {
-    setterTime = tempTime[0];
-  }
-  setterTime = setterTime + ":";
-  if (parseInt(tempTime[1]) < 10)
-  {
-    setterTime = setterTime + "0" + tempTime[1];
-  }
-  else
-  {
-    setterTime = setterTime + tempTime[1];
-  }
-  document.getElementById('defaultTime').value = setterTime;
+  document.getElementById('defaultTime').value = mySettings[1];
 }
 
 function readFile()
