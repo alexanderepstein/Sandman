@@ -9,20 +9,23 @@
       <center> <img src="sleep.png" alt="sleep" style="width:100px;height:100px;"> </center>
       <div style="position:absolute;bottom:250px;margin-left:110px">
       <center>
-        <input onclick="storeTimePreference()" type="radio" id="timeType" name="timeType" value="Military"> Military </input>
-        <input onclick="storeTimePreference()" type="radio" id ="timeType2" name="timeType" value="Standard" checked="checked"> Standard </input>
+        <input  type="radio" id="timeType" name="timeType" value="Military"> Military </input>
+        <input type="radio" id ="timeType2" name="timeType" value="Standard" checked="checked"> Standard </input>
       </center>
     </div>
-    <div style="position:absolute;bottom:150px;margin-left:110px">
-      <center><input type="time" id="defaultTime" /><br>
-         <button>Set Default Wake Up Time</button>
+    <div style="position:absolute;bottom:150px;margin-left:120px">
+      <center><label>Default Wake-Up Time</label></center><br>
+    </div>
+    <div style="position:absolute;bottom:135px;margin-left:140px">
+      <center><input type="time" id="defaultTime" />
       </center>
     </div>
-      <div class ="version" style="position:absolute;bottom:5px;color:white;margin-left:225px">
-      <center >
-        Insomnia Version 1.0.0
+    <div class="preferences" style="position:absolute;bottom:20px;margin-left:140px">
+         <button onclick="setPreferences()" >Set Preferences</button>
+    <div>
 
-      </center>
-    </div>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {loadPreferences();}); </script>
+    <script src="./js/script.js"></script>
    </body>
 </html>
