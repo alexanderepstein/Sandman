@@ -18,7 +18,7 @@ app.on('ready', function(){
 
 
 
-  win.openDevTools(); //starts the application with developer tools open
+  //win.openDevTools(); //starts the application with developer tools open
 
   win.on('minimize',function(event){ //prevents standard minimize function of a main window
         event.preventDefault()
@@ -56,7 +56,7 @@ app.on('ready', function(){
                 protocol: 'file:',
                 slashes: true
               }))
-                pref.openDevTools();
+                //pref.openDevTools();
             }
           },
           { label: 'Quit', click:  function(){ //quit the application
