@@ -96,7 +96,6 @@ function setPreferences()
   {
     militaryTime = false;
   }
-  setSleepTimes();
 }
 
 function writeFile(settingsData)
