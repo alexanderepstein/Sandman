@@ -13,24 +13,30 @@ To get the full sourced version run
 
       git clone https://github.com/alexanderepstein/Insomnia
 
-Otherwise to just get the application click the respective download link extract the zip file and read the steps for installation
+Otherwise to just get the application download your respective platforms file from the list of download links below.
 
-* Debian Linux 64 Bit: https://goo.gl/v8VV1V
+* Debian Linux 32 Bit: https://goo.gl/G1BxOH
 
-* Mac OS 64 Bit: https://goo.gl/F9IlXl
+* Debian Linux 64 Bit: https://goo.gl/lXEb42
 
-* Windows 32 & 64 Bit: https://goo.gl/za4zHJ
+* Mac OS 64 Bit: https://goo.gl/jMa9a5
+
+* Windows 32 Bit: https://goo.gl/bB61tc
+
+* Windows 64 Bit: https://goo.gl/NuzRQ0
 
 # Install
 
-* Mac: Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the previously extracted folder to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
+* Mac: Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
-* Linux: Open up a terminal and navigate to the folder containing the Insomnia_1.0.0.deb (open up a terminal at the location of the extracted folder from the previous step) and run
+* Linux: Open up a terminal and navigate to the folder containing the downloaded installer files and run
 
-           sudo dpkg -i Insomnia_1.0.0.deb
+           sudo dpkg -i Insomnia_1.1.0_amd64.deb
+           or
+           sudo dpkg -i Insomnia_1.1.0_x86.deb
   this will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
 
-* Windows: Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant).  Now drag the entire Insomnia Windows 32 & 64 Bit folder you extracted in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Insomnia.exe and run it. Now the application will show up in the dock where it can be pinned.
+* Windows: Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant).  Now drag the entire Insomnia Windows folder you extracted  from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Insomnia.exe and run it. Now the application will show up in the dock where it can be pinned.
 
 # Uninstall
 
