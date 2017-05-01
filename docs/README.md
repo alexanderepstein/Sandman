@@ -1,16 +1,16 @@
 
-#  <label style="text-align:center"> Insomnia </label> 
+#  Insomnia Version 1.1.0
 
 <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif" alt="Counting Sheep">
 
 
-Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
+<p align="center">Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
 The idea is that when you wake up in the middle of a sleep cycle you will feel groggy, however if you wakeup during the
 transition between sleep cycles you will feel refreshed!
 
 This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/  
-
+</p>
 
 # Downloads 
 To get the full sourced version run
@@ -65,5 +65,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# <p align="center" > Helping Out </p>
+#  Helping Out 
 <p align="center"> If you have a feature you would like to add or optimizations to the original code feel free to fork this repository and submit a pull request </p>
