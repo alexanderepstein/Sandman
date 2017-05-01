@@ -18,15 +18,15 @@ To get the full sourced version run
 
 Otherwise to just get the application download your respective platforms file from the list of download links below.
 
-* Debian Linux 32 Bit: https://goo.gl/bqXCmt
+* <a href="https://goo.gl/bqXCmt">Debian Linux 32 Bit</a>
 
-* Debian Linux 64 Bit: https://goo.gl/FbHvLh
+* <a href="https://goo.gl/FbHvLh">Debian Linux 64 Bit</a> 
 
-* Mac OS 64 Bit: https://goo.gl/jMa9a5
+* <a href="https://goo.gl/jMa9a5">Mac OS 64 Bit</a>
 
-* Windows 32 Bit: https://goo.gl/bB61tc
+* <a href="https://goo.gl/bB61tc">Windows 32 Bit</a> 
 
-* Windows 64 Bit: https://goo.gl/NuzRQ0
+* <a href="https://goo.gl/NuzRQ0">Windows 64 Bit</a> 
 
 # <p align="center" > Install </p>
 
