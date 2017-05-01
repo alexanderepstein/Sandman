@@ -203,7 +203,7 @@ function nodeJobs() {
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
 
-    var j = schedule.scheduleJob('*/60 * * * *', function(){
+    var j = schedule.scheduleJob('*/59 * * * *', function(){
     upTimeJobs();
   });
 }
@@ -302,9 +302,9 @@ function shutdown(callback) {
 }
 
 function restart(callback) {
-    exec('restart', function(error, stdout, stderr) {
+    exec('shutdown now -r', function(error, stdout, stderr) {
         callback(stdout);
-    }); //shutsdown the computer
+    }); //restarts the computer
 }
 
 function upTimeJobs()
