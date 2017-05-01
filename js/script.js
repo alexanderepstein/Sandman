@@ -33,7 +33,6 @@ function setTime() { //called when set wakeup time button is pressed
 function readPreferences()
 {
   readFile(); //set up the mySettings variable by reading the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
   if (mySettings[0] === "true") //if militaryTime preference is set to true
   {
     militaryTime = true; //set the preference in the code
@@ -50,7 +49,6 @@ function readPreferences()
 function loadPreferences()
 {
   readFile(); //read the settings text
-  mySettings = (mySettings).split(" "); //split up the settings by spaces
   if (mySettings[0] === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
@@ -69,6 +67,14 @@ function loadPreferences()
     document.getElementById('timeType').checked = false; //dont set this button
     document.getElementById('timeType2').checked = true; //set radio button
   }
+  if (mySettings[2] === "true") //mySettings[2] is where the closeOnX setting is stored
+  {
+    document.getElementById('closeOnXcheck').checked = true; //set checkbox
+  }
+  else
+  {
+    document.getElementById('closeOnXcheck').checked = false; //set check box
+  }
   document.getElementById('defaultTime').value = mySettings[1]; //set time to preference time
 }
 
@@ -76,6 +82,7 @@ function readFile()
 {
   //console.log("Running readfile");
   mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
+  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
 }
 
 function setPreferences()
@@ -84,10 +91,9 @@ function setPreferences()
   mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
   tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
   mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + "Insomniav1.1.0"; //add version to get rid of \n error when reading a setting
+  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + "Insomniav1.1.0"; //add version to get rid of \n error when reading a setting
   writeFile(mytempstring); //write out the new settings file
   readFile(); //set up the mySettings variable for the new preferences
-  mySettings = (mySettings).split(" "); //split up the settings
   if (mySettings[0] === "true") //check if military time
   {
     militaryTime = true; //set the preference
