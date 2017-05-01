@@ -11,6 +11,27 @@ transition between sleep cycles you will feel refreshed!
 This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/  
 </p>
 
+# <p align="center" > Screenshots </p>
+
+<h4 style="color:white;text-align:center">MenuBar</h4>
+<div  align="center">
+ <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Tray.png?raw=true" alt="Tray">
+</div>
+
+<h4 style="color:white;text-align:center">Notification</h4>
+<div align="center">
+ <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Notification.png?raw=true" alt="Notification">
+
+<h4 style="color:white;text-align:center">Main Window</h4>
+ <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Main.png?raw=true" alt="Main">
+
+<h4 style="color:white;text-align:center">About Window</h4>
+ <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20About.png?raw=true" alt="About">
+
+<h4 style="color:white;text-align:center">Preferences Window </h4>
+<img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Preferences.png?raw=true" alt="Prefs">
+
+
 # <p align="center" > Downloads </p>
 To get the full sourced version run
 
