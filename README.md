@@ -1,16 +1,17 @@
-# <h1 align="center"><label style="text-align:center"> Insomnia </label> <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;"> </h1>
+# <h1 align="center"> <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;"> <label style="text-align:center"> Insomnia </label> <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;"> </h1>
 
 <p align="center"><img  src="https://media.giphy.com/media/pZIhNH7oeCfjW/giphy.gif" alt="Counting Sheep"></p>
 
+<p align="center">
 Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
 The idea is that when you wake up in the middle of a sleep cycle you will feel groggy, however if you wakeup during the
 transition between sleep cycles you will feel refreshed!
 
 This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/  
+</p>
 
-
-# Downloads
+# <p align="center" > Downloads </p>
 To get the full sourced version run
 
       git clone https://github.com/alexanderepstein/Insomnia
@@ -27,7 +28,7 @@ Otherwise to just get the application download your respective platforms file fr
 
 * Windows 64 Bit: https://goo.gl/NuzRQ0
 
-# Install
+# <p align="center" > Install </p>
 
 * Mac: Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
@@ -40,7 +41,7 @@ Otherwise to just get the application download your respective platforms file fr
 
 * Windows: Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant).  Now drag the entire Insomnia Windows folder you extracted  from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Insomnia.exe and run it. Now the application will show up in the dock where it can be pinned.
 
-# Uninstall
+# <p align="center" > Uninstall </p>
 
 * Mac: Go to the applications folder and delete the Insomnia application.
 
@@ -51,7 +52,7 @@ Otherwise to just get the application download your respective platforms file fr
 * Windows: Open up the program files folder and delete the Insomnia folder.
 
 
-# License
+# <p align="center" > License</p>
 
 MIT License
 
@@ -63,5 +64,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# Helping Out 
-If you have a feature you would like to add or optimizations to the original code feel free to fork this repository and submit a pull request
+# <p align="center" > Helping Out </p>
+<p align="center"> If you have a feature you would like to add or optimizations to the original code feel free to fork this repository and submit a pull request </p>
