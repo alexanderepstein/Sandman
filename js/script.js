@@ -249,7 +249,7 @@ function showUpTimeNotification() {
 
     }
     const notification = notifier.notify('Insomnia', { //Notification
-        message: 'Restart your computer to maintain efficency',
+        message: 'Your computer needs a break',
         icon: iconPath,
         buttons: ['Dismiss', 'Restart'],
         vetical: true,
