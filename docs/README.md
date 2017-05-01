@@ -1,7 +1,6 @@
-
 <h1 align="center">Insomnia Version 1.1.0</h1>
 
-<img  src="https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif" alt="Counting Sheep">
+<img  src="https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif?raw=true" alt="Counting Sheep">
 
 
 <p align="center">Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
