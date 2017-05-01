@@ -3,9 +3,11 @@ const path = require('path'); //allow for use of path
 const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
 const fs = require('fs');
 const filePath = path.join(__dirname, 'settings.txt');
+const os = require('os');
 var time = null; //wakeuptime to be set by user
 var exec = require('child_process').exec; //allows the shutdown of the host machine
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
+
 
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
@@ -140,6 +142,8 @@ function generateSleepTimes() {
 
 }
 
+
+
 function setSleepTimes() //just setting the sleep times the user sees (special formatting exists here)
     {
 
@@ -198,6 +202,10 @@ function nodeJobs() {
 
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
+
+    var j = schedule.scheduleJob('*/60 * * * *', function(){
+    upTimeJobs();
+  });
 }
 
 function showNotification() {
@@ -233,6 +241,41 @@ function showNotification() {
 }
 
 
+
+function showUpTimeNotification() {
+    try {
+        audio.play() //play notifiation sound
+    } catch (e) {
+
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Restart your computer to maintain efficency',
+        icon: iconPath,
+        buttons: ['Dismiss', 'Restart'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Dismiss') {
+            notification.close(); //close the notification
+        } else if ("Restart") {
+            restart(); //shutdown the computer
+        }
+
+    })
+}
+
+
+
 function militaryToStandard(hours) {
     /* make sure add radix*/
     var hours = ((hours + 11) % 12) + 1; //determine standard version of military time
@@ -256,4 +299,20 @@ function shutdown(callback) {
     exec('shutdown now', function(error, stdout, stderr) {
         callback(stdout);
     }); //shutsdown the computer
+}
+
+function restart(callback) {
+    exec('restart', function(error, stdout, stderr) {
+        callback(stdout);
+    }); //shutsdown the computer
+}
+
+function upTimeJobs()
+{
+  var uptime = os.uptime();
+  uptime = (uptime/60)/60
+  if (uptime >= 12)
+  {
+    showUpTimeNotification();
+  }
 }
