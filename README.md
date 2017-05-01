@@ -20,13 +20,13 @@ Otherwise to just get the application download your respective platforms file fr
 
 * <a href="https://goo.gl/bqXCmt">Debian Linux 32 Bit</a>
 
-* <a href="https://goo.gl/FbHvLh">Debian Linux 64 Bit</a> 
+* <a href="https://goo.gl/FbHvLh">Debian Linux 64 Bit</a>
 
 * <a href="https://goo.gl/jMa9a5">Mac OS 64 Bit</a>
 
-* <a href="https://goo.gl/bB61tc">Windows 32 Bit</a> 
+* <a href="https://goo.gl/bB61tc">Windows 32 Bit</a>
 
-* <a href="https://goo.gl/NuzRQ0">Windows 64 Bit</a> 
+* <a href="https://goo.gl/NuzRQ0">Windows 64 Bit</a>
 
 # <p align="center" > Install </p>
 
@@ -65,4 +65,38 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # <p align="center" > Helping Out </p>
-<p align="center"> If you have a feature you would like to add or optimizations to the original code feel free to fork this repository and submit a pull request </p>
+<p align="center" >
+(It is assumed you already have node installed and therefore npm)<br>
+To download the full source code and install the devDependencies run the following lines
+
+</p>
+
+    git clone https://github.com/alexanderepstein/Insomnia
+    cd Insomnia
+    npm install
+    cd ..
+    electron Insomnia //this will run the application
+<p align="center" >
+If you get some error and the application wont run try running the following lines and see if that works
+
+</p>
+
+<h3 align="center"> Linux/Mac </h3>
+
+    cd Insomnia
+    sudo npm install -g
+
+
+<h3 align="center"> Windows </h3>
+
+
+<p align="center">
+Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
+cd to the insomnia directory then run </p>
+
+
+     npm install -g
+
+<h4 align="center" > If you have a feature you would like to add or optimizations to the original code</h4>
+   * Feel free to fork this repository and submit a pull request
+   * Add an issue labeled as an enhancement and if I think its a good idea I will do my best to implement it myself
