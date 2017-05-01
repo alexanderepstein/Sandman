@@ -30,7 +30,7 @@ This application uses the averages that sleep cycles are 90 minutes each and a p
 
 <h4 style="color:white;text-align:center">Preferences Window </h4>
 <img  src="https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Preferences.png?raw=true" alt="Prefs">
-
+</div>
 
 # <p align="center" > Downloads </p>
 To get the full sourced version run
@@ -119,5 +119,6 @@ cd to the insomnia directory then run </p>
      npm install -g
 
 <h4 align="center" > If you have a feature you would like to add or optimizations to the original code</h4>
+
    * Feel free to fork this repository and submit a pull request
    * Add an issue labeled as an enhancement and if I think its a good idea I will do my best to implement it myself
