@@ -29,8 +29,8 @@ app.on('ready', function(){
             event.preventDefault()
             win.hide();
         }
-        return false;
     });
+    
   tray = new Tray(iconPath); //create a new tray
   var contextMenu = Menu.buildFromTemplate([  //start buliding out the menu for the tray
 
