@@ -1,4 +1,6 @@
-# <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;"> <label style="text-align:center"> Insomnia </label>
+# <h1 align="center"><label style="text-align:center"> Insomnia </label> <img src="https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png" alt="Insomnia Logo" style="width:50px;height:50px;"> </h1>
+
+<p align="center"><img  src="https://media.giphy.com/media/pZIhNH7oeCfjW/giphy.gif" alt="Counting Sheep"></p>
 
 Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
