@@ -108,10 +108,11 @@ If you have a feature you would like to add or optimizations to the original cod
 * Feel free to fork this repository and submit a pull request
 * Add an issue labeled as an enhancement and if I think its a good idea I will do my best to implement it myself
 
-
+```bash
 ( •_•)
 ( •_•)>⌐■-■
 (⌐■_■)
+```
 
 ## License
 
