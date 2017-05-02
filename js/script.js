@@ -8,7 +8,7 @@ var time = null; //wakeuptime to be set by user
 var exec = require('child_process').exec; //allows the shutdown of the host machine
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
 const {shell} = require('electron');
-
+var seenRelease = false;
 
 var appVersion = null;
 var mins = []; //array to hold the mins for formatting
@@ -245,6 +245,8 @@ function showNotification() {
 }
 
 function getLatestReleaseInfo() {
+  if(!seenRelease)
+  {
    $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) {
         var release = json[0].name;
         if (release === appVersion)
@@ -256,6 +258,8 @@ function getLatestReleaseInfo() {
           showLatestUpdateNotification();
         }
    });
+ }
+ seenRelease = true;
 }
 
 function showUpTimeNotification() {
