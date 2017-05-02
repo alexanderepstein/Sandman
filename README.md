@@ -12,22 +12,9 @@
 
 This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/
 
-## Screenshots
+## In Action
 
-#### MenuBar
-![Tray](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Tray.png?raw=true)
-
-#### Notification
-![Notification](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Notification.png?raw=true)
-
-#### Main Window
-![Main](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Main.png?raw=true)
-
-#### About Window
-![About](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20About.png?raw=true)
-
-#### Preferences Window
-![Prefs](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Preferences.png?raw=true)
+![Usage](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Usage.gif)
 
 
 # Downloads
