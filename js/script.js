@@ -7,7 +7,9 @@ const os = require('os');
 var time = null; //wakeuptime to be set by user
 var exec = require('child_process').exec; //allows the shutdown of the host machine
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
+const {shell} = require('electron');
 
+shell.openExternal('https://github.com')
 
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
@@ -93,7 +95,7 @@ function setPreferences()
   mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
   tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
   mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + "Insomniav1.1.0"; //add version to get rid of \n error when reading a setting
+  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + "v1.1.0 Insomnia"; //add version to get rid of \n error when reading a setting
   writeFile(mytempstring); //write out the new settings file
   readFile(); //set up the mySettings variable for the new preferences
   if (mySettings[0] === "true") //check if military time
@@ -233,14 +235,26 @@ function showNotification() {
     notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === 'Dismiss') {
             notification.close(); //close the notification
-        } else if ("Shutdown") {
+        } else if ("Shutdown Computer") {
             shutdown(); //shutdown the computer
         }
 
     })
 }
 
+function getLatestReleaseInfo() {
+   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) {
+        var release = json[0].name;
+        if (release === appVersion)
+        {
+          console.log("Running the latest version of Insomnia");
+        }
+        else
+        {
 
+        }
+   });
+}
 
 function showUpTimeNotification() {
     try {
@@ -274,7 +288,37 @@ function showUpTimeNotification() {
     })
 }
 
+function showLatestUpdateNotification() {
+    try {
+        audio.play() //play notifiation sound
+    } catch (e) {
 
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Application Update Available',
+        icon: iconPath,
+        buttons: ['Dismiss', 'Update Page'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Dismiss') {
+            notification.close(); //close the notification
+        } else if ("Update Page") {
+            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/'+appVersion);
+        }
+
+    })
+}
 
 function militaryToStandard(hours) {
     /* make sure add radix*/
