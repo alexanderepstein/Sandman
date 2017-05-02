@@ -4,22 +4,23 @@ const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notific
 const fs = require('fs');
 const filePath = path.join(__dirname, 'settings.txt');
 const os = require('os');
-var time = null; //wakeuptime to be set by user
-var exec = require('child_process').exec; //allows the shutdown of the host machine
-var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
-const {shell} = require('electron');
-var seenRelease = false;
+const audio = new Audio('alert.mp3'); //set up notification sound
+const exec = require('child_process').exec; //allows the shutdown of the host machine
+const schedule = require('node-schedule'); //allows for jobs scheduled at certain times
+const {shell} = require('electron'); // allows the ability to open a webpage in users default browser
 
-var appVersion = null;
+
+var time = null; //wakeuptime to be set by user
+var mySettings = null; // array that will hold all the settings
+var appVersion = null; //setting to store the app version
+var militaryTime = false; // setting determining whether to show times in military time
+var seenRelease = false; //checks if user has already seen update exists and ignored id
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
 var jobs = []; //array of node schedule jobs to be ran
 var sleepTimes = []; //array of times to rest determined by algorithm
-var audio = new Audio('alert.mp3'); //set up notification sound
-var militaryTime = false;
-var meridians = [];
-var mySettings = null;
-var tempTime = [];
+var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
+var tempTime = []; //used for a temperary purpose not sure if reffered to outside of function
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -185,7 +186,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
-        meridians[i] = ampm(sleepTimes[i].getHours());
+        meridians[i] = ampm(sleepTimes[i].getHours()); //set up the array of meridians
     }
     document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
@@ -207,7 +208,7 @@ function nodeJobs() {
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
 
-    var j = schedule.scheduleJob('*/59 * * * *', function(){
+    var j = schedule.scheduleJob('* */3 * * *', function(){
     upTimeJobs();
   });
 }
@@ -246,21 +247,21 @@ function showNotification() {
 }
 
 function getLatestReleaseInfo() {
-  if(!seenRelease)
+  if(!seenRelease) //if they havent seen the notification before
   {
-   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) {
-        var release = json[0].name;
-        if (release === appVersion)
+   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
+        var release = json[0].name; //get the newest app version
+        if (release === appVersion) //check if it matches current app version
         {
-          console.log("Running the latest version of Insomnia");
+          console.log("Running the latest version of Insomnia"); //log it
         }
         else
         {
-          showLatestUpdateNotification();
+          showLatestUpdateNotification(); //show the notification
         }
    });
  }
- seenRelease = true;
+ seenRelease = true; //we checked or they saw the notification already
 }
 
 function showUpTimeNotification() {
@@ -392,10 +393,10 @@ function restart(callback) {
 
 function upTimeJobs()
 {
-  var uptime = os.uptime();
-  uptime = (uptime/60)/60
-  if (uptime >= 12)
+  var uptime = os.uptime(); // uptime of computer in seconds
+  uptime = (uptime/60)/60 //turn it into hours
+  if (uptime >= 12) //if computer has been on longer then 12 hours reccomend a restart
   {
-    showUpTimeNotification();
+    showUpTimeNotification(); //show the notification
   }
 }
