@@ -1,6 +1,6 @@
 {
   "dest": "dist/installers/",
-  "icon": "resources/icon.ico",
+  "icon": "sleep.ico",
   "tags": [
     "Utility"
   ]

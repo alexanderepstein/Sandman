@@ -40,9 +40,9 @@ Otherwise to just get the application download your respective platforms file fr
 * [Debian Linux 32 Bit](https://goo.gl/mfjscq)
 * [Debian Linux 64 Bit](https://goo.gl/TqRAfA)
 * [RedHat Linux 32x64 Bit](https://goo.gl/bJwtal)
-* [Mac OS 64 Bit](https://goo.gl/jMa9a5)
-* [Windows 32 Bit](https://goo.gl/bB61tc)
-* [Windows 64 Bit](https://goo.gl/NuzRQ0)
+* [Mac OS](https://goo.gl/lpT3vM)
+* [Windows 32 Bit](https://goo.gl/K60YzU)
+* [Windows 64 Bit](https://goo.gl/q7m3Yi)
 
 ## Install
 
