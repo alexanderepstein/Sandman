@@ -111,6 +111,46 @@ cd to the insomnia directory then run
 ```bash
 npm install -g
 ```
+### To Package Electron Application To Binary
+First run
+
+### Linux/Mac
+```bash
+sudo npm install -g electron-packager
+```
+### Windows
+Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
+then run
+```bash
+npm install -g electron-packager
+```
+Then once electron packager is installed to package your electron application open up a terminal and cd into the Insomnia folder then run
+
+### Linux
+For 64 Bit Binary:
+```bash
+electron-packager . Insomnia --platform linux --arch x64 --out dist/
+```
+For 32 Bit Binary
+```bash
+electron-packager . Insomnia --platform linux --arch ia32 --out dist/
+```
+### Mac
+```bash
+electron-packager . Insomnia --platform darwin --arch x64 --out dist/
+```
+
+### Windows
+For 64 Bit Binary:
+```bash
+electron-packager . Insomnia --platform win32 --arch x64 --out dist/
+```
+For 32 Bit Binary
+```bash
+electron-packager . Insomnia --platform win32 --arch ia32 --out dist/
+```
+
+
 
 If you have a feature you would like to add or optimizations to the original code
 * Feel free to fork this repository and submit a pull request
