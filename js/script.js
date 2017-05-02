@@ -238,7 +238,8 @@ function showNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Shutdown Computer") {
-            shutdown(); //shutdown the computer
+            confirmShutdownNotification(); //check to confirm computer shutdown
+            notification.close()
         }
 
     })
@@ -288,11 +289,43 @@ function showUpTimeNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Restart") {
-            restart(); //shutdown the computer
+            restart(); //restart the computer
         }
 
     })
 }
+function confirmShutdownNotification() {
+    try {
+        audio.play() //play notifiation sound
+    } catch (e) {
+
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Confirm Shutdown',
+        icon: iconPath,
+        buttons: ['Cancel', 'Confirm'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Cancel') {
+            notification.close(); //close the notification
+        } else if ("Confirm") {
+            shutdown(); //shutdown the computer
+        }
+
+    })
+}
+
 
 function showLatestUpdateNotification() {
     try {
@@ -320,7 +353,7 @@ function showLatestUpdateNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Update Page") {
-            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/'+appVersion);
+            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + appVersion);
         }
 
     })
