@@ -9,7 +9,7 @@ var exec = require('child_process').exec; //allows the shutdown of the host mach
 var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
 const {shell} = require('electron');
 
-shell.openExternal('https://github.com')
+
 
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
