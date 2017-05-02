@@ -10,16 +10,16 @@ var schedule = require('node-schedule'); //allows for jobs scheduled at certain 
 const {shell} = require('electron');
 var seenRelease = false;
 
-var appVersion = null;
-var mins = []; //array to hold the mins for formatting
-var hours = []; //array to hold the hours for formatting
-var jobs = []; //array of node schedule jobs to be ran
-var sleepTimes = []; //array of times to rest determined by algorithm
-var audio = new Audio('alert.mp3'); //set up notification sound
-var militaryTime = false;
-var meridians = [];
-var mySettings = null;
-var tempTime = [];
+let appVersion = null;
+const mins = []; //array to hold the mins for formatting
+const hours = []; //array to hold the hours for formatting
+const jobs = []; //array of node schedule jobs to be ran
+let sleepTimes = []; //array of times to rest determined by algorithm
+const audio = new Audio('alert.mp3'); //set up notification sound
+let militaryTime = false;
+const meridians = [];
+let mySettings = null;
+let tempTime = [];
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -93,11 +93,11 @@ function readFile()
 
 function setPreferences()
 {
-  var mytempstring = ""; //set up specially formatted string to write to settings
-  mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
+  let mytempstring = ""; //set up specially formatted string to write to settings
+  mytempstring = `${document.getElementById('timeType').checked} `; //get the military time preference and add to string
   tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
-  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + appVersion + " Insomnia"; //add version to get rid of \n error when reading a setting
+  mytempstring = `${mytempstring + tempTime[0]}:${tempTime[1]} `; //set the time preference
+  mytempstring = `${mytempstring + document.getElementById('closeOnXcheck').checked} ${appVersion} Insomnia`; //add version to get rid of \n error when reading a setting
   writeFile(mytempstring); //write out the new settings file
   readFile(); //set up the mySettings variable for the new preferences
   if (mySettings[0] === "true") //check if military time
@@ -126,8 +126,8 @@ catch (e)
 }
 
 function generateSleepTimes() {
-    var splitTime = time.split(":") //split time into hours and minutes
-    var wakeUpDate = new Date(); //set a new date object
+    const splitTime = time.split(":"); //split time into hours and minutes
+    const wakeUpDate = new Date(); //set a new date object
     if (splitTime[0] < wakeUpDate.getHours() ||(splitTime[0] == wakeUpDate.getHours() && splitTime[1] < wakeUpDate.getMinutes())) //if condition met
     {
         wakeUpDate.setDate(wakeUpDate.getDate() + 1); //the alarm is for the next day
@@ -155,44 +155,44 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
   {
     for (i = 0; i < 6; i++) {
         if (sleepTimes[i].getHours() < 10) { //if hours is less than 10
-            hours[i] = "0" + sleepTimes[i].getHours(); //put a zero in front of the string
+            hours[i] = `0${sleepTimes[i].getHours()}`; //put a zero in front of the string
         } else {
             hours[i] = sleepTimes[i].getHours(); //else just the hours
         }
         if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
-            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
+            mins[i] = `0${sleepTimes[i].getMinutes()}` //put a zero in front of the string
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
     }
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck0').innerHTML = `${hours[0]}:${mins[0]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck1').innerHTML = `${hours[1]}:${mins[1]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck2').innerHTML = `${hours[2]}:${mins[2]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck3').innerHTML = `${hours[3]}:${mins[3]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck4').innerHTML = `${hours[4]}:${mins[4]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck5').innerHTML = `${hours[5]}:${mins[5]}`; //add optimal sleep times to the HTML
   }
   else
   {
     for (i = 0; i < 6; i++) {
         if (militaryToStandard(sleepTimes[i].getHours()) < 10) { //if hours is less than 10
-            hours[i] = "0" + militaryToStandard(sleepTimes[i].getHours()); //put a zero in front of the string
+            hours[i] = `0${militaryToStandard(sleepTimes[i].getHours())}`; //put a zero in front of the string
         } else {
             hours[i] = militaryToStandard(sleepTimes[i].getHours()); //else just the hours
         }
         if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
-            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
+            mins[i] = `0${sleepTimes[i].getMinutes()}` //put a zero in front of the string
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
         meridians[i] = ampm(sleepTimes[i].getHours());
     }
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2] + meridians[2]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3] + meridians[3]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck0').innerHTML = `${hours[0]}:${mins[0]}${meridians[0]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck1').innerHTML = `${hours[1]}:${mins[1]}${meridians[1]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck2').innerHTML = `${hours[2]}:${mins[2]}${meridians[2]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck3').innerHTML = `${hours[3]}:${mins[3]}${meridians[3]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck4').innerHTML = `${hours[4]}:${mins[4]}${meridians[4]}`; //add optimal sleep times to the HTML
+    document.getElementById('lblcheck5').innerHTML = `${hours[5]}:${mins[5]}${meridians[5]}`; //add optimal sleep times to the HTML
 }
 }
 
@@ -207,7 +207,7 @@ function nodeJobs() {
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
 
-    var j = schedule.scheduleJob('*/59 * * * *', function(){
+    const j = schedule.scheduleJob('*/59 * * * *', () => {
     upTimeJobs();
   });
 }
@@ -248,8 +248,8 @@ function showNotification() {
 function getLatestReleaseInfo() {
   if(!seenRelease)
   {
-   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) {
-        var release = json[0].name;
+   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(json => {
+        const release = json[0].name;
         if (release === appVersion)
         {
           console.log("Running the latest version of Insomnia");
@@ -353,7 +353,7 @@ function showLatestUpdateNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Update Page") {
-            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + appVersion);
+            shell.openExternal(`https://github.com/alexanderepstein/Insomnia/releases/tag/${appVersion}`);
         }
 
     })
@@ -379,20 +379,20 @@ function ampm(hours24)
   }
 }
 function shutdown(callback) {
-    exec('shutdown now', function(error, stdout, stderr) {
+    exec('shutdown now', (error, stdout, stderr) => {
         callback(stdout);
     }); //shutsdown the computer
 }
 
 function restart(callback) {
-    exec('shutdown now -r', function(error, stdout, stderr) {
+    exec('shutdown now -r', (error, stdout, stderr) => {
         callback(stdout);
     }); //restarts the computer
 }
 
 function upTimeJobs()
 {
-  var uptime = os.uptime();
+  let uptime = os.uptime();
   uptime = (uptime/60)/60
   if (uptime >= 12)
   {
