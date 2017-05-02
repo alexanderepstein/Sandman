@@ -1,4 +1,4 @@
-const {app, Tray, Menu, BrowserWindow} = require('electron'); //electron application stuff
+const {app, Tray, Menu, shell, BrowserWindow} = require('electron'); //electron application stuff
 const fs = require('fs');
 const path = require('path'); //allows for use of path
 const filePath = path.join(__dirname, 'settings.txt');
@@ -67,6 +67,11 @@ if (!closeOnX)
                 slashes: true
               }))
                 //pref.openDevTools();
+            }
+          },
+          {
+            label: 'Report a bug...', click:  function(){ //shows the about window
+              shell.openExternal('https://github.com/alexanderepstein/Insomnia/issues/new');
             }
           },
           { label: 'Quit', click:  function(){ //quit the application
