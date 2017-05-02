@@ -3,36 +3,45 @@
    <head>
       <meta charset="UTF-8">
       <title>Preferences</title>
+      <link rel="stylesheet" href="./css/main.css">
    </head>
-   <body BGCOLOR="#02D9CC" >
+   <body class="app">
+      <img src="sleep.png" alt="sleep"class="logo">
+      <div class="input-group cols">
+        <span class="input-group-label">Time</span>
+        <div class="input-wrapper col col1">
+          <input  type="radio" id="timeType" name="timeType" value="Military">
+          <label for="timeType">Military</label>
+        </div>
+        <div class="input-wrapper col col2">
+          <input type="radio" id ="timeType2" name="timeType" value="Standard" checked="checked">
+          <label for="timeType2">Standard</label>
+        </div>
       </div>
-      <center> <img src="sleep.png" alt="sleep" style="width:100px;height:100px;"> </center>
-      <div style="position:absolute;bottom:250px;margin-left:110px;color:white">
-         <center>
-            <input  type="radio" id="timeType" name="timeType" value="Military"> Military </input>
-            <input type="radio" id ="timeType2" name="timeType" value="Standard" checked="checked"> Standard </input>
-         </center>
+      <div class="input-group">
+         <span class="input-group-label">
+           <label for="defaultTime">Default Wake-Up Time</label>
+         </span>
+         <div class="input-wrapper">
+            <input type="time" id="defaultTime" />
+          </div>
       </div>
-      <div style="position:absolute;bottom:190px;margin-left:125px;color:white">
-         <center><label>Default Wake-Up Time</label></center>
-         <br>
+      <div class="closeOnX input-group no-label">
+         <div class="input-wrapper">
+           <input id="closeOnXcheck" type="checkbox" checked="true">
+           <label for="closeOnXcheck">Close Insomnia with main window</label>
+         </div>
       </div>
-      <div style="position:absolute;bottom:175px;margin-left:140px">
-         <center><input type="time" id="defaultTime" />
-         </center>
+      <div class="restartclass">
+         <em>Application restart required for changes to take effect</em>
       </div>
-      <div class="notification" style="position:absolute;bottom:120px;margin-left:135px;text-align:center">
-         <button onclick="showNotification()" >Test Notification</button>
-      </div>
-      <div class="closeOnX" style="color:white;position:absolute;bottom:95px;margin-left:80px;text-align:center">
-         <label style="font-size:15px">Close Insomnia with main window</label> <input id="closeOnXcheck" type="checkbox" checked="true">
-      </div>
-
-      <div class="restartclass" style="position:absolute;bottom:50px;margin-left:20px;text-align:center">
-         <label id="restart" style="color:white">Application restart required for changes to take effect</label><br>
-      </div>
-      <div class="preferences" style="position:absolute;bottom:20px;margin-left:135px;text-align:center">
-         <button onclick="setPreferences()" >Set Preferences</button>
+      <div class="cols">
+        <div class="notification button-wrapper col">
+          <button onclick="showNotification()" >Test Notification</button>
+        </div>
+        <div class="preferences button-wrapper col">
+          <button onclick="setPreferences()" >Set Preferences</button>
+        </div>
       </div>
       <script type="text/javascript">
          document.addEventListener("DOMContentLoaded", function() {loadPreferences();});

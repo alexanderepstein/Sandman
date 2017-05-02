@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  src: url("./fonts/Roboto-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("./fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/Roboto-Regular.woff2") format("woff2"), url("./fonts/Roboto-Regular.woff") format("woff"), url("./fonts/Roboto-Regular.ttf") format("truetype"), url("./fonts/Roboto-Regular.svg#svgFontName") format("svg");
+  /* Legacy iOS */ }
+.app {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+  padding: 1em; }
+
+.logo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto; }
+
+.cols:after {
+  content: ' ';
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both; }
+
+.col {
+  width: 50%;
+  float: left; }
+
+.app {
+  background-color: #02d9cc;
+  color: white; }
+
+.input-group {
+  border-color: #02c0b4; }
+  .input-group-label {
+    background-color: #02d9cc;
+    color: white; }
+
+button {
+  border: 1px solid #02a69c;
+  background: #02c0b4;
+  color: white; }
+  button:hover {
+    background: #02a69c; }
+
+.input-group {
+  position: relative;
+  text-align: left;
+  margin: 1em auto 1.5em;
+  padding: 1.5em 1em 1em;
+  border-width: 1px;
+  border-style: solid; }
+  .input-group.no-label {
+    padding-top: 1em; }
+  .input-group input[type='radio'],
+  .input-group input[type='checkbox'] {
+    display: inline-block;
+    border: 1px solid white;
+    margin-right: 1em;
+    vertical-align: middle;
+    line-height: 1; }
+  .input-group input[type='text'],
+  .input-group input[type='time'] {
+    display: inline-block;
+    width: calc(100% - 1em);
+    height: 1.5em;
+    padding: 0.8em 0.5em;
+    border: none;
+    line-height: 1.5; }
+  .input-group-label {
+    display: inline-block;
+    position: absolute;
+    top: -1em;
+    padding: 0.3em; }
+
+.restartclass {
+  text-align: center;
+  font-size: 0.8em; }
+
+.button-wrapper {
+  text-align: center; }
+
+button {
+  display: inline-block;
+  margin: 1em auto;
+  font-size: 0.8em;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0.8em 1.2em; }
