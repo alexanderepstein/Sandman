@@ -10,7 +10,7 @@ var schedule = require('node-schedule'); //allows for jobs scheduled at certain 
 const {shell} = require('electron');
 
 
-
+var appVersion = null;
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
 var jobs = []; //array of node schedule jobs to be ran
@@ -46,6 +46,7 @@ function readPreferences()
     militaryTime = false; //set the military time perference in the code to false
   }
   time = mySettings[1]; //set time variable
+  appVersion = mySettings[3];
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
@@ -53,6 +54,7 @@ function readPreferences()
 function loadPreferences()
 {
   readFile(); //read the settings text
+  appVersion = mySettings[3];
   if (mySettings[0] === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
@@ -95,7 +97,7 @@ function setPreferences()
   mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
   tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
   mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + "v1.1.0 Insomnia"; //add version to get rid of \n error when reading a setting
+  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + appVersion + " Insomnia"; //add version to get rid of \n error when reading a setting
   writeFile(mytempstring); //write out the new settings file
   readFile(); //set up the mySettings variable for the new preferences
   if (mySettings[0] === "true") //check if military time
