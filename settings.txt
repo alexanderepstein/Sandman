@@ -1,1 +1,1 @@
-false 08:30 false v1.1.0 Insomnia
+false 08:30 false v1.2.0 Insomnia
