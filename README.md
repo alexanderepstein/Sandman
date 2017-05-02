@@ -36,13 +36,9 @@ To get the full sourced version run in terminal:
 git clone https://github.com/alexanderepstein/Insomnia
 ```
 
-Otherwise to just get the application download your respective platforms file from the list of download links below:
-* [Debian Linux 32 Bit](https://goo.gl/mfjscq)
-* [Debian Linux 64 Bit](https://goo.gl/TqRAfA)
-* [RedHat Linux 32x64 Bit](https://goo.gl/bJwtal)
-* [Mac OS](https://goo.gl/lpT3vM)
-* [Windows 32 Bit](https://goo.gl/K60YzU)
-* [Windows 64 Bit](https://goo.gl/q7m3Yi)
+Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
+##### [Version 1.2.0 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.2.0)
+
 
 ## Install
 
