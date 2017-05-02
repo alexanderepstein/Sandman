@@ -1,17 +1,21 @@
 <div align="center">
 
  # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
+##### an application built with late night developers in Mind
 
+<br>
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
  Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
- The idea is that when you wake up in the middle of a sleep cycle you will feel groggy, however if you wakeup during the
- transition between sleep cycles you will feel refreshed!
+
+A sleep cycle is a 90-minute chunk of time where your body transitions through various phases of sleep — all the way down to deep REM sleep — then back again. Some health experts believe that these 90-minute sleep cycles are the key to restful sleep. They recommend trying to sleep exactly 7.5 hours — or even 9 hours, if you have the time.
+
+
+Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
+
+This application works well with https://justgetflux.com/
 </div>
-
-This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/
-
 ## In Action
 
 ![Usage](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Usage.gif)
