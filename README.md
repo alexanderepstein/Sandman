@@ -39,7 +39,7 @@ git clone https://github.com/alexanderepstein/Insomnia
 Otherwise to just get the application download your respective platforms file from the list of download links below:
 * [Debian Linux 32 Bit](https://goo.gl/mfjscq)
 * [Debian Linux 64 Bit](https://goo.gl/TqRAfA)
-* [RedHat Linux 32x64 Bit](https://goo.gl/GF2C9I)
+* [RedHat Linux 32x64 Bit](https://goo.gl/bJwtal)
 * [Mac OS 64 Bit](https://goo.gl/jMa9a5)
 * [Windows 32 Bit](https://goo.gl/bB61tc)
 * [Windows 64 Bit](https://goo.gl/NuzRQ0)
@@ -51,14 +51,18 @@ Open up a new finder window and go to the Applications folder. Then drag the Ins
 
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
+#### Debian
 ```bash
-sudo dpkg -i Insomnia_1.1.0_amd64.deb
+sudo dpkg -i Insomnia_1.2.0_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.1.0_x86.deb
+sudo dpkg -i Insomnia_1.2.0_x86.deb
 ```
-
+#### RedHat
+```bash
+sudo rpm -i Insomnia.rpm
+```
  This will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
 
 ### Windows
@@ -71,8 +75,15 @@ Go to the applications folder and delete the Insomnia application.
 
 ### Linux
 Open up a terminal and run:
+#### Debian
+
 ```bash
 sudo dpkg --remove Insomnia
+```
+#### RedHat
+
+```bash
+sudo rpm -e Insomnia.rpm
 ```
 
 ### Windows
