@@ -24,7 +24,7 @@ app.on('ready', function(){
 
 
 
-  win.openDevTools(); //starts the application with developer tools open
+  //win.openDevTools(); //starts the application with developer tools open
 
   readFile();
   getCloseOnXPref();
