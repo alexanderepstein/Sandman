@@ -253,7 +253,7 @@ function getLatestReleaseInfo() {
         }
         else
         {
-
+          showLatestUpdateNotification();
         }
    });
 }
