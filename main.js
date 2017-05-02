@@ -1,9 +1,10 @@
-const {app, Tray, Menu, shell, BrowserWindow} = require('electron'); //electron application stuff
+const {app, Tray, Menu, shell, dialog, BrowserWindow} = require('electron'); //electron application stuff
 const fs = require('fs');
 const path = require('path'); //allows for use of path
 const filePath = path.join(__dirname, 'settings.txt');
 const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
+const abtIconPath = path.join(__dirname, 'sleep.png'); //grab the icon
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
 let pref = null;
@@ -48,14 +49,13 @@ if (!closeOnX)
               win.show();
           } },
           { label: 'About', click:  function(){ //shows the about window
-            abt = new BrowserWindow({width: 400, height: 400, resizable: false});
-            abt.setMenu(null); //the about window has no menu
-            abt.loadURL(url.format({  //loads the webpage for the about window
-              pathname: path.join(__dirname, 'about.html'),
-              protocol: 'file:',
-              slashes: true
-            }))
-
+            dialog.showMessageBox(win, {
+              type: 'info',
+              title: 'About',
+              message: 'Insomnia Version 1.2.0',
+              detail: 'Built by Alexander Epstein',
+              icon: abtIconPath
+            });
           } },
           {
             label: 'Preferences', click:  function(){ //shows the about window
