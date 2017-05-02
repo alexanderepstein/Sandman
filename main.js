@@ -59,14 +59,14 @@ if (!closeOnX)
           } },
           {
             label: 'Preferences', click:  function(){ //shows the about window
-              pref = new BrowserWindow({width: 400, height: 400, resizable: false});
+              pref = new BrowserWindow({width: 400, height: 540, resizable: false});
               pref.setMenu(null); //the about window has no menu
               pref.loadURL(url.format({  //loads the webpage for the about window
                 pathname: path.join(__dirname, 'preferences.html'),
                 protocol: 'file:',
                 slashes: true
               }))
-                //pref.openDevTools();
+                // pref.openDevTools();
             }
           },
           { label: 'Quit', click:  function(){ //quit the application
