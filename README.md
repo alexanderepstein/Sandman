@@ -16,7 +16,7 @@ Based on your wakeup time and the sleep algorithm Insomnia calculates the best t
 
 This application works well with https://justgetflux.com/
 
-Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
+Inspired by http://sleepyti.me 
 
 </div>
 
