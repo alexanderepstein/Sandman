@@ -48,7 +48,7 @@ if (!closeOnX)
               win.show();
           } },
           { label: 'About', click:  function(){ //shows the about window
-            abt = new BrowserWindow({width: 400, height: 400, resizable: false});
+            abt = new BrowserWindow({width: 500, height: 570, resizable: false});
             abt.setMenu(null); //the about window has no menu
             abt.loadURL(url.format({  //loads the webpage for the about window
               pathname: path.join(__dirname, 'about.html'),
