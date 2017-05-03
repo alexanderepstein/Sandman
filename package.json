@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "electron-notifications": "^1.0.0",
+    "electron-settings": "^3.0.14",
     "jquery": "^3.2.1",
     "node-schedule": "^1.2.1"
   }

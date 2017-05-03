@@ -1,16 +1,16 @@
 const {app, Tray, Menu, shell, dialog, BrowserWindow} = require('electron'); //electron application stuff
-const fs = require('fs');
 const path = require('path'); //allows for use of path
 const filePath = path.join(__dirname, 'settings.txt');
 const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
 const abtIconPath = path.join(__dirname, 'sleep.png'); //grab the icon
+const settings = require('electron-settings');
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
 let pref = null;
 let abt = null;
 var closeOnX = false;
-var mySettings = null;
+
 
 
 app.on('ready', function(){
@@ -24,10 +24,10 @@ app.on('ready', function(){
   }))
 
 
+  console.log(settings.getAll());
+  win.openDevTools(); //starts the application with developer tools open
 
-  //win.openDevTools(); //starts the application with developer tools open
 
-  readFile();
   getCloseOnXPref();
 if (!closeOnX)
 {
@@ -66,7 +66,7 @@ if (!closeOnX)
                 protocol: 'file:',
                 slashes: true
               }))
-                //pref.openDevTools();
+                pref.openDevTools();
             }
           },
           {
@@ -85,17 +85,10 @@ if (!closeOnX)
 });
 
 
-function readFile()
-{
-  //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
-  return;
-}
 
 function getCloseOnXPref()
 {
-  if (mySettings[2]==="true")
+  if (settings.get('closeOnX')==="true")
   {
     closeOnX = true;
   }

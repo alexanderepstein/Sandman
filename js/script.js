@@ -8,10 +8,9 @@ const audio = new Audio('alert.mp3'); //set up notification sound
 const exec = require('child_process').exec; //allows the shutdown of the host machine
 const schedule = require('node-schedule'); //allows for jobs scheduled at certain times
 const {shell} = require('electron'); // allows the ability to open a webpage in users default browser
-
+const settings = require('electron-settings');
 
 var time = null; //wakeuptime to be set by user
-var mySettings = null; // array that will hold all the settings
 var appVersion = null; //setting to store the app version
 var militaryTime = false; // setting determining whether to show times in military time
 var seenRelease = false; //checks if user has already seen update exists and ignored id
@@ -37,8 +36,7 @@ function setTime() { //called when set wakeup time button is pressed
 
 function readPreferences()
 {
-  readFile(); //set up the mySettings variable by reading the settings file
-  if (mySettings[0] === "true") //if militaryTime preference is set to true
+  if (settings.get('militaryTime') === "true") //if militaryTime preference is set to true
   {
     militaryTime = true; //set the preference in the code
   }
@@ -46,17 +44,16 @@ function readPreferences()
   {
     militaryTime = false; //set the military time perference in the code to false
   }
-  time = mySettings[1]; //set time variable
-  appVersion = mySettings[3];
+  time = settings.get('defaultTime'); //set time variable
+  appVersion = settings.get('Version');
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  readFile(); //read the settings text
-  appVersion = mySettings[3];
-  if (mySettings[0] === "true") //mySettings[0] is where the military time setting is stored
+  appVersion = settings.get('Version');
+  if (settings.get('militaryTime') === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
   }
@@ -74,7 +71,7 @@ function loadPreferences()
     document.getElementById('timeType').checked = false; //dont set this button
     document.getElementById('timeType2').checked = true; //set radio button
   }
-  if (mySettings[2] === "true") //mySettings[2] is where the closeOnX setting is stored
+  if (settings.get('closeOnX') === "true") //mySettings[2] is where the closeOnX setting is stored
   {
     document.getElementById('closeOnXcheck').checked = true; //set checkbox
   }
@@ -82,49 +79,19 @@ function loadPreferences()
   {
     document.getElementById('closeOnXcheck').checked = false; //set check box
   }
-  document.getElementById('defaultTime').value = mySettings[1]; //set time to preference time
+  document.getElementById('defaultTime').value = settings.get('defaultTime'); //set time to preference time
 }
 
-function readFile()
-{
-  //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
-}
+
 
 function setPreferences()
 {
-  var mytempstring = ""; //set up specially formatted string to write to settings
-  mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
-  tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
-  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + appVersion + " Insomnia"; //add version to get rid of \n error when reading a setting
-  writeFile(mytempstring); //write out the new settings file
-  readFile(); //set up the mySettings variable for the new preferences
-  if (mySettings[0] === "true") //check if military time
-  {
-    militaryTime = true; //set the preference
-  }
-  else
-  {
-    militaryTime = false; //set the preference
-  }
+  settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
+  settings.set('defaultTime',document.getElementById('defaultTime').value);
+  settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString();
 }
 
-function writeFile(settingsData)
-{
-  fs.writeFile(filePath, settingsData, (err) => {  //write the settings file that will contain the settingsData parameter
-  if (err) throw err;
-});
-try //for error catching
-{
-fs.chmodSync(filePath, '777'); //set up permissions (seems to fix issue of linux reading settings after install)
-}
-catch (e)
-{
-  console.log("Error setting permissions on settings.txt") //log this error to the console (basically occurs everytime after the first run)
-}
-}
+
 
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
