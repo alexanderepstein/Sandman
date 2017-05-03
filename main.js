@@ -14,7 +14,7 @@ var closeOnX = false;
 
 
 app.on('ready', function(){
-  win = new BrowserWindow({width: 600, height: 400, resizable: false}); //create main window
+  win = new BrowserWindow({width: 600, height: 450, resizable: false}); //create main window
 
   win.setMenu(null); //the main window had no menu
   win.loadURL(url.format({    //loads the webpage for the main window
@@ -59,14 +59,14 @@ if (!closeOnX)
           } },
           {
             label: 'Preferences', click:  function(){ //shows the about window
-              pref = new BrowserWindow({width: 400, height: 400, resizable: false});
+              pref = new BrowserWindow({width: 400, height: 540, resizable: false});
               pref.setMenu(null); //the about window has no menu
               pref.loadURL(url.format({  //loads the webpage for the about window
                 pathname: path.join(__dirname, 'preferences.html'),
                 protocol: 'file:',
                 slashes: true
               }))
-                //pref.openDevTools();
+                // pref.openDevTools();
             }
           },
           {

@@ -1,0 +1,49 @@
+.app {
+  font-size: 16px;
+  font-family: $roboto;
+  line-height: 1.5;
+  padding: 1em;
+}
+
+.logo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.cols {
+  @include clearfix;
+}
+
+.col {
+  width: 50%;
+  float: left;
+}
+
+.label-group {
+  @extend .input-group;
+
+  &-title {
+    display: inline-block;
+    position: absolute;
+    top: -1.2em;
+    padding: 0.3em 0.7em;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+}
+
+.link {
+  font-weight: normal;
+}
+
+$width-class-count: 10;
+
+@while $width-class-count <= 100 {
+  .w-#{$width-class-count} {
+    width: #{$width-class-count * 1%};
+  }
+
+  $width-class-count: $width-class-count + 10 !global;
+}

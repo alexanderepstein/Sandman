@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./fonts/Roboto-Regular.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./fonts/Roboto-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/Roboto-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./fonts/Roboto-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./fonts/Roboto-Regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
