@@ -109,6 +109,7 @@ a.download {
   .screenshot {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 100px;
   }
   .features {
     width: 100%;
