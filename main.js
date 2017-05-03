@@ -22,7 +22,7 @@ app.on('ready', function(){
     slashes: true
   }))
 
-  //settings.set('Version','v1.2.1')
+  //settings.set('Version','v1.3.0')
   //console.log(settings.getAll());
   //win.openDevTools(); //starts the application with developer tools open
 
