@@ -15,7 +15,6 @@ A sleep cycle is a 90-minute chunk of time where your body transitions through v
 Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
 
 This application works well with https://justgetflux.com/
-
 Inspired by http://sleepyti.me
 
 </div>
@@ -98,6 +97,13 @@ If you get some error and the application wont run try running the following lin
 ```bash
 cd Insomnia
 sudo npm install -g
+```
+
+The app styling was made with [Sass](http://sass-lang.com/) `v3.3.14` and [Ruby](https://www.ruby-lang.org/) `v2.3.1p112`.
+
+To compile the stylesheet you'll only need to run the following command:
+```bash
+sass --watch scss:css --style compressed
 ```
 
 ### Windows
