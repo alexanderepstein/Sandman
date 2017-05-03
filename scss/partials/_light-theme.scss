@@ -1,30 +1,44 @@
 .app {
-  background-color: color('primary-light');
-  color: color('white');
+    background-color: color('primary-light');
+    color: color('white');
 }
 
 .input-group {
-  border-color: darken(color('primary-light'), 5);
+    border-color: darken(color('primary-light'), 5);
 
-  &-label {
-    background-color: color('primary-light');
-    color: color('white');
-  }
+    &-label {
+        background-color: color('primary-light');
+        color: color('white');
+    }
 }
 
 .label-group {
-  &-title {
-    background-color: color('primary-light');
-    color: color('white');
-  }
+    &-title {
+        background-color: color('primary-light');
+        color: color('white');
+    }
 }
 
 button {
-  border: 1px solid darken(color('primary-light'), 10);
-  background: darken(color('primary-light'), 5);
-  color: color('white');
+    border: 1px solid darken(color('primary-light'), 10);
+    background: darken(color('primary-light'), 5);
+    color: color('white');
 
-  &:hover {
-    background: darken(color('primary-light'), 10);
-  }
+    &:hover {
+        background: darken(color('primary-light'), 10);
+    }
+}
+
+.link {
+    display: inline-block;
+    padding: 0 0.25em;
+    line-height: 1.3;
+    color: color('white');
+    background-color: darken(color('primary-light'), 10);
+}
+
+hr {
+    background-color: color('primary-light');
+    border: 2px dashed darken(color('primary-light'), 7);
+    border-width: 2px 0 0;
 }
