@@ -99,13 +99,6 @@ cd Insomnia
 sudo npm install -g
 ```
 
-The app styling was made with [Sass](http://sass-lang.com/) `v3.3.14` and [Ruby](https://www.ruby-lang.org/) `v2.3.1p112`.
-
-To compile the stylesheet you'll only need to run the following command:
-```bash
-sass --watch scss:css --style compressed
-```
-
 ### Windows
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
 cd to the insomnia directory then run
