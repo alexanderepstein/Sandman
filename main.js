@@ -23,7 +23,7 @@ app.on('ready', function(){
     slashes: true
   }))
 
-
+  settings.set('Version','v1.2.1')
   console.log(settings.getAll());
   win.openDevTools(); //starts the application with developer tools open
 
@@ -52,7 +52,7 @@ if (!closeOnX)
             dialog.showMessageBox(win, {
               type: 'info',
               title: 'About',
-              message: 'Insomnia Version 1.2.0',
+              message: 'Insomnia Version ' + settings.get('Version'),
               detail: 'Built by Alexander Epstein',
               icon: abtIconPath
             });
@@ -66,7 +66,7 @@ if (!closeOnX)
                 protocol: 'file:',
                 slashes: true
               }))
-                pref.openDevTools();
+                //pref.openDevTools();
             }
           },
           {
