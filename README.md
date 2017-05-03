@@ -2,46 +2,37 @@
 
  # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
 
+ ####  an application built with late night developers in mind
+
+
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
- Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
- The idea is that when you wake up in the middle of a sleep cycle you will feel groggy, however if you wakeup during the
- transition between sleep cycles you will feel refreshed!
+
+A sleep cycle is a 90-minute chunk of time where your body transitions through various phases of sleep — all the way down to deep REM sleep — then back again. Some health experts believe that these 90-minute sleep cycles are the key to restful sleep. They recommend trying to sleep exactly 7.5 hours — or even 9 hours, if you have the time.
+
+
+Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
+
+This application works well with https://justgetflux.com/
+Inspired by http://sleepyti.me
+
 </div>
 
-This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/ 
+## In Action
 
-## Screenshots
-
-#### MenuBar
-![Tray](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Tray.png?raw=true)
-
-#### Notification
-![Notification](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Notification.png?raw=true)
-
-#### Main Window
-![Main](https://cldup.com/28F4UE0y4v.png)
-
-#### About Window
-![About](https://cldup.com/dgwNWiW6-Z.png)
-
-#### Preferences Window
-![Prefs](https://cldup.com/O87Kye4s-V.png)
+![Usage](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Usage.gif)
 
 
-# Downloads
+## Downloads
 To get the full sourced version run in terminal:
 ```bash
 git clone https://github.com/alexanderepstein/Insomnia
 ```
 
-Otherwise to just get the application download your respective platforms file from the list of download links below:
-* [Debian Linux 32 Bit](https://goo.gl/bqXCmt)
-* [Debian Linux 64 Bit](https://goo.gl/FbHvLh)
-* [Mac OS 64 Bit](https://goo.gl/jMa9a5)
-* [Windows 32 Bit](https://goo.gl/bB61tc)
-* [Windows 64 Bit](https://goo.gl/NuzRQ0)
+Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
+##### [Version 1.2.0 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.2.0)
+
 
 ## Install
 
@@ -50,14 +41,18 @@ Open up a new finder window and go to the Applications folder. Then drag the Ins
 
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
+#### Debian
 ```bash
-sudo dpkg -i Insomnia_1.1.0_amd64.deb
+sudo dpkg -i Insomnia_1.2.0_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.1.0_x86.deb
+sudo dpkg -i Insomnia_1.2.0_x86.deb
 ```
- 
+#### RedHat
+```bash
+sudo rpm -i Insomnia.rpm
+```
  This will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
 
 ### Windows
@@ -70,8 +65,15 @@ Go to the applications folder and delete the Insomnia application.
 
 ### Linux
 Open up a terminal and run:
+#### Debian
+
 ```bash
 sudo dpkg --remove Insomnia
+```
+#### RedHat
+
+```bash
+sudo rpm -e Insomnia.rpm
 ```
 
 ### Windows
@@ -110,10 +112,66 @@ cd to the insomnia directory then run
 ```bash
 npm install -g
 ```
+### CSS Compilation
+
+The app styling was made with: [Sass](http://sass-lang.com/) `v3.3.14`  [Ruby](https://www.ruby-lang.org/) `v2.3.1p112`.
+
+ To compile the stylesheet you'll only need to run the following command:
+ ```bash
+ sass --watch scss:css --style compressed
+ ```
+
+
+### To Package Electron Application To Binary
+First run
+
+### Linux/Mac
+```bash
+sudo npm install -g electron-packager
+```
+### Windows
+Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
+then run
+```bash
+npm install -g electron-packager
+```
+Then once electron packager is installed to package your electron application open up a terminal and cd into the Insomnia folder then run
+
+### Linux
+For 64 Bit Binary:
+```bash
+electron-packager . Insomnia --platform linux --arch x64 --out dist/
+```
+For 32 Bit Binary
+```bash
+electron-packager . Insomnia --platform linux --arch ia32 --out dist/
+```
+### Mac
+```bash
+electron-packager . Insomnia --platform darwin --arch x64 --out dist/
+```
+
+### Windows
+For 64 Bit Binary:
+```bash
+electron-packager . Insomnia --platform win32 --arch x64 --out dist/
+```
+For 32 Bit Binary
+```bash
+electron-packager . Insomnia --platform win32 --arch ia32 --out dist/
+```
+
+
 
 If you have a feature you would like to add or optimizations to the original code
 * Feel free to fork this repository and submit a pull request
 * Add an issue labeled as an enhancement and if I think its a good idea I will do my best to implement it myself
+
+```bash
+( •_•)
+( •_•)>⌐■-■
+(⌐■_■)
+```
 
 ## License
 
