@@ -21,13 +21,13 @@ This application uses the averages that sleep cycles are 90 minutes each and a p
 ![Notification](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Notification.png?raw=true)
 
 #### Main Window
-![Main](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20Main.png?raw=true)
+![Main](https://cldup.com/28F4UE0y4v.png)
 
 #### About Window
-![About](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Insomnia%20About.png?raw=true)
+![About](https://cldup.com/dgwNWiW6-Z.png)
 
 #### Preferences Window
-![Prefs](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Preferences.png?raw=true)
+![Prefs](https://cldup.com/O87Kye4s-V.png)
 
 
 # Downloads
@@ -95,6 +95,13 @@ If you get some error and the application wont run try running the following lin
 ```bash
 cd Insomnia
 sudo npm install -g
+```
+
+The app styling was made with [Sass](http://sass-lang.com/) `v3.3.14` and [Ruby](https://www.ruby-lang.org/) `v2.3.1p112`.
+
+To compile the stylesheet you'll only need to run the following command:
+```bash
+sass --watch scss:css --style compressed
 ```
 
 ### Windows
