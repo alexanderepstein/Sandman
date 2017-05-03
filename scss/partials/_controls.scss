@@ -1,0 +1,51 @@
+.input-group {
+  position: relative;
+  text-align: left;
+  margin: 1em auto 1.5em;
+  padding: 1.5em 1em 1em;
+  border-width: 1px;
+  border-style: solid;
+
+  &.no-label {
+    padding-top: 1em;
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    display: inline-block;
+    border: 1px solid color('white');
+    margin-right: 1em;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  input[type='text'],
+  input[type='time'] {
+    display: inline-block;
+    width: calc(100% - 1em);
+    height: 1.5em;
+    padding: 0.8em 0.5em;
+    border: none;
+    line-height: 1.5;
+  }
+
+  &-label {
+    display: inline-block;
+    position: absolute;
+    top: -1em;
+    padding: 0.3em;
+  }
+}
+
+.button-wrapper {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  margin: 1em auto;
+  font-size: 0.8em;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0.8em 1.2em;
+}

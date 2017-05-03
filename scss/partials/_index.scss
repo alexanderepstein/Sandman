@@ -1,0 +1,39 @@
+#index {
+  .input-group {
+    margin-bottom: 2.5em;
+  }
+
+  .label-group {
+    margin-bottom: 0;
+  }
+
+  .input-wrapper {
+    input[type='time'] {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+  .button-wrapper {
+    button {
+      margin: 0 auto;
+    }
+  }
+
+  .sleep-times {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+
+    .col {
+      padding: 0.3em;
+    }
+  }
+
+  #lblTime {
+    margin-top: 1em;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+  }
+}

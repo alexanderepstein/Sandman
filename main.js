@@ -13,7 +13,7 @@ var mySettings = null;
 
 
 app.on('ready', function(){
-  win = new BrowserWindow({width: 600, height: 400, resizable: false}); //create main window
+  win = new BrowserWindow({width: 600, height: 450, resizable: false}); //create main window
 
   win.setMenu(null); //the main window had no menu
   win.loadURL(url.format({    //loads the webpage for the main window
