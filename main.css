@@ -84,6 +84,7 @@ span {
 img {
   max-height: 100%;
   max-width: 100%;
+  margin-top: 50px;
 }
 
 .downloads {
@@ -109,7 +110,6 @@ a.download {
   .screenshot {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
   }
   .features {
     width: 100%;
@@ -140,4 +140,3 @@ a.download {
     margin-top: 0;
   }
 }
-
