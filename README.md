@@ -15,6 +15,7 @@ A sleep cycle is a 90-minute chunk of time where your body transitions through v
 Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
 
 This application works well with https://justgetflux.com/
+
 Inspired by http://sleepyti.me
 
 </div>
