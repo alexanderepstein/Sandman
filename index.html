@@ -3,50 +3,33 @@
    <head>
       <meta charset="UTF-8">
       <title>Insomnia</title>
+      <link rel="stylesheet" href="./css/main.css">
    </head>
-   <body BGCOLOR="#02D9CC" >
-      <div class="image" style="margin-top:-30px">
-         <center> <img src="sleep.png" alt="sleep" style="width:200px;height:200px;"> </center>
+   <body class="app" id="index">
+      <img src="sleep.png" alt="sleep"class="logo">
+      <div class="input-group cols no-label">
+        <div class="input-wrapper col col1 w-70">
+          <input type="time" id="alarmTime" min="00:00:00" max="23:59:59" />
+        </div>
+        <div class="button-wrapper col col2 w-30">
+          <button onclick="setTime()">Set wakeup time</button>
+        </div>
       </div>
-      <div style="margin-top:-35px">
-         <!-- All of the Node.js APIs are available in this renderer process. -->
-         <center><input type="time" id="alarmTime" />
-            <button onclick="setTime()">Set wakeup time</button>
-         </center>
-         <script type="text/javascript"> document.getElementById("alarmTime").value = "07:30:00"; </script>
+      <div class="label-group">
+        <span class="label-group-title"><label id="sleepTimes"> </label></span>
+        <div class="cols sleep-times">
+          <div class="col w-30"><label id="lblcheck0"> </label></div>
+          <div class="col w-30"><label id="lblcheck1"> </label></div>
+          <div class="col w-30"><label id="lblcheck2"> </label></div>
+          <div class="col w-30"><label id="lblcheck3"> </label></div>
+          <div class="col w-30"><label id="lblcheck4"> </label></div>
+          <div class="col w-30"><label id="lblcheck5"> </label></div>
+        </div>
       </div>
-      <div style="margin-top:32px">
-         <center><label style="color:white ;font-size:35px; font-weight:bold" id="sleepTimes"> </label></center>
-      </div>
-      <div style="text-align:center;margin-top:15px">
-         <table border="0" width="100%" style="text-align:center;">
-            <td>
-               <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck0" </label>
-            </td>
-            <td>
-               <label style="color:white ;font-size:20px; font-weight:bold" id= "lblcheck1"  </label>
-            </td>
-            <td>
-               <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck2" </label>
-            </td>
-         </table>
-         <table border="0" width="100%" style="margin-top:10px;text-align:center;" >
-            <td>
-               <label style="color:white; font-size:20px ; font-weight:bold" id= "lblcheck3" </label>
-            </td>
-            <td>
-               <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck4" </label>
-            </td>
-            <td>
-               <label style="color:white; font-size:20px; font-weight:bold" id= "lblcheck5" </label>
-            </td>
-            </tr>
-         </table>
-      </div>
-      <div style="margin-top:15px">
-         <center><label style="color:white ;font-size:12px; font-weight:bold" id="lblTime"> </label></center>
-      </div>
+      <label id="lblTime"> </label>
+      <!-- All of the Node.js APIs are available in this renderer process. -->
       <script type="text/javascript">
+         document.getElementById("alarmTime").value = "07:30:00";
          document.addEventListener("DOMContentLoaded", function() {readPreferences();});
       </script>
       <script src="./js/script.js"></script>

@@ -12,6 +12,13 @@
   }
 }
 
+.label-group {
+  &-title {
+    background-color: color('primary-light');
+    color: color('white');
+  }
+}
+
 button {
   border: 1px solid darken(color('primary-light'), 10);
   background: darken(color('primary-light'), 5);
