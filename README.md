@@ -1,14 +1,14 @@
 <div align="center">
 
- # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) 
- 
+ # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
+
  ####  an application built with late night developers in mind
 
 
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
- 
+
 A sleep cycle is a 90-minute chunk of time where your body transitions through various phases of sleep — all the way down to deep REM sleep — then back again. Some health experts believe that these 90-minute sleep cycles are the key to restful sleep. They recommend trying to sleep exactly 7.5 hours — or even 9 hours, if you have the time.
 
 
@@ -16,7 +16,7 @@ Based on your wakeup time and the sleep algorithm Insomnia calculates the best t
 
 This application works well with https://justgetflux.com/
 
-Inspired by http://sleepyti.me 
+Inspired by http://sleepyti.me
 
 </div>
 
@@ -106,6 +106,16 @@ cd to the insomnia directory then run
 ```bash
 npm install -g
 ```
+### CSS Compilation
+
+The app styling was made with: [Sass](http://sass-lang.com/) `v3.3.14`  [Ruby](https://www.ruby-lang.org/) `v2.3.1p112`.
+
+ To compile the stylesheet you'll only need to run the following command:
+ ```bash
+ sass --watch scss:css --style compressed
+ ```
+
+
 ### To Package Electron Application To Binary
 First run
 
