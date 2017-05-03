@@ -1,8 +1,6 @@
 const notifier = require('electron-notifications'); //allow for notifications
 const path = require('path'); //allow for use of path
 const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
-const fs = require('fs');
-const filePath = path.join(__dirname, 'settings.txt');
 const os = require('os');
 const audio = new Audio('alert.mp3'); //set up notification sound
 const exec = require('child_process').exec; //allows the shutdown of the host machine
@@ -88,7 +86,8 @@ function setPreferences()
 {
   settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
   settings.set('defaultTime',document.getElementById('defaultTime').value);
-  settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString();
+  settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
+  console.log(settings.getAll());
 }
 
 
@@ -218,13 +217,16 @@ function getLatestReleaseInfo() {
   {
    $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
         var release = json[0].name; //get the newest app version
-        if (release === appVersion) //check if it matches current app version
+        release = release.split("");
+        var myversion = settings.get('Version').split("");
+
+        if (release[1] > myversion[1] || (release[1]==myversion[1] && release[3] > myversion[3])) //check if it matches current app version
         {
-          console.log("Running the latest version of Insomnia"); //log it
+          showLatestUpdateNotification(); //show the notification
         }
         else
         {
-          showLatestUpdateNotification(); //show the notification
+          console.log("Running the latest release of Insomnia"); //log it
         }
    });
  }
