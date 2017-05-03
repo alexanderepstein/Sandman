@@ -17,12 +17,13 @@ Based on your wakeup time and the sleep algorithm Insomnia calculates the best t
 
 This application works well with https://justgetflux.com/
 </div>
+
 ## In Action
 
 ![Usage](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Usage.gif)
 
 
-# Downloads
+## Downloads
 To get the full sourced version run in terminal:
 ```bash
 git clone https://github.com/alexanderepstein/Insomnia
