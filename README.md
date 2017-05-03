@@ -8,14 +8,16 @@
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
- Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
-
+ 
 A sleep cycle is a 90-minute chunk of time where your body transitions through various phases of sleep — all the way down to deep REM sleep — then back again. Some health experts believe that these 90-minute sleep cycles are the key to restful sleep. They recommend trying to sleep exactly 7.5 hours — or even 9 hours, if you have the time.
 
 
 Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
 
 This application works well with https://justgetflux.com/
+
+Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
+
 </div>
 
 ## In Action
