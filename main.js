@@ -1,15 +1,16 @@
-const {app, Tray, Menu, BrowserWindow} = require('electron'); //electron application stuff
-const fs = require('fs');
+const {app, Tray, Menu, shell, dialog, BrowserWindow} = require('electron'); //electron application stuff
 const path = require('path'); //allows for use of path
 const filePath = path.join(__dirname, 'settings.txt');
 const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
+const abtIconPath = path.join(__dirname, 'sleep.png'); //grab the icon
+const settings = require('electron-settings');
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
 let pref = null;
 let abt = null;
 var closeOnX = false;
-var mySettings = null;
+
 
 
 app.on('ready', function(){
@@ -22,11 +23,11 @@ app.on('ready', function(){
     slashes: true
   }))
 
+  settings.set('Version','v1.2.1')
+  console.log(settings.getAll());
+  win.openDevTools(); //starts the application with developer tools open
 
 
-  //win.openDevTools(); //starts the application with developer tools open
-
-  readFile();
   getCloseOnXPref();
 if (!closeOnX)
 {
@@ -48,14 +49,13 @@ if (!closeOnX)
               win.show();
           } },
           { label: 'About', click:  function(){ //shows the about window
-            abt = new BrowserWindow({width: 500, height: 570, resizable: false});
-            abt.setMenu(null); //the about window has no menu
-            abt.loadURL(url.format({  //loads the webpage for the about window
-              pathname: path.join(__dirname, 'about.html'),
-              protocol: 'file:',
-              slashes: true
-            }))
-
+            dialog.showMessageBox(win, {
+              type: 'info',
+              title: 'About',
+              message: 'Insomnia Version ' + settings.get('Version'),
+              detail: 'Built by Alexander Epstein',
+              icon: abtIconPath
+            });
           } },
           {
             label: 'Preferences', click:  function(){ //shows the about window
@@ -69,6 +69,11 @@ if (!closeOnX)
                 // pref.openDevTools();
             }
           },
+          {
+            label: 'Report a bug...', click:  function(){ //shows the about window
+              shell.openExternal('https://github.com/alexanderepstein/Insomnia/issues/new');
+            }
+          },
           { label: 'Quit', click:  function(){ //quit the application
               app.isQuiting = true;
               app.quit(); //quit called
@@ -80,17 +85,10 @@ if (!closeOnX)
 });
 
 
-function readFile()
-{
-  //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
-  return;
-}
 
 function getCloseOnXPref()
 {
-  if (mySettings[2]==="true")
+  if (settings.get('closeOnX')==="true")
   {
     closeOnX = true;
   }

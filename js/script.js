@@ -1,23 +1,23 @@
 const notifier = require('electron-notifications'); //allow for notifications
 const path = require('path'); //allow for use of path
 const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
-const fs = require('fs');
-const filePath = path.join(__dirname, 'settings.txt');
 const os = require('os');
+const audio = new Audio('alert.mp3'); //set up notification sound
+const exec = require('child_process').exec; //allows the shutdown of the host machine
+const schedule = require('node-schedule'); //allows for jobs scheduled at certain times
+const {shell} = require('electron'); // allows the ability to open a webpage in users default browser
+const settings = require('electron-settings');
+
 var time = null; //wakeuptime to be set by user
-var exec = require('child_process').exec; //allows the shutdown of the host machine
-var schedule = require('node-schedule'); //allows for jobs scheduled at certain times
-
-
+var appVersion = null; //setting to store the app version
+var militaryTime = false; // setting determining whether to show times in military time
+var seenRelease = false; //checks if user has already seen update exists and ignored id
 var mins = []; //array to hold the mins for formatting
 var hours = []; //array to hold the hours for formatting
 var jobs = []; //array of node schedule jobs to be ran
 var sleepTimes = []; //array of times to rest determined by algorithm
-var audio = new Audio('alert.mp3'); //set up notification sound
-var militaryTime = false;
-var meridians = [];
-var mySettings = null;
-var tempTime = [];
+var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
+var tempTime = []; //used for a temperary purpose not sure if reffered to outside of function
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -34,8 +34,7 @@ function setTime() { //called when set wakeup time button is pressed
 
 function readPreferences()
 {
-  readFile(); //set up the mySettings variable by reading the settings file
-  if (mySettings[0] === "true") //if militaryTime preference is set to true
+  if (settings.get('militaryTime') === "true") //if militaryTime preference is set to true
   {
     militaryTime = true; //set the preference in the code
   }
@@ -43,15 +42,16 @@ function readPreferences()
   {
     militaryTime = false; //set the military time perference in the code to false
   }
-  time = mySettings[1]; //set time variable
+  time = settings.get('defaultTime'); //set time variable
+  appVersion = settings.get('Version');
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  readFile(); //read the settings text
-  if (mySettings[0] === "true") //mySettings[0] is where the military time setting is stored
+  appVersion = settings.get('Version');
+  if (settings.get('militaryTime') === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
   }
@@ -69,7 +69,7 @@ function loadPreferences()
     document.getElementById('timeType').checked = false; //dont set this button
     document.getElementById('timeType2').checked = true; //set radio button
   }
-  if (mySettings[2] === "true") //mySettings[2] is where the closeOnX setting is stored
+  if (settings.get('closeOnX') === "true") //mySettings[2] is where the closeOnX setting is stored
   {
     document.getElementById('closeOnXcheck').checked = true; //set checkbox
   }
@@ -77,49 +77,20 @@ function loadPreferences()
   {
     document.getElementById('closeOnXcheck').checked = false; //set check box
   }
-  document.getElementById('defaultTime').value = mySettings[1]; //set time to preference time
+  document.getElementById('defaultTime').value = settings.get('defaultTime'); //set time to preference time
 }
 
-function readFile()
-{
-  //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
-}
+
 
 function setPreferences()
 {
-  var mytempstring = ""; //set up specially formatted string to write to settings
-  mytempstring = document.getElementById('timeType').checked + " "; //get the military time preference and add to string
-  tempTime = (document.getElementById('defaultTime').value).split(":"); //set up temp time array by grabbing time preference
-  mytempstring = mytempstring + tempTime[0] + ":" + tempTime[1] + " "; //set the time preference
-  mytempstring = mytempstring + document.getElementById('closeOnXcheck').checked + " " + "Insomniav1.1.0"; //add version to get rid of \n error when reading a setting
-  writeFile(mytempstring); //write out the new settings file
-  readFile(); //set up the mySettings variable for the new preferences
-  if (mySettings[0] === "true") //check if military time
-  {
-    militaryTime = true; //set the preference
-  }
-  else
-  {
-    militaryTime = false; //set the preference
-  }
+  settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
+  settings.set('defaultTime',document.getElementById('defaultTime').value);
+  settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
+  console.log(settings.getAll());
 }
 
-function writeFile(settingsData)
-{
-  fs.writeFile(filePath, settingsData, (err) => {  //write the settings file that will contain the settingsData parameter
-  if (err) throw err;
-});
-try //for error catching
-{
-fs.chmodSync(filePath, '777'); //set up permissions (seems to fix issue of linux reading settings after install)
-}
-catch (e)
-{
-  console.log("Error setting permissions on settings.txt") //log this error to the console (basically occurs everytime after the first run)
-}
-}
+
 
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
@@ -181,7 +152,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
-        meridians[i] = ampm(sleepTimes[i].getHours());
+        meridians[i] = ampm(sleepTimes[i].getHours()); //set up the array of meridians
     }
     document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
     document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
@@ -203,7 +174,7 @@ function nodeJobs() {
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
 
-    var j = schedule.scheduleJob('*/59 * * * *', function(){
+    var j = schedule.scheduleJob('* */3 * * *', function(){
     upTimeJobs();
   });
 }
@@ -233,14 +204,34 @@ function showNotification() {
     notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === 'Dismiss') {
             notification.close(); //close the notification
-        } else if ("Shutdown") {
-            shutdown(); //shutdown the computer
+        } else if ("Shutdown Computer") {
+            confirmShutdownNotification(); //check to confirm computer shutdown
+            notification.close()
         }
 
     })
 }
 
+function getLatestReleaseInfo() {
+  if(!seenRelease) //if they havent seen the notification before
+  {
+   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
+        var release = json[0].name; //get the newest app version
+        release = release.split("");
+        var myversion = settings.get('Version').split("");
 
+        if (release[1] > myversion[1] || (release[1]==myversion[1] && release[3] > myversion[3])) //check if it matches current app version
+        {
+          showLatestUpdateNotification(); //show the notification
+        }
+        else
+        {
+          console.log("Running the latest release of Insomnia"); //log it
+        }
+   });
+ }
+ seenRelease = true; //we checked or they saw the notification already
+}
 
 function showUpTimeNotification() {
     try {
@@ -268,13 +259,75 @@ function showUpTimeNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Restart") {
-            restart(); //shutdown the computer
+            restart(); //restart the computer
+        }
+
+    })
+}
+function confirmShutdownNotification() {
+    try {
+        audio.play() //play notifiation sound
+    } catch (e) {
+
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Confirm Shutdown',
+        icon: iconPath,
+        buttons: ['Cancel', 'Confirm'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Cancel') {
+            notification.close(); //close the notification
+        } else if ("Confirm") {
+            shutdown(); //shutdown the computer
         }
 
     })
 }
 
 
+function showLatestUpdateNotification() {
+    try {
+        audio.play() //play notifiation sound
+    } catch (e) {
+
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Application Update Available',
+        icon: iconPath,
+        buttons: ['Dismiss', 'Update Page'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Dismiss') {
+            notification.close(); //close the notification
+        } else if ("Update Page") {
+            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + appVersion);
+        }
+
+    })
+}
 
 function militaryToStandard(hours) {
     /* make sure add radix*/
@@ -309,10 +362,10 @@ function restart(callback) {
 
 function upTimeJobs()
 {
-  var uptime = os.uptime();
-  uptime = (uptime/60)/60
-  if (uptime >= 12)
+  var uptime = os.uptime(); // uptime of computer in seconds
+  uptime = (uptime/60)/60 //turn it into hours
+  if (uptime >= 12) //if computer has been on longer then 12 hours reccomend a restart
   {
-    showUpTimeNotification();
+    showUpTimeNotification(); //show the notification
   }
 }
