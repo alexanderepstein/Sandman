@@ -43,6 +43,12 @@ Open up a new finder window and go to the Applications folder. Then drag the Ins
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
 #### Debian
+First make sure you have the dependency libappindicator1
+```bash
+sudo apt-get install libappindicator1
+```
+then depending on your system architechture either run
+
 ```bash
 sudo dpkg -i Insomnia_1.2.0_amd64.deb
 ```
