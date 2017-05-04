@@ -1,6 +1,5 @@
 const {app, Tray, Menu, shell, BrowserWindow} = require('electron'); //electron application stuff
 const path = require('path'); //allows for use of path
-const filePath = path.join(__dirname, 'settings.txt');
 const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
 const settings = require('electron-settings');
@@ -22,7 +21,9 @@ app.on('ready', function(){
     slashes: true
   }))
 
-  //settings.set('Version','v1.3.0')
+
+
+
   //console.log(settings.getAll());
   //win.openDevTools(); //starts the application with developer tools open
 
@@ -87,7 +88,7 @@ if (!closeOnX)
 
 function getCloseOnXPref()
 {
-  if (settings.get('closeOnX')==="true")
+  if (settings.get('closeOnX','true')==="true")
   {
     closeOnX = true;
   }
