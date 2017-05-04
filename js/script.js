@@ -34,7 +34,7 @@ function setTime() { //called when set wakeup time button is pressed
 
 function readPreferences()
 {
-  if (settings.get('militaryTime') === "true") //if militaryTime preference is set to true
+  if (settings.get('militaryTime','false') === "true") //if militaryTime preference is set to true
   {
     militaryTime = true; //set the preference in the code
   }
@@ -42,16 +42,16 @@ function readPreferences()
   {
     militaryTime = false; //set the military time perference in the code to false
   }
-  time = settings.get('defaultTime'); //set time variable
-  appVersion = settings.get('Version');
+  time = settings.get('defaultTime','08:30'); //set time variable
+  appVersion = settings.get('Version','v1.3.0');
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  appVersion = settings.get('Version');
-  if (settings.get('militaryTime') === "true") //mySettings[0] is where the military time setting is stored
+  appVersion = settings.get('Version','v1.3.0');
+  if (settings.get('militaryTime','false') === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
   }
@@ -69,7 +69,7 @@ function loadPreferences()
     document.getElementById('timeType').checked = false; //dont set this button
     document.getElementById('timeType2').checked = true; //set radio button
   }
-  if (settings.get('closeOnX') === "true") //mySettings[2] is where the closeOnX setting is stored
+  if (settings.get('closeOnX','true') === "true") //mySettings[2] is where the closeOnX setting is stored
   {
     document.getElementById('closeOnXcheck').checked = true; //set checkbox
   }
@@ -77,7 +77,7 @@ function loadPreferences()
   {
     document.getElementById('closeOnXcheck').checked = false; //set check box
   }
-  document.getElementById('defaultTime').value = settings.get('defaultTime'); //set time to preference time
+  document.getElementById('defaultTime').value = settings.get('defaultTime','08:30'); //set time to preference time
 }
 
 
@@ -218,7 +218,7 @@ function getLatestReleaseInfo() {
    $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
         var release = json[0].name; //get the newest app version
         release = release.split("");
-        var myversion = settings.get('Version').split("");
+        var myversion = settings.get('Version','v1.3.0').split("");
 
         if (release[1] > myversion[1] || (release[1]==myversion[1] && release[3] > myversion[3])) //check if it matches current app version
         {
