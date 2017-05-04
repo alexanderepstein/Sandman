@@ -32,7 +32,7 @@ git clone https://github.com/alexanderepstein/Insomnia
 ```
 
 Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
-##### [Version 1.2.0 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.2.0)
+##### [Version 1.3.0 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.3.0)
 
 
 ## Install
