@@ -18,6 +18,7 @@ var jobs = []; //array of node schedule jobs to be ran
 var sleepTimes = []; //array of times to rest determined by algorithm
 var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
 var tempTime = []; //used for a temperary purpose not sure if reffered to outside of function
+var latestRelease = null;
 
 function setTime() { //called when set wakeup time button is pressed
     time = document.getElementById('alarmTime').value; //grab the wake up time
@@ -217,6 +218,7 @@ function getLatestReleaseInfo() {
   {
    $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
         var release = json[0].name; //get the newest app version
+        latestRelease = release;
         release = release.split("");
         var myversion = settings.get('Version','v1.3.0').split("");
 
@@ -323,7 +325,7 @@ function showLatestUpdateNotification() {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Update Page") {
-            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + appVersion);
+            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + latestRelease);
         }
 
     })
