@@ -10,7 +10,7 @@
  transition between sleep cycles you will feel refreshed!
 </div>
 
-This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/ 
+This application uses the averages that sleep cycles are 90 minutes each and a person takes 15 minutes to fall asleep from when they begin to try and calculates the times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that. This application works well with https://justgetflux.com/
 
 ## Screenshots
 
@@ -46,18 +46,18 @@ Otherwise to just get the application download your respective platforms file fr
 ## Install
 
 ### Mac
-Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
+Drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
 ```bash
-sudo dpkg -i Insomnia_1.1.0_amd64.deb
+sudo dpkg -i Insomnia_1.4.0_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.1.0_x86.deb
+sudo dpkg -i Insomnia_1.4.0_x86.deb
 ```
- 
+
  This will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
 
 ### Windows
@@ -125,4 +125,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
