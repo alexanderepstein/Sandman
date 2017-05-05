@@ -59,14 +59,14 @@ function readPreferences()
     militaryTime = false; //set the military time perference in the code to false
   }
   time = settings.get('defaultTime','08:30'); //set time variable
-  appVersion = settings.get('Version','v1.3.0');
+  appVersion = settings.get('Version','v1.4.0');
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  appVersion = settings.get('Version','v1.3.0');
+  appVersion = settings.get('Version','v1.4.0');
   if (settings.get('militaryTime','false') === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
@@ -237,14 +237,21 @@ function getLatestReleaseInfo() {
         var release = json[0].name; //get the newest app version
         latestRelease = release;
         release = release.split("");
-        var myversion = settings.get('Version','v1.3.0').split("");
+        var myversion = settings.get('Version','v1.4.0').split("");
 
-        if (release[1] > myversion[1] || (release[1]==myversion[1] && release[3] > myversion[3])) //check if it matches current app version
+        if (release[1] > myversion[1]) //check if it matches current app version
         {
-          showLatestUpdateNotification(); //show the notification
+          showLatestUpdateNotification("Major Update"); //show the notification
         }
-        else
+        else if (release[1]===myversion[1] && release[3] > myversion[3])
         {
+          showLatestUpdateNotification("Minor Update"); //show the notification
+        }
+        else if (release[1]===myversion[1] && release[3] === myversion[3] && release[5] > myversion[5])
+        {
+          showLatestUpdateNotification("Bugfixes"); //show the notification
+        }
+        else {
           console.log("Running the latest release of Insomnia"); //log it
         }
    });
@@ -316,14 +323,14 @@ function confirmShutdownNotification() {
 }
 
 
-function showLatestUpdateNotification() {
+function showLatestUpdateNotification(updateType) {
     try {
         audio.play() //play notifiation sound
     } catch (e) {
 
     }
     const notification = notifier.notify('Insomnia', { //Notification
-        message: 'Application Update Available',
+        message:  updateType + ' Available',
         icon: iconPath,
         buttons: ['Dismiss', 'Update Page'],
         vetical: true,
