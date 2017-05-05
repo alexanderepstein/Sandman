@@ -6,6 +6,7 @@
 
 
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
+ 
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 
@@ -87,6 +88,7 @@ sudo rpm -e Insomnia.rpm
 Open up the program files folder and delete the Insomnia folder.
 
 ## Helping Out
+First take this survey https://www.surveymonkey.com/r/M7RYJX5
 It is assumed you already have node installed and therefore npm.
 
 To download the full source code and install the devDependencies run the following lines:
