@@ -3,5 +3,8 @@
   "icon": "sleep.ico",
   "tags": [
     "Utility"
-  ]
+  ],
+  "name": "Insomnia",
+  "homepage":"https://github.com/alexanderepstein/Insomnia"
+
 }
