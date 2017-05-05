@@ -38,7 +38,7 @@ Otherwise to just get the application click the link before to head to the lates
 ## Install
 
 ### Mac
-Open up a new finder window and go to the Applications folder. Then drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
+Drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
@@ -50,11 +50,11 @@ sudo apt-get install libappindicator1
 then depending on your system architechture either run
 
 ```bash
-sudo dpkg -i Insomnia_1.2.0_amd64.deb
+sudo dpkg -i Insomnia_1.3.0_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.2.0_x86.deb
+sudo dpkg -i Insomnia_1.3.0_x86.deb
 ```
 #### RedHat
 ```bash
