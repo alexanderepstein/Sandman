@@ -7,6 +7,8 @@ const exec = require('child_process').exec; //allows the shutdown of the host ma
 const schedule = require('node-schedule'); //allows for jobs scheduled at certain times
 const {shell} = require('electron'); // allows the ability to open a webpage in users default browser
 const settings = require('electron-settings');
+const fs = require('fs');
+const filePath = path.join(__dirname, 'settings.txt');
 
 var time = null; //wakeuptime to be set by user
 var appVersion = null; //setting to store the app version
@@ -31,7 +33,20 @@ function setTime() { //called when set wakeup time button is pressed
 
 }
 
-
+function writeFile(settingsData)
+{
+  fs.writeFile(filePath, settingsData, (err) => {  //write the settings file that will contain the settingsData parameter
+  if (err) throw err;
+});
+try //for error catching
+{
+fs.chmodSync(filePath, '777'); //set up permissions (seems to fix issue of linux reading settings after install)
+}
+catch (e)
+{
+  console.log("Error setting permissions on settings.txt") //log this error to the console (basically occurs everytime after the first run)
+}
+}
 
 function readPreferences()
 {
@@ -88,6 +103,8 @@ function setPreferences()
   settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
   settings.set('defaultTime',document.getElementById('defaultTime').value);
   settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
+  var tempstring = settings.get('closeOnX') + " Insomnia"
+  writeFile(tempstring);
   console.log(settings.getAll());
 }
 
