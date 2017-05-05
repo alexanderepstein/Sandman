@@ -27,7 +27,7 @@ app.on('ready', function(){
 
 
   //console.log(settings.getAll());
-  win.openDevTools(); //starts the application with developer tools open
+  //win.openDevTools(); //starts the application with developer tools open
 
 
   getCloseOnXPref();
@@ -74,7 +74,7 @@ app.on('ready', function(){
                 protocol: 'file:',
                 slashes: true
               }))
-                 pref.openDevTools();
+                 //pref.openDevTools();
             }
           },
           {
