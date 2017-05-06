@@ -51,11 +51,11 @@ Drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double C
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
 ```bash
-sudo dpkg -i Insomnia_1.4.0_amd64.deb
+sudo dpkg -i Insomnia_1.4.1_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.4.0_x86.deb
+sudo dpkg -i Insomnia_1.4.1_x86.deb
 ```
 
  This will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
