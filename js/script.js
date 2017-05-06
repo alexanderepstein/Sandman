@@ -10,6 +10,8 @@ const settings = require('electron-settings');
 const fs = require('fs');
 const filePath = path.join(__dirname, 'settings.txt');
 
+var restNotification = false;
+var upTimeNotification = false;
 var time = null; //wakeuptime to be set by user
 var appVersion = null; //setting to store the app version
 var militaryTime = false; // setting determining whether to show times in military time
@@ -129,7 +131,9 @@ function generateSleepTimes() {
         sleepTimes[i] = new Date(wakeUpDate); //determine new sleeptime
     }
     sleepTimes = sleepTimes.reverse(); //want earliest times to come first not last
-
+    wakeUpDate = new Date(sleepTimes[5]);
+    wakeUpDate.setHours(wakeUpDate.getHours() + 1);
+    sleepTimes[6] = new Date(wakeUpDate);
 }
 
 
@@ -192,6 +196,12 @@ function nodeJobs() {
 
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
     }
+    try {
+      jobs[6].cancel();
+    } catch (e) {
+
+    }
+    jobs[6] = schedule.scheduleJob(sleepTimes[6], setTime);
 
     var j = schedule.scheduleJob('* */3 * * *', function(){
     upTimeJobs();
@@ -199,6 +209,9 @@ function nodeJobs() {
 }
 
 function showNotification() {
+  if (!restNotification)
+  {
+    restNotification = true;
     try {
         audio.play() //play notifiation sound
     } catch (e) {
@@ -209,26 +222,31 @@ function showNotification() {
         icon: iconPath,
         buttons: ['Dismiss', 'Shutdown'],
         vetical: true,
-        duration: 20000,
+        duration: 99999999999999, //max number this would take
     })
 
     notification.on('clicked', () => { //how to behave when notification is clicked
         notification.close();
+        restNotification = false;
     })
 
     notification.on('swipedRight', () => { //how to behave when notification is swipedRight
         notification.close();
+        restNotification = false;
     })
 
     notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === 'Dismiss') {
             notification.close(); //close the notification
+            restNotification = false;
         } else if ("Shutdown Computer") {
             confirmShutdownNotification(); //check to confirm computer shutdown
             notification.close()
+            restNotification = false;
         }
 
     })
+  }
 }
 
 function getLatestReleaseInfo() {
@@ -263,6 +281,10 @@ function getLatestReleaseInfo() {
 }
 
 function showUpTimeNotification() {
+  if (!upTimeNotification)
+  {
+
+  upTimeNotification = true;
     try {
         audio.play() //play notifiation sound
     } catch (e) {
@@ -273,25 +295,29 @@ function showUpTimeNotification() {
         icon: iconPath,
         buttons: ['Dismiss', 'Restart'],
         vetical: true,
-        duration: 20000,
+        duration: 99999999999999,
     })
 
     notification.on('clicked', () => { //how to behave when notification is clicked
+        upTimeNotification = false;
         notification.close();
     })
 
     notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        upTimeNotification = false;
         notification.close();
     })
 
     notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === 'Dismiss') {
+          upTimeNotification = false;
             notification.close(); //close the notification
         } else if ("Restart") {
             restart(); //restart the computer
         }
 
     })
+  }
 }
 function confirmShutdownNotification() {
     try {
