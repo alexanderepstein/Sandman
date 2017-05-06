@@ -2,7 +2,6 @@ const {app, Tray, Menu, shell, BrowserWindow} = require('electron'); //electron 
 const path = require('path'); //allows for use of path
 const url = require('url'); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, 'icon.png'); //grab the icon
-const settings = require('electron-settings');
 const fs = require('fs');
 const filePath = path.join(__dirname, 'settings.txt');
 let tray = null; //set the tray to null
