@@ -23,6 +23,7 @@ var tempTime = []; //used for a temperary purpose not sure if reffered to outsid
 var latestRelease = null;
 
 function setTime() { //called when set wakeup time button is pressed
+  settings.set('Version','v1.4.0')
     time = document.getElementById('alarmTime').value; //grab the wake up time
     generateSleepTimes(); //determine sleepTimes based off of wakeuptime
     setSleepTimes(); //determine the sleepTimes in formatted form to be shown to user
@@ -243,13 +244,15 @@ function getLatestReleaseInfo() {
         {
           showLatestUpdateNotification("Major Update"); //show the notification
         }
-        else if (release[1]===myversion[1] && release[3] > myversion[3])
+        else if (release[1]==myversion[1] && release[3] > myversion[3])
         {
           showLatestUpdateNotification("Minor Update"); //show the notification
+          console.log(release[3] + " " + myversion[3]);
         }
-        else if (release[1]===myversion[1] && release[3] === myversion[3] && release[5] > myversion[5])
+        else if (release[1]==myversion[1] && release[3] == myversion[3] && release[5] > myversion[5])
         {
           showLatestUpdateNotification("Bugfixes"); //show the notification
+            console.log(release[5] + " " + myversion[5]);
         }
         else {
           console.log("Running the latest release of Insomnia"); //log it
