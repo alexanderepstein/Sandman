@@ -3,10 +3,11 @@
  # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
 
  ####  an application built with late night developers in mind
-
+ 
 
  ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
 
+ ## Lightweight bash version can be found <a href="https://github.com/alexanderepstein/Insomnia-Lite">here</a> (in development)
 
  Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
 
