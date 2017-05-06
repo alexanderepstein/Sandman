@@ -23,6 +23,7 @@ var sleepTimes = []; //array of times to rest determined by algorithm
 var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
 var tempTime = []; //used for a temperary purpose not sure if reffered to outside of function
 var latestRelease = null;
+var upTimeJob = null;
 
 function setTime() { //called when set wakeup time button is pressed
     settings.set('Version','v1.4.2')
@@ -198,12 +199,13 @@ function nodeJobs() {
     }
     try {
       jobs[6].cancel();
+      upTimeJob.cancel();
     } catch (e) {
 
     }
     jobs[6] = schedule.scheduleJob(sleepTimes[6], setTime);
 
-    var j = schedule.scheduleJob('* */3 * * *', function(){
+    upTimeJob = schedule.scheduleJob('0 0 * * * *', function(){
     upTimeJobs();
   });
 }
@@ -286,7 +288,7 @@ function showUpTimeNotification() {
 
   upTimeNotification = true;
     try {
-        audio.play() //play notifiation sound
+        audio.play(); //play notifiation sound
     } catch (e) {
 
     }
@@ -313,7 +315,10 @@ function showUpTimeNotification() {
           upTimeNotification = false;
             notification.close(); //close the notification
         } else if ("Restart") {
-            restart(); //restart the computer
+          confirmRestartNotification();
+          notification.close();
+          upTimeNotification = false;
+
         }
 
     })
@@ -321,7 +326,7 @@ function showUpTimeNotification() {
 }
 function confirmShutdownNotification() {
     try {
-        audio.play() //play notifiation sound
+        audio.play(); //play notifiation sound
     } catch (e) {
 
     }
@@ -351,10 +356,41 @@ function confirmShutdownNotification() {
     })
 }
 
+function confirmRestartNotification() {
+    try {
+        audio.play(); //play notifiation sound
+    } catch (e) {
+
+    }
+    const notification = notifier.notify('Insomnia', { //Notification
+        message: 'Confirm Restart',
+        icon: iconPath,
+        buttons: ['Cancel', 'Confirm'],
+        vetical: true,
+        duration: 20000,
+    })
+
+    notification.on('clicked', () => { //how to behave when notification is clicked
+        notification.close();
+    })
+
+    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+        notification.close();
+    })
+
+    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === 'Cancel') {
+            notification.close(); //close the notification
+        } else if ("Confirm") {
+            restart(); //shutdown the computer
+        }
+
+    })
+}
 
 function showLatestUpdateNotification(updateType) {
     try {
-        audio.play() //play notifiation sound
+        audio.play(); //play notifiation sound
     } catch (e) {
 
     }
