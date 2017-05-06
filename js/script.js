@@ -23,7 +23,7 @@ var tempTime = []; //used for a temperary purpose not sure if reffered to outsid
 var latestRelease = null;
 
 function setTime() { //called when set wakeup time button is pressed
-  settings.set('Version','v1.4.0')
+  settings.set('Version','v1.4.1')
     time = document.getElementById('alarmTime').value; //grab the wake up time
     generateSleepTimes(); //determine sleepTimes based off of wakeuptime
     setSleepTimes(); //determine the sleepTimes in formatted form to be shown to user
@@ -60,14 +60,14 @@ function readPreferences()
     militaryTime = false; //set the military time perference in the code to false
   }
   time = settings.get('defaultTime','08:30'); //set time variable
-  appVersion = settings.get('Version','v1.4.0');
+  appVersion = settings.get('Version','v1.4.1');
   document.getElementById('alarmTime').value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  appVersion = settings.get('Version','v1.4.0');
+  appVersion = settings.get('Version','v1.4.1');
   if (settings.get('militaryTime','false') === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
@@ -238,7 +238,7 @@ function getLatestReleaseInfo() {
         var release = json[0].name; //get the newest app version
         latestRelease = release;
         release = release.split("");
-        var myversion = settings.get('Version','v1.4.0').split("");
+        var myversion = settings.get('Version','v1.4.1').split("");
 
         if (release[1] > myversion[1]) //check if it matches current app version
         {
