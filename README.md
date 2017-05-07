@@ -34,7 +34,7 @@ git clone https://github.com/alexanderepstein/Insomnia
 ```
 
 Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
-##### [Version 1.4.2 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.4.2)
+##### [Version 1.4.3 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.4.3)
 
 
 ## Install
@@ -52,11 +52,11 @@ sudo apt-get install libappindicator1
 then depending on your system architechture either run
 
 ```bash
-sudo dpkg -i Insomnia_1.4.2_amd64.deb
+sudo dpkg -i Insomnia_1.4.3_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.4.2_x86.deb
+sudo dpkg -i Insomnia_1.4.3_x86.deb
 ```
 #### RedHat
 ```bash
