@@ -24,6 +24,7 @@ var meridians = []; //array to hold the merdians to respective sleepTimes if mil
 var tempTime = []; //used for a temperary purpose not sure if reffered to outside of function
 var latestRelease = null;
 var upTimeJob = null;
+var resetTime = null;
 
 function setTime() { //called when set wakeup time button is pressed
     settings.set('Version','v1.4.2')
@@ -134,7 +135,7 @@ function generateSleepTimes() {
     sleepTimes = sleepTimes.reverse(); //want earliest times to come first not last
     wakeUpDate = new Date(sleepTimes[5]);
     wakeUpDate.setHours(wakeUpDate.getHours() + 1);
-    sleepTimes[6] = new Date(wakeUpDate);
+    resetTime = new Date(wakeUpDate);
 }
 
 
@@ -203,7 +204,7 @@ function nodeJobs() {
     } catch (e) {
 
     }
-    jobs[6] = schedule.scheduleJob(sleepTimes[6], setTime);
+    jobs[6] = schedule.scheduleJob(resetTime, setTime);
 
     upTimeJob = schedule.scheduleJob('0 0 * * * *', function(){
     upTimeJobs();
