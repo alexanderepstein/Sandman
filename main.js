@@ -52,7 +52,7 @@ app.on('ready', function(){
   tray = new Tray(iconPath); //create a new tray
   var contextMenu = Menu.buildFromTemplate([  //start buliding out the menu for the tray
 
-          { label: 'Insomnia', click:  function(){  //makes the main window reappear
+          { label: 'Sandman', click:  function(){  //makes the main window reappear
               win.show();
           } },
           { label: 'About', click:  function(){ //shows the about window
@@ -78,7 +78,7 @@ app.on('ready', function(){
           },
           {
             label: 'Report a bug...', click:  function(){ //shows the about window
-              shell.openExternal('https://github.com/alexanderepstein/Insomnia/issues/new');
+              shell.openExternal('https://github.com/alexanderepstein/Sandman/issues/new');
             }
           },
           { label: 'Quit', click:  function(){ //quit the application
@@ -87,7 +87,7 @@ app.on('ready', function(){
 
           } }
       ]);
-  tray.setToolTip('Insomnia'); //Honestly no clue but itll make the tray say insomnia in some other place
+  tray.setToolTip('Sandman'); //Honestly no clue but itll make the tray say insomnia in some other place
   tray.setContextMenu(contextMenu); //attach the menu to the tray
 });
 

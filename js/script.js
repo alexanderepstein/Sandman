@@ -108,7 +108,7 @@ function setPreferences()
   settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
   settings.set('defaultTime',document.getElementById('defaultTime').value);
   settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
-  var tempstring = settings.get('closeOnX') + " Insomnia"
+  var tempstring = settings.get('closeOnX') + " Sandman"
   writeFile(tempstring);
   console.log(settings.getAll());
 }
@@ -220,7 +220,7 @@ function showNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Insomnia', { //Notification
+    const notification = notifier.notify('Sandman', { //Notification
         message: 'Time to rest',
         icon: iconPath,
         buttons: ['Dismiss', 'Shutdown'],
@@ -255,7 +255,7 @@ function showNotification() {
 function getLatestReleaseInfo() {
   if(!seenRelease) //if they havent seen the notification before
   {
-   $.getJSON("https://api.github.com/repos/alexanderepstein/Insomnia/tags").done(function (json) { //grab the latest release information
+   $.getJSON("https://api.github.com/repos/alexanderepstein/Sandman/tags").done(function (json) { //grab the latest release information
         var release = json[0].name; //get the newest app version
         latestRelease = release;
         release = release.split("");
@@ -276,7 +276,7 @@ function getLatestReleaseInfo() {
             console.log(release[5] + " " + myversion[5]);
         }
         else {
-          console.log("Running the latest release of Insomnia"); //log it
+          console.log("Running the latest release of Sandman"); //log it
         }
    });
  }
@@ -293,7 +293,7 @@ function showUpTimeNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Insomnia', { //Notification
+    const notification = notifier.notify('Sandman', { //Notification
         message: 'Your computer needs a break',
         icon: iconPath,
         buttons: ['Dismiss', 'Restart'],
@@ -331,7 +331,7 @@ function confirmShutdownNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Insomnia', { //Notification
+    const notification = notifier.notify('Sandman', { //Notification
         message: 'Confirm Shutdown',
         icon: iconPath,
         buttons: ['Cancel', 'Confirm'],
@@ -363,7 +363,7 @@ function confirmRestartNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Insomnia', { //Notification
+    const notification = notifier.notify('Sandman', { //Notification
         message: 'Confirm Restart',
         icon: iconPath,
         buttons: ['Cancel', 'Confirm'],
@@ -395,7 +395,7 @@ function showLatestUpdateNotification(updateType) {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Insomnia', { //Notification
+    const notification = notifier.notify('Sandman', { //Notification
         message:  updateType + ' Available',
         icon: iconPath,
         buttons: ['Dismiss', 'Update Page'],
@@ -415,7 +415,7 @@ function showLatestUpdateNotification(updateType) {
         if (text === 'Dismiss') {
             notification.close(); //close the notification
         } else if ("Update Page") {
-            shell.openExternal('https://github.com/alexanderepstein/Insomnia/releases/tag/' + latestRelease);
+            shell.openExternal('https://github.com/alexanderepstein/Sandman/releases/tag/' + latestRelease);
         }
 
     })

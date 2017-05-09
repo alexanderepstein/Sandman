@@ -1,5 +1,5 @@
 {
-  "name": "Insomnia",
+  "name": "Sandman",
   "version": "1.4.3",
   "license": "MIT",
   "appCopyright": "Alexander Epstein",
@@ -9,7 +9,7 @@
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexanderepstein/Insomnia"
+    "url": "https://github.com/alexanderepstein/Sandman"
   },
   "devDependencies": {
     "electron": "^1.6.6"
