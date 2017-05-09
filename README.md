@@ -1,10 +1,10 @@
 <div align="center">
 
- # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
+ # ![Sandman](https://github.com/alexanderepstein/Sandman/blob/master/sleep_github.png) Sandman ![Sandman](https://github.com/alexanderepstein/Sandman/blob/master/sleep_github.png)
 
- ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
+ ![Counting Sheep](https://github.com/alexanderepstein/Sandman/blob/master/giphy.gif)
 
- Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
+ Sandman will remind you to take a rest and that you can always come back to the work tomorrow.
  Inspired by http://sleepyti.me a website that calculates optimal times to fall asleep based on when you want to wake up.
  The idea is that when you wake up in the middle of a sleep cycle you will feel groggy, however if you wakeup during the
  transition between sleep cycles you will feel refreshed!
