@@ -1,20 +1,20 @@
 <div align="center">
 
- # ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png) Insomnia ![Insomnia](https://github.com/alexanderepstein/Insomnia/blob/master/sleep_github.png)
+ # ![Sandman](https://github.com/alexanderepstein/Sandman/blob/master/sleep_github.png) Sandman ![Sandman](https://github.com/alexanderepstein/Sandman/blob/master/sleep_github.png)
 
  ####  an application built with late night developers in mind
 
 
- ![Counting Sheep](https://github.com/alexanderepstein/Insomnia/blob/master/giphy.gif)
+ ![Counting Sheep](https://github.com/alexanderepstein/Sandman/blob/master/giphy.gif)
 
  ## Lightweight bash version can be found <a href="https://github.com/alexanderepstein/Sandman-Lite">here</a> (Version 1.0.0)
 
- Insomnia will remind you to take a rest and that you can always come back to the work tomorrow.
+ Sandman will remind you to take a rest and that you can always come back to the work tomorrow.
 
 A sleep cycle is a 90-minute chunk of time where your body transitions through various phases of sleep — all the way down to deep REM sleep — then back again. Some health experts believe that these 90-minute sleep cycles are the key to restful sleep. They recommend trying to sleep exactly 7.5 hours — or even 9 hours, if you have the time.
 
 
-Based on your wakeup time and the sleep algorithm Insomnia calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
+Based on your wakeup time and the sleep algorithm Sandman calculates the best times for you to sleep. It will notify you throughout the night when the optimal times to shutdown your computer and start to head to sleep and provide a button to do just that.
 
 This application works well with https://justgetflux.com/
 
@@ -24,23 +24,23 @@ Inspired by http://sleepyti.me
 
 ## In Action
 
-![Usage](https://github.com/alexanderepstein/Insomnia/blob/master/screenshots/Usage.gif)
+![Usage](https://github.com/alexanderepstein/Sandman/blob/master/screenshots/Usage.gif)
 
 
 ## Downloads
 To get the full sourced version run in terminal:
 ```bash
-git clone https://github.com/alexanderepstein/Insomnia
+git clone https://github.com/alexanderepstein/Sandman
 ```
 
 Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
-##### [Version 1.4.3 Release](https://github.com/alexanderepstein/Insomnia/releases/tag/v1.4.3)
+##### [Version 1.4.3 Release](https://github.com/alexanderepstein/Sandman/releases/tag/v1.4.3)
 
 
 ## Install
 
 ### Mac
-Drag the Insomnia.app from the Insomnia dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
+Drag the Sandman.app from the Sandman dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
 ### Linux
 Open up a terminal and navigate to the folder containing the downloaded installer files and run
@@ -52,59 +52,59 @@ sudo apt-get install libappindicator1
 then depending on your system architechture either run
 
 ```bash
-sudo dpkg -i Insomnia_1.4.3_amd64.deb
+sudo dpkg -i Sandman_1.4.3_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Insomnia_1.4.3_x86.deb
+sudo dpkg -i Sandman_1.4.3_x86.deb
 ```
 #### RedHat
 ```bash
-sudo rpm -i Insomnia.rpm
+sudo rpm -i Sandman.rpm
 ```
- This will actually install Insomnia as a utility application which can be accessed from your respective distributions application launchpad.
+ This will actually install Sandman as a utility application which can be accessed from your respective distributions application launchpad.
 
 ### Windows
-Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant). Now drag the entire Insomnia Windows folder you extracted  from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Insomnia.exe and run it. Now the application will show up in the dock where it can be pinned.
+Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant). Now drag the entire Sandman Windows folder you extracted  from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Sandman.exe and run it. Now the application will show up in the dock where it can be pinned.
 
 ## Uninstall
 
 ### Mac
-Go to the applications folder and delete the Insomnia application.
+Go to the applications folder and delete the Sandman application.
 
 ### Linux
 Open up a terminal and run:
 #### Debian
 
 ```bash
-sudo dpkg --remove Insomnia
+sudo dpkg --remove Sandman
 ```
 #### RedHat
 
 ```bash
-sudo rpm -e Insomnia.rpm
+sudo rpm -e Sandman.rpm
 ```
 
 ### Windows
-Open up the program files folder and delete the Insomnia folder.
+Open up the program files folder and delete the Sandman folder.
 
 ## Helping Out
 It is assumed you already have node installed and therefore npm.
 
 To download the full source code and install the devDependencies run the following lines:
 ```bash
-git clone https://github.com/alexanderepstein/Insomnia
-cd Insomnia
+git clone https://github.com/alexanderepstein/Sandman
+cd Sandman
 npm install
 cd ..
-electron Insomnia # this will run the application
+electron Sandman # this will run the application
 ```   
 
 If you get some error and the application wont run try running the following lines and see if that works.
 
 ### Linux/Mac
 ```bash
-cd Insomnia
+cd Sandman
 sudo npm install -g
 ```
 
@@ -137,30 +137,30 @@ then run
 ```bash
 npm install -g electron-packager
 ```
-Then once electron packager is installed to package your electron application open up a terminal and cd into the Insomnia folder then run
+Then once electron packager is installed to package your electron application open up a terminal and cd into the Sandman folder then run
 
 ### Linux
 For 64 Bit Binary:
 ```bash
-electron-packager . Insomnia --platform linux --arch x64 --out dist/
+electron-packager . Sandman --platform linux --arch x64 --out dist/
 ```
 For 32 Bit Binary
 ```bash
-electron-packager . Insomnia --platform linux --arch ia32 --out dist/
+electron-packager . Sandman --platform linux --arch ia32 --out dist/
 ```
 ### Mac
 ```bash
-electron-packager . Insomnia --platform darwin --arch x64 --out dist/
+electron-packager . Sandman --platform darwin --arch x64 --out dist/
 ```
 
 ### Windows
 For 64 Bit Binary:
 ```bash
-electron-packager . Insomnia --platform win32 --arch x64 --out dist/
+electron-packager . Sandman --platform win32 --arch x64 --out dist/
 ```
 For 32 Bit Binary
 ```bash
-electron-packager . Insomnia --platform win32 --arch ia32 --out dist/
+electron-packager . Sandman --platform win32 --arch ia32 --out dist/
 ```
 
 
