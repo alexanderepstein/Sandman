@@ -111,25 +111,25 @@ button {
   padding: 0.8em 1.2em; }
 
 .app {
-  background-color: #02d9cc;
+  background-color: #622569;
   color: white; }
 
 .input-group, .label-group {
-  border-color: #02c0b4; }
+  border-color: #7667A2; }
   .input-group-label {
-    background-color: #02d9cc;
+    background-color: #622569;
     color: white; }
 
 .label-group-title {
-  background-color: #02d9cc;
+  background-color: #622569;
   color: white; }
 
 button {
-  border: 1px solid #02a69c;
-  background: #02c0b4;
+  border: 1px solid #b8a9c9;
+  background: #7667A2;
   color: white; }
   button:hover {
-    background: #02a69c; }
+    background: #b8a9c9; }
 
 #preferences .restartclass {
   text-align: center;
