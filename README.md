@@ -7,7 +7,7 @@
 
  ![Counting Sheep](https://github.com/alexanderepstein/Sandman/blob/master/giphy.gif)
 
- ## Lightweight bash version can be found <a href="https://github.com/alexanderepstein/Sandman-Lite">here</a> (Version 1.0.0)
+ ## Lightweight bash version can be found <a href="https://github.com/alexanderepstein/Sandman-Lite">here</a> 
 
  Sandman will remind you to take a rest and that you can always come back to the work tomorrow.
 
