@@ -99,6 +99,8 @@ function loadPreferences()
     document.getElementById('closeOnXcheck').checked = false; //set check box
   }
   document.getElementById('defaultTime').value = settings.get('defaultTime','08:30'); //set time to preference time
+  document.getElementById('lagHours').value = settings.get('lagHours','0');
+  document.getElementById('lagMinutes').value = settings.get('lagMinutes','15');
 }
 
 
@@ -108,6 +110,8 @@ function setPreferences()
   settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
   settings.set('defaultTime',document.getElementById('defaultTime').value);
   settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
+  settings.set('lagHours',document.getElementById('lagHours').value);
+  settings.set('lagMinutes',document.getElementById('lagMinutes').value);
   var tempstring = settings.get('closeOnX') + " Sandman"
   writeFile(tempstring);
   console.log(settings.getAll());
@@ -122,8 +126,8 @@ function generateSleepTimes() {
     {
         wakeUpDate.setDate(wakeUpDate.getDate() + 1); //the alarm is for the next day
     }
-    wakeUpDate.setHours(splitTime[0]); //set hours of wakeup date to wakeup time hours
-    wakeUpDate.setMinutes(splitTime[1] - 15); //initially subtract 15 mins from wakeuptime to account for falling asleep
+    wakeUpDate.setHours(splitTime[0] - settings.get('lagHours')); //set hours of wakeup date to wakeup time hours
+    wakeUpDate.setMinutes(splitTime[1] - settings.get('lagMinutes')); //initially subtract 15 mins from wakeuptime to account for falling asleep
     wakeUpDate.setSeconds(0); //set just in case its anything but
     wakeUpDate.setMilliseconds(0); //set just in case its anything but
 
