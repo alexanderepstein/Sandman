@@ -1,0 +1,45 @@
+.app {
+    background-color: color('primary');
+    color: color('white');
+}
+
+.input-group {
+    border-color: darken(color('primary'), 8);
+
+    &-label {
+        background-color: color('primary');
+        color: color('white');
+    }
+}
+
+.label-group {
+    &-title {
+        background-color: color('primary');
+        color: color('white');
+    }
+}
+
+button {
+    border-width: 0;
+    background: darken(color('primary'), 10);
+    color: color('white');
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: darken(color('primary'), 15);
+    }
+}
+
+.link {
+    display: inline-block;
+    padding: 0 0.3em;
+    line-height: 1.3;
+    color: color('white');
+    background-color: darken(color('primary'), 9);
+}
+
+hr {
+    background-color: color('primary');
+    border: 2px dashed darken(color('primary'), 7);
+    border-width: 2px 0 0;
+}
