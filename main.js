@@ -66,7 +66,7 @@ app.on('ready', function(){
           } },
           {
             label: 'Preferences', click:  function(){ //shows the about window
-              pref = new BrowserWindow({width: 400, height: 580, resizable: false});
+              pref = new BrowserWindow({width: 400, height: 620, resizable: false});
               pref.setMenu(null); //the about window has no menu
               pref.loadURL(url.format({  //loads the webpage for the about window
                 pathname: path.join(__dirname, 'preferences.html'),
@@ -93,7 +93,7 @@ app.on('ready', function(){
 
 function readFile()
 {
-  console.log("Running readfile");
+  //console.log("Running readfile");
   mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
   mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
 
@@ -102,7 +102,7 @@ function readFile()
 function getCloseOnXPref()
 {
   readFile();
-  console.log(mySettings[0]);
+  //console.log(mySettings[0]);
   if (mySettings[0]==="true")
   {
     closeOnX = true;
