@@ -266,12 +266,12 @@ function showNotification() {
     notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
         restNotification = false;
-    })
+    });
 
     notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
         restNotification = false;
-    })
+    });
 
     notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === "Dismiss") {
@@ -283,7 +283,7 @@ function showNotification() {
             restNotification = false;
         }
 
-    })
+    });
   }
 }
 
@@ -334,17 +334,17 @@ function showUpTimeNotification() {
         buttons: ["Dismiss", "Restart"],
         vetical: true,
         duration: 99999999999999,
-    })
+    });
 
     notification.on("clicked", () => { //how to behave when notification is clicked
         upTimeNotification = false;
         notification.close();
-    })
+    });
 
     notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         upTimeNotification = false;
         notification.close();
-    })
+    });
 
     notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === "Dismiss") {
@@ -357,7 +357,7 @@ function showUpTimeNotification() {
 
         }
 
-    })
+    });
   }
 }
 function confirmShutdownNotification() {
@@ -372,15 +372,15 @@ function confirmShutdownNotification() {
         buttons: ["Cancel", "Confirm"],
         vetical: true,
         duration: 20000,
-    })
+    });
 
     notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
-    })
+    });
 
     notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
-    })
+    });
 
     notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === "Cancel") {
@@ -389,7 +389,7 @@ function confirmShutdownNotification() {
             shutdown(); //shutdown the computer
         }
 
-    })
+    });
 }
 
 function confirmRestartNotification() {
@@ -404,15 +404,15 @@ function confirmRestartNotification() {
         buttons: ["Cancel", "Confirm"],
         vetical: true,
         duration: 20000,
-    })
+    });
 
     notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
-    })
+    });
 
     notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
-    })
+    });
 
     notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === "Cancel") {
@@ -421,7 +421,7 @@ function confirmRestartNotification() {
             restart(); //shutdown the computer
         }
 
-    })
+    });
 }
 
 function showLatestUpdateNotification(updateType) {
@@ -436,15 +436,15 @@ function showLatestUpdateNotification(updateType) {
         buttons: ["Dismiss", "Update Page"],
         vetical: true,
         duration: 20000,
-    })
+    });
 
     notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
-    })
+    });
 
     notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
-    })
+    });
 
     notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
         if (text === "Dismiss") {
@@ -453,7 +453,7 @@ function showLatestUpdateNotification(updateType) {
             shell.openExternal("https://github.com/alexanderepstein/Sandman/releases/tag/" + latestRelease);
         }
 
-    })
+    });
 }
 
 
@@ -472,7 +472,7 @@ function restart(callback) {
 function upTimeJobs()
 {
   var uptime = os.uptime(); // uptime of computer in seconds
-  uptime = (uptime/60)/60 //turn it into hours
+  uptime = (uptime/60)/60; //turn it into hours
   if (uptime >= 12) //if computer has been on longer then 12 hours reccomend a restart
   {
     showUpTimeNotification(); //show the notification
