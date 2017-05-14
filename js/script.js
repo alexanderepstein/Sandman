@@ -27,6 +27,25 @@ var upTimeJob = null;
 var resetTime = null;
 
 
+function militaryToStandard(hours) {
+    /* make sure add radix*/
+    var hours = ((hours + 11) % 12) + 1; //determine standard version of military time
+    return hours; //return the hours in this new formatting
+}
+
+
+function ampm(hours24)
+{
+  hours24 = parseInt(hours24,10); //grab hours in military time version
+  if (hours24 > 11) //determine meridian
+  {
+    return "pm"; //return meridian string
+  }
+  else
+  {
+    return "am"; //return meridian string
+  }
+}
 
 function nodeJobs() {
     for (i = 0; i < 6; i++) {
@@ -104,7 +123,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
 function generateSleepTimes() {
     var splitTime = time.split(":") //split time into hours and minutes
     var wakeUpDate = new Date(); //set a new date object
-    if (splitTime[0] < wakeUpDate.getHours() ||(splitTime[0] == wakeUpDate.getHours() && splitTime[1] < wakeUpDate.getMinutes())) //if condition met
+    if (splitTime[0] < wakeUpDate.getHours() ||(splitTime[0] === wakeUpDate.getHours() && splitTime[1] < wakeUpDate.getMinutes())) //if condition met
     {
         wakeUpDate.setDate(wakeUpDate.getDate() + 1); //the alarm is for the next day
     }
@@ -213,7 +232,7 @@ function setPreferences()
   settings.set("lagMinutes",document.getElementById("lagMinutes").value);
   var tempstring = settings.get("closeOnX") + " Sandman"
   writeFile(tempstring);
-  console.log(settings.getAll());
+  //console.log(settings.getAll());
 }
 
 
@@ -280,15 +299,15 @@ function getLatestReleaseInfo() {
         else if (release[1]==myversion[1] && release[3] > myversion[3])
         {
           showLatestUpdateNotification("Minor Update"); //show the notification
-          console.log(release[3] + " " + myversion[3]);
+          //console.log(release[3] + " " + myversion[3]);
         }
         else if (release[1]==myversion[1] && release[3] == myversion[3] && release[5] > myversion[5])
         {
           showLatestUpdateNotification("Bugfixes"); //show the notification
-            console.log(release[5] + " " + myversion[5]);
+            //console.log(release[5] + " " + myversion[5]);
         }
         else {
-          console.log("Running the latest release of Sandman"); //log it
+          //console.log("Running the latest release of Sandman"); //log it
         }
    });
  }
@@ -433,25 +452,7 @@ function showLatestUpdateNotification(updateType) {
     })
 }
 
-function militaryToStandard(hours) {
-    /* make sure add radix*/
-    var hours = ((hours + 11) % 12) + 1; //determine standard version of military time
-    return hours; //return the hours in this new formatting
-}
 
-
-function ampm(hours24)
-{
-  hours24 = parseInt(hours24,10); //grab hours in military time version
-  if (hours24 > 11) //determine meridian
-  {
-    return "pm"; //return meridian string
-  }
-  else
-  {
-    return "am"; //return meridian string
-  }
-}
 function shutdown(callback) {
     exec("shutdown now", function(error, stdout, stderr) {
         callback(stdout);
