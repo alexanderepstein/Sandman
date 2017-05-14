@@ -65,7 +65,7 @@ app.on("ready", function(){
     else {
 
         if( !app.isQuiting){
-            event.preventDefault()
+            event.preventDefault();
             win.hide();
         }
 
