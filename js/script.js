@@ -10,6 +10,7 @@ const settings = require("electron-settings");
 const fs = require("fs");
 const filePath = path.join(__dirname, "settings.txt");
 
+var i = null;
 var restNotification = false;
 var upTimeNotification = false;
 var time = null; //wakeuptime to be set by user
@@ -83,7 +84,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
             hours[i] = sleepTimes[i].getHours(); //else just the hours
         }
         if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
-            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
+            mins[i] = "0" + sleepTimes[i].getMinutes(); //put a zero in front of the string
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
@@ -121,7 +122,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
 
 
 function generateSleepTimes() {
-    var splitTime = time.split(":") //split time into hours and minutes
+    var splitTime = time.split(":"); //split time into hours and minutes
     var wakeUpDate = new Date(); //set a new date object
     if (splitTime[0] < wakeUpDate.getHours() ||(splitTime[0] === wakeUpDate.getHours() && splitTime[1] < wakeUpDate.getMinutes())) //if condition met
     {
@@ -145,7 +146,7 @@ function generateSleepTimes() {
 
 
 function setTime() { //called when set wakeup time button is pressed
-    settings.set("Version","v1.5.0")
+    settings.set("Version","v1.5.0");
     time = document.getElementById("alarmTime").value; //grab the wake up time
     generateSleepTimes(); //determine sleepTimes based off of wakeuptime
     setSleepTimes(); //determine the sleepTimes in formatted form to be shown to user
@@ -159,7 +160,10 @@ function setTime() { //called when set wakeup time button is pressed
 function writeFile(settingsData)
 {
   fs.writeFile(filePath, settingsData, (err) => {  //write the settings file that will contain the settingsData parameter
-  if (err) throw err;
+  if (err)
+  {
+    throw err;
+  }
 });
 try //for error catching
 {
@@ -167,7 +171,7 @@ fs.chmodSync(filePath, "777"); //set up permissions (seems to fix issue of linux
 }
 catch (e)
 {
-  console.log("Error setting permissions on settings.txt") //log this error to the console (basically occurs everytime after the first run)
+  console.log("Error setting permissions on settings.txt"); //log this error to the console (basically occurs everytime after the first run)
 }
 }
 
@@ -230,7 +234,7 @@ function setPreferences()
   settings.set("closeOnX",(document.getElementById("closeOnXcheck").checked).toString());
   settings.set("lagHours",document.getElementById("lagHours").value);
   settings.set("lagMinutes",document.getElementById("lagMinutes").value);
-  var tempstring = settings.get("closeOnX") + " Sandman"
+  var tempstring = settings.get("closeOnX") + " Sandman";
   writeFile(tempstring);
   //console.log(settings.getAll());
 }
