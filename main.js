@@ -54,7 +54,7 @@ app.on("ready", function(){
   getCloseOnXPref();
 
   win.on("minimize",function(event){ //prevents standard minimize function of a main window
-        event.preventDefault()
+        event.preventDefault();
             win.hide();
     });
   win.on("close", function (event) { //prevents the closing of the aplication when the window closes
@@ -84,7 +84,7 @@ app.on("ready", function(){
               pathname: path.join(__dirname, "about.html"),
               protocol: "file:",
               slashes: true
-            }))
+            }));
           } },
           {
             label: "Preferences", click:  function(){ //shows the about window
@@ -94,7 +94,7 @@ app.on("ready", function(){
                 pathname: path.join(__dirname, "preferences.html"),
                 protocol: "file:",
                 slashes: true
-              }))
+              }));
                  //pref.openDevTools();
             }
           },

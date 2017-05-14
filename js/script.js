@@ -105,7 +105,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
             hours[i] = militaryToStandard(sleepTimes[i].getHours()); //else just the hours
         }
         if (sleepTimes[i].getMinutes() < 10) { //if minutes is less than 10
-            mins[i] = "0" + sleepTimes[i].getMinutes() //put a zero in front of the string
+            mins[i] = "0" + sleepTimes[i].getMinutes(); //put a zero in front of the string
         } else {
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
@@ -171,7 +171,7 @@ fs.chmodSync(filePath, "777"); //set up permissions (seems to fix issue of linux
 }
 catch (e)
 {
-  console.log("Error setting permissions on settings.txt"); //log this error to the console (basically occurs everytime after the first run)
+  throw e; //log this error to the console (basically occurs everytime after the first run)
 }
 }
 
@@ -251,7 +251,7 @@ function showNotification() {
   {
     restNotification = true;
     try {
-        audio.play() //play notifiation sound
+        audio.play(); //play notifiation sound
     } catch (e) {
 
     }
@@ -261,7 +261,7 @@ function showNotification() {
         buttons: ["Dismiss", "Shutdown"],
         vetical: true,
         duration: 99999999999999, //max number this would take
-    })
+    });
 
     notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
@@ -279,7 +279,7 @@ function showNotification() {
             restNotification = false;
         } else if ("Shutdown Computer") {
             confirmShutdownNotification(); //check to confirm computer shutdown
-            notification.close()
+            notification.close();
             restNotification = false;
         }
 
@@ -300,12 +300,12 @@ function getLatestReleaseInfo() {
         {
           showLatestUpdateNotification("Major Update"); //show the notification
         }
-        else if (release[1]==myversion[1] && release[3] > myversion[3])
+        else if (release[1] === myversion[1] && release[3] > myversion[3])
         {
           showLatestUpdateNotification("Minor Update"); //show the notification
           //console.log(release[3] + " " + myversion[3]);
         }
-        else if (release[1]==myversion[1] && release[3] == myversion[3] && release[5] > myversion[5])
+        else if (release[1] === myversion[1] && release[3] === myversion[3] && release[5] > myversion[5])
         {
           showLatestUpdateNotification("Bugfixes"); //show the notification
             //console.log(release[5] + " " + myversion[5]);
