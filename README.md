@@ -4,6 +4,8 @@
 
  ####  an application built with late night developers in mind
 
+![Version](https://img.shields.io/github/release/alexanderepstein/Sandman/all.svg) [![Github All Releases](https://img.shields.io/github/downloads/alexanderepstein/Sandman/total.svg)]()  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/12b7f0ba50924e73b3efba2927a8c3ea)](https://www.codacy.com/app/alexanderepstein/Sandman?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexanderepstein/Sandman&amp;utm_campaign=Badge_Grade)  ![framework](https://img.shields.io/badge/framework-electron-blue.svg)  ![platform](https://img.shields.io/badge/platform-crossplatform-lightgrey.svg)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)]()
+
 
  ![Counting Sheep](https://github.com/alexanderepstein/Sandman/blob/master/giphy.gif)
 
