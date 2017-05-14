@@ -53,7 +53,7 @@ function nodeJobs() {
         try {
             jobs[i].cancel(); //try to cancel respective job
         } catch (e) {
-
+          continue;
         }
 
         jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
