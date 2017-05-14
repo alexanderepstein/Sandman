@@ -1,14 +1,14 @@
-const notifier = require('electron-notifications'); //allow for notifications
-const path = require('path'); //allow for use of path
-const iconPath = path.join(__dirname, 'sleep.png'); //grabs the icon for notifications
-const os = require('os');
-const audio = new Audio('alert.mp3'); //set up notification sound
-const exec = require('child_process').exec; //allows the shutdown of the host machine
-const schedule = require('node-schedule'); //allows for jobs scheduled at certain times
-const {shell} = require('electron'); // allows the ability to open a webpage in users default browser
-const settings = require('electron-settings');
-const fs = require('fs');
-const filePath = path.join(__dirname, 'settings.txt');
+const notifier = require("electron-notifications"); //allow for notifications
+const path = require("path"); //allow for use of path
+const iconPath = path.join(__dirname, "sleep.png"); //grabs the icon for notifications
+const os = require("os");
+const audio = new Audio("alert.mp3"); //set up notification sound
+const exec = require("child_process").exec; //allows the shutdown of the host machine
+const schedule = require("node-schedule"); //allows for jobs scheduled at certain times
+const {shell} = require("electron"); // allows the ability to open a webpage in users default browser
+const settings = require("electron-settings");
+const fs = require("fs");
+const filePath = path.join(__dirname, "settings.txt");
 
 var restNotification = false;
 var upTimeNotification = false;
@@ -27,13 +27,13 @@ var upTimeJob = null;
 var resetTime = null;
 
 function setTime() { //called when set wakeup time button is pressed
-    settings.set('Version','v1.5.0')
-    time = document.getElementById('alarmTime').value; //grab the wake up time
+    settings.set("Version","v1.5.0")
+    time = document.getElementById("alarmTime").value; //grab the wake up time
     generateSleepTimes(); //determine sleepTimes based off of wakeuptime
     setSleepTimes(); //determine the sleepTimes in formatted form to be shown to user
-    document.getElementById('sleepTimes').innerHTML = "Optimal sleeping times"; //change blank text
+    document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
     nodeJobs(); //set up node-schedule jobs
-    document.getElementById('lblTime').innerHTML = "Notifications set."; //change blank text
+    document.getElementById("lblTime").innerHTML = "Notifications set."; //change blank text
     //console.log(sleepTimes); //use this line to determine issue of timing
 
 }
@@ -45,7 +45,7 @@ function writeFile(settingsData)
 });
 try //for error catching
 {
-fs.chmodSync(filePath, '777'); //set up permissions (seems to fix issue of linux reading settings after install)
+fs.chmodSync(filePath, "777"); //set up permissions (seems to fix issue of linux reading settings after install)
 }
 catch (e)
 {
@@ -55,7 +55,7 @@ catch (e)
 
 function readPreferences()
 {
-  if (settings.get('militaryTime','false') === "true") //if militaryTime preference is set to true
+  if (settings.get("militaryTime","false") === "true") //if militaryTime preference is set to true
   {
     militaryTime = true; //set the preference in the code
   }
@@ -63,16 +63,16 @@ function readPreferences()
   {
     militaryTime = false; //set the military time perference in the code to false
   }
-  time = settings.get('defaultTime','08:30'); //set time variable
-  appVersion = settings.get('Version','v1.5.0');
-  document.getElementById('alarmTime').value = time; //set the time on the DOM
+  time = settings.get("defaultTime","08:30"); //set time variable
+  appVersion = settings.get("Version","v1.5.0");
+  document.getElementById("alarmTime").value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
 }
 
 function loadPreferences()
 {
-  appVersion = settings.get('Version','v1.5.0');
-  if (settings.get('militaryTime','false') === "true") //mySettings[0] is where the military time setting is stored
+  appVersion = settings.get("Version","v1.5.0");
+  if (settings.get("militaryTime","false") === "true") //mySettings[0] is where the military time setting is stored
   {
     militaryTime = true; //set prefrence to military time
   }
@@ -82,37 +82,37 @@ function loadPreferences()
   }
   if (militaryTime)  //if militaryTime preference
   {
-    document.getElementById('timeType').checked = true; //set radio button
-    document.getElementById('timeType2').checked = false; //dont set this button
+    document.getElementById("timeType").checked = true; //set radio button
+    document.getElementById("timeType2").checked = false; //dont set this button
   }
   else //if standard time preference
   {
-    document.getElementById('timeType').checked = false; //dont set this button
-    document.getElementById('timeType2').checked = true; //set radio button
+    document.getElementById("timeType").checked = false; //dont set this button
+    document.getElementById("timeType2").checked = true; //set radio button
   }
-  if (settings.get('closeOnX','true') === "true") //mySettings[2] is where the closeOnX setting is stored
+  if (settings.get("closeOnX","true") === "true") //mySettings[2] is where the closeOnX setting is stored
   {
-    document.getElementById('closeOnXcheck').checked = true; //set checkbox
+    document.getElementById("closeOnXcheck").checked = true; //set checkbox
   }
   else
   {
-    document.getElementById('closeOnXcheck').checked = false; //set check box
+    document.getElementById("closeOnXcheck").checked = false; //set check box
   }
-  document.getElementById('defaultTime').value = settings.get('defaultTime','08:30'); //set time to preference time
-  document.getElementById('lagHours').value = settings.get('lagHours','0');
-  document.getElementById('lagMinutes').value = settings.get('lagMinutes','15');
+  document.getElementById("defaultTime").value = settings.get("defaultTime","08:30"); //set time to preference time
+  document.getElementById("lagHours").value = settings.get("lagHours","0");
+  document.getElementById("lagMinutes").value = settings.get("lagMinutes","15");
 }
 
 
 
 function setPreferences()
 {
-  settings.set('militaryTime',(document.getElementById('timeType').checked).toString());
-  settings.set('defaultTime',document.getElementById('defaultTime').value);
-  settings.set('closeOnX',(document.getElementById('closeOnXcheck').checked).toString());
-  settings.set('lagHours',document.getElementById('lagHours').value);
-  settings.set('lagMinutes',document.getElementById('lagMinutes').value);
-  var tempstring = settings.get('closeOnX') + " Sandman"
+  settings.set("militaryTime",(document.getElementById("timeType").checked).toString());
+  settings.set("defaultTime",document.getElementById("defaultTime").value);
+  settings.set("closeOnX",(document.getElementById("closeOnXcheck").checked).toString());
+  settings.set("lagHours",document.getElementById("lagHours").value);
+  settings.set("lagMinutes",document.getElementById("lagMinutes").value);
+  var tempstring = settings.get("closeOnX") + " Sandman"
   writeFile(tempstring);
   console.log(settings.getAll());
 }
@@ -126,8 +126,8 @@ function generateSleepTimes() {
     {
         wakeUpDate.setDate(wakeUpDate.getDate() + 1); //the alarm is for the next day
     }
-    wakeUpDate.setHours(splitTime[0] - settings.get('lagHours')); //set hours of wakeup date to wakeup time hours
-    wakeUpDate.setMinutes(splitTime[1] - settings.get('lagMinutes')); //initially subtract 15 mins from wakeuptime to account for falling asleep
+    wakeUpDate.setHours(splitTime[0] - settings.get("lagHours")); //set hours of wakeup date to wakeup time hours
+    wakeUpDate.setMinutes(splitTime[1] - settings.get("lagMinutes")); //initially subtract 15 mins from wakeuptime to account for falling asleep
     wakeUpDate.setSeconds(0); //set just in case its anything but
     wakeUpDate.setMilliseconds(0); //set just in case its anything but
 
@@ -161,12 +161,12 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
             mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
         }
     }
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck0").innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck1").innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck2").innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck3").innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck4").innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck5").innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
   }
   else
   {
@@ -183,12 +183,12 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
         }
         meridians[i] = ampm(sleepTimes[i].getHours()); //set up the array of meridians
     }
-    document.getElementById('lblcheck0').innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck1').innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck2').innerHTML = hours[2] + ":" + mins[2] + meridians[2]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck3').innerHTML = hours[3] + ":" + mins[3] + meridians[3]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck4').innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
-    document.getElementById('lblcheck5').innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck0").innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck1").innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck2").innerHTML = hours[2] + ":" + mins[2] + meridians[2]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck3").innerHTML = hours[3] + ":" + mins[3] + meridians[3]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck4").innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
+    document.getElementById("lblcheck5").innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
 }
 }
 
@@ -210,7 +210,7 @@ function nodeJobs() {
     }
     jobs[6] = schedule.scheduleJob(resetTime, setTime);
 
-    upTimeJob = schedule.scheduleJob('0 0 * * * *', function(){
+    upTimeJob = schedule.scheduleJob("0 0 * * * *", function(){
     upTimeJobs();
   });
 }
@@ -224,26 +224,26 @@ function showNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Sandman', { //Notification
-        message: 'Time to rest',
+    const notification = notifier.notify("Sandman", { //Notification
+        message: "Time to rest",
         icon: iconPath,
-        buttons: ['Dismiss', 'Shutdown'],
+        buttons: ["Dismiss", "Shutdown"],
         vetical: true,
         duration: 99999999999999, //max number this would take
     })
 
-    notification.on('clicked', () => { //how to behave when notification is clicked
+    notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
         restNotification = false;
     })
 
-    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+    notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
         restNotification = false;
     })
 
-    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
-        if (text === 'Dismiss') {
+    notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === "Dismiss") {
             notification.close(); //close the notification
             restNotification = false;
         } else if ("Shutdown Computer") {
@@ -263,7 +263,7 @@ function getLatestReleaseInfo() {
         var release = json[0].name; //get the newest app version
         latestRelease = release;
         release = release.split("");
-        var myversion = settings.get('Version','v1.5.0').split("");
+        var myversion = settings.get("Version","v1.5.0").split("");
 
         if (release[1] > myversion[1]) //check if it matches current app version
         {
@@ -297,26 +297,26 @@ function showUpTimeNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Sandman', { //Notification
-        message: 'Your computer needs a break',
+    const notification = notifier.notify("Sandman", { //Notification
+        message: "Your computer needs a break",
         icon: iconPath,
-        buttons: ['Dismiss', 'Restart'],
+        buttons: ["Dismiss", "Restart"],
         vetical: true,
         duration: 99999999999999,
     })
 
-    notification.on('clicked', () => { //how to behave when notification is clicked
+    notification.on("clicked", () => { //how to behave when notification is clicked
         upTimeNotification = false;
         notification.close();
     })
 
-    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+    notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         upTimeNotification = false;
         notification.close();
     })
 
-    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
-        if (text === 'Dismiss') {
+    notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === "Dismiss") {
           upTimeNotification = false;
             notification.close(); //close the notification
         } else if ("Restart") {
@@ -335,24 +335,24 @@ function confirmShutdownNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Sandman', { //Notification
-        message: 'Confirm Shutdown',
+    const notification = notifier.notify("Sandman", { //Notification
+        message: "Confirm Shutdown",
         icon: iconPath,
-        buttons: ['Cancel', 'Confirm'],
+        buttons: ["Cancel", "Confirm"],
         vetical: true,
         duration: 20000,
     })
 
-    notification.on('clicked', () => { //how to behave when notification is clicked
+    notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
     })
 
-    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+    notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
     })
 
-    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
-        if (text === 'Cancel') {
+    notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === "Cancel") {
             notification.close(); //close the notification
         } else if ("Confirm") {
             shutdown(); //shutdown the computer
@@ -367,24 +367,24 @@ function confirmRestartNotification() {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Sandman', { //Notification
-        message: 'Confirm Restart',
+    const notification = notifier.notify("Sandman", { //Notification
+        message: "Confirm Restart",
         icon: iconPath,
-        buttons: ['Cancel', 'Confirm'],
+        buttons: ["Cancel", "Confirm"],
         vetical: true,
         duration: 20000,
     })
 
-    notification.on('clicked', () => { //how to behave when notification is clicked
+    notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
     })
 
-    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+    notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
     })
 
-    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
-        if (text === 'Cancel') {
+    notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === "Cancel") {
             notification.close(); //close the notification
         } else if ("Confirm") {
             restart(); //shutdown the computer
@@ -399,27 +399,27 @@ function showLatestUpdateNotification(updateType) {
     } catch (e) {
 
     }
-    const notification = notifier.notify('Sandman', { //Notification
-        message:  updateType + ' Available',
+    const notification = notifier.notify("Sandman", { //Notification
+        message:  updateType + " Available",
         icon: iconPath,
-        buttons: ['Dismiss', 'Update Page'],
+        buttons: ["Dismiss", "Update Page"],
         vetical: true,
         duration: 20000,
     })
 
-    notification.on('clicked', () => { //how to behave when notification is clicked
+    notification.on("clicked", () => { //how to behave when notification is clicked
         notification.close();
     })
 
-    notification.on('swipedRight', () => { //how to behave when notification is swipedRight
+    notification.on("swipedRight", () => { //how to behave when notification is swipedRight
         notification.close();
     })
 
-    notification.on('buttonClicked', (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
-        if (text === 'Dismiss') {
+    notification.on("buttonClicked", (text, buttonIndex, options) => { //how to behave if one of the buttons was pressed
+        if (text === "Dismiss") {
             notification.close(); //close the notification
         } else if ("Update Page") {
-            shell.openExternal('https://github.com/alexanderepstein/Sandman/releases/tag/' + latestRelease);
+            shell.openExternal("https://github.com/alexanderepstein/Sandman/releases/tag/" + latestRelease);
         }
 
     })
@@ -445,13 +445,13 @@ function ampm(hours24)
   }
 }
 function shutdown(callback) {
-    exec('shutdown now', function(error, stdout, stderr) {
+    exec("shutdown now", function(error, stdout, stderr) {
         callback(stdout);
     }); //shutsdown the computer
 }
 
 function restart(callback) {
-    exec('shutdown now -r', function(error, stdout, stderr) {
+    exec("shutdown now -r", function(error, stdout, stderr) {
         callback(stdout);
     }); //restarts the computer
 }
