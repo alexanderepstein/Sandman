@@ -12,6 +12,28 @@ var closeOnX = false;
 var mySettings = [];
 
 
+function readFile()
+{
+  //console.log("Running readfile");
+  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
+  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
+
+}
+
+function getCloseOnXPref()
+{
+  readFile();
+  //console.log(mySettings[0]);
+  if (mySettings[0]==="true")
+  {
+    closeOnX = true;
+  }
+  else {
+    closeOnX = false;
+  }
+  return;
+}
+
 app.on('ready', function(){
   win = new BrowserWindow({width: 600, height: 475, resizable: false}); //create main window
 
@@ -90,25 +112,3 @@ app.on('ready', function(){
   tray.setToolTip('Sandman'); //Honestly no clue but itll make the tray say insomnia in some other place
   tray.setContextMenu(contextMenu); //attach the menu to the tray
 });
-
-function readFile()
-{
-  //console.log("Running readfile");
-  mySettings = fs.readFileSync(filePath,'utf8'); //read in the settings file
-  mySettings = (mySettings).split(" "); //split up the settings into an array (each index contains a different setting)
-
-}
-
-function getCloseOnXPref()
-{
-  readFile();
-  //console.log(mySettings[0]);
-  if (mySettings[0]==="true")
-  {
-    closeOnX = true;
-  }
-  else {
-    closeOnX = false;
-  }
-  return;
-}
