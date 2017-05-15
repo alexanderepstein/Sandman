@@ -147,6 +147,8 @@ function generateSleepTimes() {
 
 function setTime() { //called when set wakeup time button is pressed
     settings.set("Version","v1.6.0");
+    //settings.set("lagHours","0");
+    //settings.set("lagMinutes","15");
     time = document.getElementById("alarmTime").value; //grab the wake up time
     generateSleepTimes(); //determine sleepTimes based off of wakeuptime
     setSleepTimes(); //determine the sleepTimes in formatted form to be shown to user
