@@ -1,0 +1,35 @@
+
+@import "bourbon/bourbon";
+@import "variables";
+@import "mixins";
+@import "base/base";
+
+section.info {
+  display: flex;
+  flex-wrap: wrap;
+  animation: fadeIn 2s;
+}
+
+.features {
+  padding: 7px 20px 0;
+  width: calc(100% - 800px);
+  box-sizing: border-box;
+  font-size: 1.7em;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+  list-style-type: none;
+}
+
+li {
+  padding: 10px 0;
+}
+
+span {
+  font-weight: 400;
+}

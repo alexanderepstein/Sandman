@@ -1,0 +1,43 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+source: source
+destination: _site
+sass:
+  sass_dir: _sass
+  style: expanded # compressed # expanded
+
+# permalink and highlighter
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : pygments
+
+# SEO settings
+title: Sandman
+description: "An Application for Late Night Developers"
+keywords: "Sandman, sleep, insomnia, rest, SEO, electron, web"
+
+# Site settings
+url: https://alexanderepstein.github.io/Sandman/
+baseurl: ""
+# baseurl: ""
+
+# Author settings
+author:
+  name      : Alexander Epstein
+  job       : Student
+  bio       : "Studying software engineering."
+  thumb     : /images/author.jpg
+  email     : epsteina.wit.edu
+  github    : http://github.com/alexanderepstein
+  linkedin  : http://linkedin.com/in/alexanderepstein
+
+# google_analytics: UA-52446115-1
+repo: http://github.com/alexanderepstein/Sandman
+
+# comments
+disqus_shortname: "alexanderepstein"
