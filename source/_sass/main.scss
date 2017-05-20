@@ -1,8 +1,8 @@
 
-@import "bourbon/bourbon";
-@import "variables";
-@import "mixins";
-@import "base/base";
+@import "./bourbon/bourbon";
+@import "./variables";
+@import "./mixins";
+@import "./base/base";
 
 section.info {
   display: flex;
