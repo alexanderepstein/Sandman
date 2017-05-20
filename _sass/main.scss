@@ -7,16 +7,22 @@
 section.info {
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
+
 }
 
 .features {
+  margin-left: auto;
+  margin-right: auto;
   padding: 7px 20px 0;
-  width: calc(100% - 800px);
+  width: calc(100% - 200px);
   box-sizing: border-box;
   font-size: 1.7em;
-  letter-spacing: 1px;
-  line-height: 1.5;
+  letter-spacing: .5px;
+  line-height: 1.25;
+  max-width:50%;
+  min-width:800px;
+  max-height:580px;
+  min-height:10%;
 }
 
 ul {
@@ -32,4 +38,18 @@ li {
 
 span {
   font-weight: 400;
+}
+
+.cols {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    column-count:2;
+    column-gap:10px;
+}
+
+.alignInfo
+{
+  margin-top: 35px;
 }
