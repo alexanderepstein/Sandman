@@ -225,8 +225,8 @@ function loadPreferences()
   document.getElementById("defaultTime").value = settings.get("defaultTime","08:30"); //set time to preference time
   document.getElementById("lagHours").value = settings.get("lagHours","0");
   document.getElementById("lagMinutes").value = settings.get("lagMinutes","15");
-  document.getElementById("upTimeHours").value = settings.get('upTimeHours',"12");
-  document.getElementById("upTimeMinutes").value = settings.get('upTimeMinutes',"0");
+  document.getElementById("upTimeHours").value = settings.get("upTimeHours","12");
+  document.getElementById("upTimeMinutes").value = settings.get("upTimeMinutes","0");
 }
 
 
@@ -238,8 +238,8 @@ function setPreferences()
   settings.set("closeOnX",(document.getElementById("closeOnXcheck").checked).toString());
   settings.set("lagHours",document.getElementById("lagHours").value);
   settings.set("lagMinutes",document.getElementById("lagMinutes").value);
-  settings.set("upTimeHours",document.getElementById('upTimeHours').value);
-  settings.set("upTimeMinutes",document.getElementById('upTimeMinutes').value);
+  settings.set("upTimeHours",document.getElementById("upTimeHours").value);
+  settings.set("upTimeMinutes",document.getElementById("upTimeMinutes").value);
   var tempstring = settings.get("closeOnX") + " Sandman";
   writeFile(tempstring);
   //console.log(settings.getAll());
@@ -479,10 +479,10 @@ function upTimeJobs()
 {
   var uptime = os.uptime(); // uptime of computer in seconds
   uptime = (uptime/60)/60; //turn it into hours
-  var mins = settings.get('upTimeMinutes');
+  var mins = parseFloat(settings.get("upTimeMinutes"));
   mins = mins/60;
-  var hours = settings.get('upTimeHours');
-  var time = hours + minutes;
+  var hours = parseFloat(settings.get("upTimeHours"));
+  var time = hours + mins;
   if ( uptime >= time ) //if computer has been on longer then 12 hours reccomend a restart
   {
     showUpTimeNotification(); //show the notification
