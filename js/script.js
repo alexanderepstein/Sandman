@@ -69,6 +69,7 @@ function nodeJobs() {
     upTimeJob = schedule.scheduleJob("0 0 * * * *", function(){
     upTimeJobs();
   });
+  return;
 }
 
 
@@ -118,6 +119,7 @@ function setSleepTimes() //just setting the sleep times the user sees (special f
     document.getElementById("lblcheck4").innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
     document.getElementById("lblcheck5").innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
 }
+return;
 }
 
 
@@ -142,6 +144,7 @@ function generateSleepTimes() {
     wakeUpDate = new Date(sleepTimes[5]);
     wakeUpDate.setHours(wakeUpDate.getHours() + 1);
     resetTime = new Date(wakeUpDate);
+    return;
 }
 
 
@@ -156,7 +159,7 @@ function setTime() { //called when set wakeup time button is pressed
     nodeJobs(); //set up node-schedule jobs
     document.getElementById("lblTime").innerHTML = "Notifications set."; //change blank text
     //console.log(sleepTimes); //use this line to determine issue of timing
-
+return;
 }
 
 function writeFile(settingsData)
@@ -175,6 +178,7 @@ catch (e)
 {
   throw e; //log this error to the console (basically occurs everytime after the first run)
 }
+return;
 }
 
 function readPreferences()
@@ -191,6 +195,7 @@ function readPreferences()
   appVersion = settings.get("Version","v1.6.0");
   document.getElementById("alarmTime").value = time; //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
+  return;
 }
 
 function loadPreferences()
@@ -227,6 +232,7 @@ function loadPreferences()
   document.getElementById("lagMinutes").value = settings.get("lagMinutes","15");
   document.getElementById("upTimeHours").value = settings.get("upTimeHours","12");
   document.getElementById("upTimeMinutes").value = settings.get("upTimeMinutes","0");
+  return;
 }
 
 
@@ -242,6 +248,7 @@ function setPreferences()
   settings.set("upTimeMinutes",document.getElementById("upTimeMinutes").value);
   var tempstring = settings.get("closeOnX") + " Sandman";
   writeFile(tempstring);
+  return;
   //console.log(settings.getAll());
 }
 
@@ -291,6 +298,7 @@ function showNotification() {
 
     });
   }
+  return;
 }
 
 function getLatestReleaseInfo() {
@@ -322,6 +330,7 @@ function getLatestReleaseInfo() {
    });
  }
  seenRelease = true; //we checked or they saw the notification already
+ return;
 }
 
 function showUpTimeNotification() {
@@ -365,6 +374,7 @@ function showUpTimeNotification() {
 
     });
   }
+  return;
 }
 function confirmShutdownNotification() {
     try {
@@ -396,6 +406,7 @@ function confirmShutdownNotification() {
         }
 
     });
+    return;
 }
 
 function confirmRestartNotification() {
@@ -428,6 +439,7 @@ function confirmRestartNotification() {
         }
 
     });
+    return;
 }
 
 function showLatestUpdateNotification(updateType) {
@@ -460,6 +472,7 @@ function showLatestUpdateNotification(updateType) {
         }
 
     });
+    return;
 }
 
 
@@ -467,12 +480,14 @@ function shutdown(callback) {
     exec("shutdown now", function(error, stdout, stderr) {
         callback(stdout);
     }); //shutsdown the computer
+    return;
 }
 
 function restart(callback) {
     exec("shutdown now -r", function(error, stdout, stderr) {
         callback(stdout);
     }); //restarts the computer
+    return;
 }
 
 function upTimeJobs()
@@ -487,4 +502,5 @@ function upTimeJobs()
   {
     showUpTimeNotification(); //show the notification
   }
+  return;
 }
