@@ -180,6 +180,7 @@ If you have a feature you would like to add or optimizations to the original cod
 If this project helped you in any way and you feel like buying a broke college kid a cup of coffee
 
 [![Donate](https://img.shields.io/badge/Donate-Venmo-blue.svg)](https://venmo.com/AlexanderEpstein)
+[![Donate](https://img.shields.io/badge/Donate-SquareCash-green.svg)](https://cash.me/$AlexEpstein) 
 
 ## License
 
