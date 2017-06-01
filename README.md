@@ -176,6 +176,10 @@ If you have a feature you would like to add or optimizations to the original cod
 ( •_•)>⌐■-■
 (⌐■_■)
 ```
+## Donate 
+If this project helped you in any way and you feel like buying a broke college kid a cup of coffee
+
+[![Donate](https://img.shields.io/badge/Donate-Venmo-blue.svg)](https://venmo.com/AlexanderEpstein)
 
 ## License
 
