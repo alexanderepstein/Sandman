@@ -112,7 +112,7 @@ app.on("ready", function() {
     {
       label: "Donate...",
       click: function() { //shows the about window
-        shell.openExternal("https://venmo.com/AlexanderEpstein");
+        shell.openExternal("https://cash.me/$AlexEpstein");
       }
     },
     {
