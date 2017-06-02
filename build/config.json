@@ -1,6 +1,6 @@
 {
   "dest": "dist/installers/",
-  "icon": "sleep.png",
+  "icon": "../assets/sleep.png",
   "categories": [
     "Utility"
   ],
