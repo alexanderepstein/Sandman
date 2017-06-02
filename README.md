@@ -36,7 +36,7 @@ git clone https://github.com/alexanderepstein/Sandman
 ```
 
 Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
-##### [Version 1.7.0 Release](https://github.com/alexanderepstein/Sandman/releases/tag/v1.7.0)
+##### [Version 1.8.0 Release](https://github.com/alexanderepstein/Sandman/releases/tag/v1.8.0)
 
 
 ## Install
@@ -54,11 +54,11 @@ sudo apt-get install libappindicator1
 then depending on your system architechture either run
 
 ```bash
-sudo dpkg -i Sandman_1.7.0_amd64.deb
+sudo dpkg -i Sandman_1.8.0_amd64.deb
 ```
 Or:
 ```bash
-sudo dpkg -i Sandman_1.7.0_x86.deb
+sudo dpkg -i Sandman_1.8.0_x86.deb
 ```
 #### RedHat
 ```bash
