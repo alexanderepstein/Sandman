@@ -42,7 +42,7 @@ function nodeJobs(sleepTimes) {
     try {
       jobs[i].cancel(); //try to cancel respective job
     } catch (e) {
-      
+
     }
 
     jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
@@ -140,7 +140,7 @@ function generateSleepTimes() {
 
 
 function setTime() { //called when set wakeup time button is pressed
-  settings.set("Version", "v1.7.0");
+  settings.set("Version", "v1.8.0");
   sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
   sleepTimes = setSleepTimes(sleepTimes); //determine the sleepTimes in formatted form to be shown to user
   document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
@@ -266,7 +266,7 @@ function getLatestReleaseInfo() {
       var release = json[0].name; //get the newest app version
       latestRelease = release;
       release = release.split("");
-      var myversion = settings.get("Version", "v1.7.0").split("");
+      var myversion = settings.get("Version", "v1.8.0").split("");
 
       if (release[1] > myversion[1]) //check if it matches current app version
       {
