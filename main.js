@@ -83,6 +83,7 @@ app.on("ready", function() {
           protocol: "file:",
           slashes: true
         }));
+        //abt.openDevTools();
       }
     },
     {
@@ -106,6 +107,12 @@ app.on("ready", function() {
       label: "Report a bug...",
       click: function() { //shows the about window
         shell.openExternal("https://github.com/alexanderepstein/Sandman/issues/new");
+      }
+    },
+    {
+      label: "Donate...",
+      click: function() { //shows the about window
+        shell.openExternal("https://venmo.com/AlexanderEpstein");
       }
     },
     {

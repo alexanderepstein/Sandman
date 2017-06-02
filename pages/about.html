@@ -21,7 +21,9 @@
         Sandman Version
         <script>
           fs = require('fs');
-          json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          path = require("path"); //allow for use of path
+          filePath = path.join(__dirname, '../package.json')
+          json = JSON.parse(fs.readFileSync(filePath, 'utf8'));
           version = json.version;
           document.write(version);
         </script><br> Node.js Version

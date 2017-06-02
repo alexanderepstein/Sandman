@@ -1,6 +1,6 @@
 {
   "name": "Sandman",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "appCopyright": "Alexander Epstein",
   "appCategoryType": "Productivity",
@@ -12,7 +12,7 @@
     "url": "https://github.com/alexanderepstein/Sandman"
   },
   "devDependencies": {
-    "electron": "^1.6.6"
+    "electron": "^1.6.10"
   },
   "dependencies": {
     "electron-notifications": "^1.0.0",
