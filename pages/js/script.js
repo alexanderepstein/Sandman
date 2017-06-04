@@ -6,8 +6,8 @@ const schedule = require("node-schedule"); //allows for jobs scheduled at certai
 const {shell} = require("electron"); // allows the ability to open a webpage in users default browser
 const settings = require("electron-settings");
 const fs = require("fs");
-const iconPath = path.join(__dirname, '../assets/',"sleep.png"); //grabs the icon for notifications
-const audio = new Audio(path.join(__dirname, '../assets/',"alert.mp3")); //set up notification sound
+const iconPath = path.join(__dirname, "../assets/","sleep.png"); //grabs the icon for notifications
+const audio = new Audio(path.join(__dirname, "../assets/","alert.mp3")); //set up notification sound
 const filePath = path.join(__dirname, "../assets/","settings.txt");
 
 var i = null;
@@ -210,8 +210,6 @@ function setPreferences() {
   return;
   //console.log(settings.getAll());
 }
-
-
 
 
 

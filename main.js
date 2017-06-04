@@ -74,7 +74,7 @@ app.on("ready", function() {
       click: function() { //shows the about window
         abt = new BrowserWindow({
           width: 500,
-          height: 600,
+          height: 625,
           resizable: false
         });
         abt.setMenu(null); //the about window has no menu
@@ -107,12 +107,6 @@ app.on("ready", function() {
       label: "Report a bug...",
       click: function() { //shows the about window
         shell.openExternal("https://github.com/alexanderepstein/Sandman/issues/new");
-      }
-    },
-    {
-      label: "Donate...",
-      click: function() { //shows the about window
-        shell.openExternal("https://cash.me/$AlexEpstein");
       }
     },
     {
