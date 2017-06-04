@@ -12,12 +12,15 @@
     "url": "https://github.com/alexanderepstein/Sandman"
   },
   "devDependencies": {
-    "electron": "^1.6.10"
+    "electron": "^1.7.2"
   },
   "dependencies": {
     "electron-notifications": "^1.0.0",
     "electron-settings": "^3.0.14",
     "jquery": "^3.2.1",
     "node-schedule": "^1.2.1"
+  },
+  "scripts": {
+    "start": "electron ."
   }
 }

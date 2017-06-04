@@ -10,7 +10,17 @@ let win = null; //set the main window to null
 let pref = null;
 let abt = null;
 
+if (process.argv.length == 3)
+{
+  if (process.argv.slice(2).toString().toLowerCase() === "dev")
+  {
+    var dev  = true;
+  }
+  else {
+    var dev = false;
+  }
 
+}
 
 function readFile() {
   var mySettings = [];
@@ -38,7 +48,11 @@ app.on("ready", function() {
 
 
   //console.log(settings.getAll());
-  //win.openDevTools(); //starts the application with developer tools open
+  if (dev)
+  {
+      win.openDevTools(); //starts the application with developer tools open
+  }
+
 
 
   var mySettings = readFile();
@@ -83,7 +97,11 @@ app.on("ready", function() {
           protocol: "file:",
           slashes: true
         }));
-        //abt.openDevTools();
+        if (dev)
+        {
+          abt.openDevTools();
+        }
+
       }
     },
     {
@@ -100,7 +118,11 @@ app.on("ready", function() {
           protocol: "file:",
           slashes: true
         }));
-        //pref.openDevTools();
+        if (dev)
+        {
+          pref.openDevTools();
+        }
+
       }
     },
     {
