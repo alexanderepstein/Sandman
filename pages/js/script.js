@@ -141,7 +141,7 @@ function generateSleepTimes() {
 
 function setTime() { //called when set wakeup time button is pressed
   settings.set("Version", "v1.8.0");
-  sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
+  var sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
   sleepTimes = setSleepTimes(sleepTimes); //determine the sleepTimes in formatted form to be shown to user
   document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
   nodeJobs(sleepTimes); //set up node-schedule jobs
@@ -166,7 +166,7 @@ function writeFile(settingsData) {
 }
 
 function readPreferences() {
-  document.getElementById("alarmTime").value = settings.get("defaultTime", "08:30");; //set the time on the DOM
+  document.getElementById("alarmTime").value = settings.get("defaultTime", "08:30"); //set the time on the DOM
   setTime(); //run the main function to generate and show sleep time
   return;
 }

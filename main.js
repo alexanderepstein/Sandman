@@ -9,15 +9,15 @@ let tray = null; //set the tray to null
 let win = null; //set the main window to null
 let pref = null;
 let abt = null;
-
-if (process.argv.length == 3)
+var dev = null;
+if (process.argv.length === 3)
 {
   if (process.argv.slice(2).toString().toLowerCase() === "dev")
   {
-    var dev  = true;
+    dev  = true;
   }
   else {
-    var dev = false;
+    dev = false;
   }
 
 }
