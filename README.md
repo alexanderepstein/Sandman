@@ -29,15 +29,6 @@ Inspired by http://sleepyti.me
 ![Usage](https://github.com/alexanderepstein/Sandman/blob/master/assets/Usage.gif)
 
 
-## Downloads
-To get the full sourced version run in terminal:
-```bash
-git clone https://github.com/alexanderepstein/Sandman
-```
-
-Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
-##### [Version 1.8.0 Release](https://github.com/alexanderepstein/Sandman/releases/tag/v1.8.0)
-
 
 ## Install
 
@@ -67,7 +58,26 @@ sudo rpm -i Sandman.rpm
  This will actually install Sandman as a utility application which can be accessed from your respective distributions application launchpad.
 
 ### Windows
-Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant). Now drag the entire Sandman Windows folder you extracted  from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Sandman.exe and run it. Now the application will show up in the dock where it can be pinned.
+
+#### Scoops install
+If you use scoops https://github.com/lukesampson/scoop
+You can download and install sandman with
+```bash
+   scoop buckets add extras
+   scoop install sandman
+```
+#### Otherwise
+Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant). Now drag the entire Sandman Windows folder you extracted from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Sandman.exe and run it. Now the application will show up in the dock where it can be pinned.
+
+## Downloads
+To get the full sourced version run in terminal:
+```bash
+git clone https://github.com/alexanderepstein/Sandman
+```
+
+Otherwise to just get the application click the link before to head to the latest release page and download your respective platform.
+##### [Version 1.8.0 Release](https://github.com/alexanderepstein/Sandman/releases/tag/v1.8.0)
+
 
 ## Uninstall
 
