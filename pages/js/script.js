@@ -143,7 +143,7 @@ function generateSleepTimes() {
 
 
   async function setTime() { //called when set wakeup time button is pressed
-  settings.set("Version", "v1.8.0");
+  settings.set("Version", "v1.9.0");
   var sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
   sleepTimes = setSleepTimes(sleepTimes); //determine the sleepTimes in formatted form to be shown to user
   document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
@@ -292,7 +292,7 @@ function getLatestReleaseInfo() {
       var release = json[0].name; //get the newest app version
       latestRelease = release;
       release = release.split("");
-      var myversion = settings.get("Version", "v1.8.0").split("");
+      var myversion = settings.get("Version", "v1.9.0").split("");
 
       if (release[1] > myversion[1]) //check if it matches current app version
       {
