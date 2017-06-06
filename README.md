@@ -33,15 +33,17 @@ Inspired by http://sleepyti.me
 ## Install
 
 ### Mac
-Homebrew casks are the preferred method of installations
+Homebrew casks are the preferred method of installations (easiest to upgrade Sandman with brew cask update)
 
 #### Homebrew install
 ```bash
-    brew tap caskroom/cask # add homebrew casks if you havent already
-    brew update
-    brew cask install sandman
+brew tap caskroom/cask # add homebrew casks if you havent already
+brew update
+brew cask install sandman
 ```
 #### Manual install
+Download your respective platforms release from the downloads section.
+
 Drag the Sandman.app from the Sandman dmg to the Applications folder. Double Clicking on the app should run it and it could be kept in the dock from here.
 
 ### Linux
@@ -75,7 +77,9 @@ You can download and install sandman with
 scoop buckets add extras
 scoop install sandman
 ```
-#### Otherwise
+#### Manual install
+Download your respective architectures release from the downloads section.
+
 Open up another windows explorer and navigate to your program files folder (x86 or 64 bit is irrelevant). Now drag the entire Sandman Windows folder you extracted from the downloaded zip in the previous step over to the program files folder. Go into the folder that was just dragged over and find the Sandman.exe and run it. Now the application will show up in the dock where it can be pinned.
 
 ## Downloads
