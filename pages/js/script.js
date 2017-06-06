@@ -19,6 +19,9 @@ var latestRelease = null;
 var upTimeJob = null;
 var resetTime = null;
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function militaryToStandard(hours) {
   /* make sure add radix*/
@@ -139,13 +142,37 @@ function generateSleepTimes() {
 }
 
 
-function setTime() { //called when set wakeup time button is pressed
+  async function setTime() { //called when set wakeup time button is pressed
   settings.set("Version", "v1.8.0");
   var sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
   sleepTimes = setSleepTimes(sleepTimes); //determine the sleepTimes in formatted form to be shown to user
   document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
+
   nodeJobs(sleepTimes); //set up node-schedule jobs
   document.getElementById("lblTime").innerHTML = "Notifications set."; //change blank text
+  document.getElementById("lblTime").style.opacity = "1.0";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".9";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".8";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".7";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".6";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".5";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".4";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".3";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".2";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = ".1";
+  await sleep(100);
+  document.getElementById("lblTime").style.opacity = "0";
+  await sleep(100);
+  document.getElementById("lblTime").innerHTML = "";
   //console.log(sleepTimes); //use this line to determine issue of timing
   return;
 }
@@ -198,6 +225,7 @@ function loadPreferences() {
 
 
 function setPreferences() {
+  document.getElementById("restartDiv").style.visibility = "visible";
   settings.set("militaryTime", (document.getElementById("timeType").checked).toString());
   settings.set("defaultTime", document.getElementById("defaultTime").value);
   settings.set("closeOnX", (document.getElementById("closeOnXcheck").checked).toString());
