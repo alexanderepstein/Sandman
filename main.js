@@ -1,25 +1,54 @@
-const {app,globalShortcut,Tray,Menu,shell,BrowserWindow} = require("electron"); //electron application stuff
+const {app,Tray,Menu,shell,BrowserWindow} = require("electron"); //electron application stuff
 const path = require("path"); //allows for use of path
 const url = require("url"); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, "/assets/icon.png"); //grab the icon
 const fs = require("fs");
 const filePath = path.join(__dirname, "/assets/settings.txt");
+const electronLocalshortcut = require('electron-localshortcut');
 
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
 let pref = null;
 let abt = null;
 var dev = null;
-if (process.argv.length === 3)
-{
-  if (process.argv.slice(2).toString().toLowerCase() === "dev")
-  {
-    dev  = true;
-  }
-  else {
+
+if (process.argv.length === 3) {
+  if (process.argv.slice(2).toString().toLowerCase() === "dev") {
+    dev = true;
+  } else {
     dev = false;
   }
 
+}
+
+function restart() {
+  app.relaunch();
+  app.isQuiting = true;
+  app.quit();
+}
+
+function preferencesWindow() {
+  pref = new BrowserWindow({
+    width: 500,
+    height: 730,
+    resizable: false
+  });
+  pref.setMenu(null); //the about window has no menu
+  pref.loadURL(url.format({ //loads the webpage for the about window
+    pathname: path.join(__dirname, "/pages/preferences.html"),
+    protocol: "file:",
+    slashes: true
+  }));
+  if (dev) {
+    pref.openDevTools();
+  }
+  electronLocalshortcut.register(pref, process.platform === 'darwin' ? 'Cmd+R' : 'Ctrl+R', () => {
+    restart();
+  });
+  electronLocalshortcut.register(pref, process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q', () => {
+    app.isQuitting = true;
+    app.quit();
+  });
 }
 
 function readFile() {
@@ -32,12 +61,10 @@ function readFile() {
 
 app.on("ready", function() {
 
-  globalShortcut.register('CommandOrControl+R', () => {
-      app.relaunch();
-      app.isQuiting = true;
-      app.quit();
 
-    })
+
+
+
 
   win = new BrowserWindow({
     width: 600,
@@ -56,9 +83,8 @@ app.on("ready", function() {
 
 
   //console.log(settings.getAll());
-  if (dev)
-  {
-      win.openDevTools(); //starts the application with developer tools open
+  if (dev) {
+    win.openDevTools(); //starts the application with developer tools open
   }
 
 
@@ -81,6 +107,20 @@ app.on("ready", function() {
 
     }
   });
+
+  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+P' : 'Ctrl+P', () => {
+    preferencesWindow();
+  });
+
+  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q', () => {
+    app.isQuitting = true;
+    app.quit();
+  });
+
+  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+R' : 'Ctrl+R', () => {
+    restart();
+  });
+
 
   tray = new Tray(iconPath); //create a new tray
   var contextMenu = Menu.buildFromTemplate([ //start buliding out the menu for the tray
@@ -105,8 +145,7 @@ app.on("ready", function() {
           protocol: "file:",
           slashes: true
         }));
-        if (dev)
-        {
+        if (dev) {
           abt.openDevTools();
         }
 
@@ -116,21 +155,7 @@ app.on("ready", function() {
       label: "Preferences",
       accelerator: "CommandOrControl+P",
       click: function() { //shows the about window
-        pref = new BrowserWindow({
-          width: 500,
-          height: 730,
-          resizable: false
-        });
-        pref.setMenu(null); //the about window has no menu
-        pref.loadURL(url.format({ //loads the webpage for the about window
-          pathname: path.join(__dirname, "/pages/preferences.html"),
-          protocol: "file:",
-          slashes: true
-        }));
-        if (dev)
-        {
-          pref.openDevTools();
-        }
+        preferencesWindow();
 
       }
     },

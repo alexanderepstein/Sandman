@@ -177,6 +177,13 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
+electron-debug@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/electron-debug/-/electron-debug-1.1.0.tgz#050a9c3f906fffc2492510cf8ac31d0f32a579e1"
+  dependencies:
+    electron-is-dev "^0.1.0"
+    electron-localshortcut "^0.6.0"
+
 electron-download@^3.0.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/electron-download/-/electron-download-3.3.0.tgz#2cfd54d6966c019c4d49ad65fbe65cc9cdef68c8"
@@ -191,7 +198,7 @@ electron-download@^3.0.1:
     semver "^5.3.0"
     sumchecker "^1.2.0"
 
-electron-is-dev@^0.1.2:
+electron-is-dev@^0.1.0, electron-is-dev@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.1.2.tgz#8a1043e32b3a1da1c3f553dce28ce764246167e3"
 
@@ -201,6 +208,10 @@ electron-is@^2.3.0:
   dependencies:
     electron-is-dev "^0.1.2"
     semver "^5.3.0"
+
+electron-localshortcut@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/electron-localshortcut/-/electron-localshortcut-0.6.1.tgz#c4e268c38a6e42f40de5618fc906d1ed608f11aa"
 
 electron-notifications@^1.0.0:
   version "1.0.0"
@@ -214,6 +225,13 @@ electron-settings@^3.0.14:
   dependencies:
     clone "^2.1.1"
     jsonfile "^2.4.0"
+
+electron-shortcut@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/electron-shortcut/-/electron-shortcut-0.5.0.tgz#503ce4a79eccbd8e915a9b2b24a3e0e67fe2d243"
+  dependencies:
+    electron-debug "^1.1.0"
+    object-assign "^4.0.1"
 
 electron@^1.7.2:
   version "1.7.2"
