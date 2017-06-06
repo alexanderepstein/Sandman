@@ -1,4 +1,4 @@
-const {app,Tray,Menu,shell,BrowserWindow} = require("electron"); //electron application stuff
+const {app,globalShortcut,Tray,Menu,shell,BrowserWindow} = require("electron"); //electron application stuff
 const path = require("path"); //allows for use of path
 const url = require("url"); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, "/assets/icon.png"); //grab the icon
@@ -31,6 +31,14 @@ function readFile() {
 
 
 app.on("ready", function() {
+
+  globalShortcut.register('CommandOrControl+R', () => {
+      app.relaunch();
+      app.isQuiting = true;
+      app.quit();
+
+    })
+
   win = new BrowserWindow({
     width: 600,
     height: 475,
@@ -106,6 +114,7 @@ app.on("ready", function() {
     },
     {
       label: "Preferences",
+      accelerator: "CommandOrControl+P",
       click: function() { //shows the about window
         pref = new BrowserWindow({
           width: 500,
@@ -133,6 +142,7 @@ app.on("ready", function() {
     },
     {
       label: "Quit",
+      accelerator: "CommandOrControl+Q",
       click: function() { //quit the application
         app.isQuiting = true;
         app.quit(); //quit called
