@@ -117,6 +117,13 @@ sudo rpm -e Sandman.rpm
 ```
 
 ### Windows
+
+#### Scoops
+```bash
+scoop uninstall sandman
+```
+
+#### Manual uninstall
 Open up the program files folder and delete the Sandman folder.
 
 ## Helping Out
