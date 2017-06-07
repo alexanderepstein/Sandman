@@ -175,29 +175,33 @@ First run
 
 ### Linux/Mac
 ```bash
-sudo yarn install -g electron-packager
+sudo yarn add -g electron-packager
 ```
 ### Windows
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
 then run
 ```bash
-yarn install -g electron-packager
+yarn add -g electron-packager
 ```
 Then once electron packager is installed to package your electron application open up a terminal and cd into the Sandman folder then run
 
 ### Linux
-For 64 Bit Binary:
+Open a terminal to the Sandman directory
 ```bash
-electron-packager . Sandman --platform linux --arch x64 --out dist/
+cd build
+chmod a+x linux.sh
+./linux.sh
 ```
-For 32 Bit Binary
-```bash
-electron-packager . Sandman --platform linux --arch ia32 --out dist/
-```
+This will build installers for Debian 32/64 bit and Redhat linux in the build/dist/installers folder
+
 ### Mac
+Open a terminal to the Sandman directory
 ```bash
-electron-packager . Sandman --platform darwin --arch x64 --out dist/
+cd build
+chmod a+x mac.sh
+./mac.sh
 ```
+This will build a dmg in the build folder
 
 ### Windows
 For 64 Bit Binary:
