@@ -131,7 +131,7 @@ sudo npm install -g yarn
 
 ### Windows
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
-cd to the insomnia directory then run
+cd to the Sandman directory then run
 ```bash
 npm install -g yarn
 ```
@@ -156,9 +156,9 @@ sudo yarn install -g
 
 ### Windows
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
-cd to the insomnia directory then run
+cd to the Sandman directory then run
 ```bash
-npm yarn -g
+yarn install -g
 ```
 ### CSS Compilation
 
@@ -170,20 +170,7 @@ The app styling was made with: [Sass](http://sass-lang.com/) `v3.3.14`  [Ruby](h
  ```
 
 
-### To Package Electron Application To Binary
-First run
-
-### Linux/Mac
-```bash
-sudo yarn add -g electron-packager
-```
-### Windows
-Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
-then run
-```bash
-yarn add -g electron-packager
-```
-Then once electron packager is installed to package your electron application open up a terminal and cd into the Sandman folder then run
+### To Compile Source To Application
 
 ### Linux
 Open a terminal to the Sandman directory
@@ -204,6 +191,13 @@ chmod a+x mac.sh
 This will build a dmg in the build folder
 
 ### Windows
+Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
+then run
+```bash
+yarn add -g electron-packager
+```
+Then once electron packager is installed to package your electron application open up a terminal and cd into the Sandman folder then run
+
 For 64 Bit Binary:
 ```bash
 electron-packager . Sandman --platform win32 --arch x64 --out dist/
