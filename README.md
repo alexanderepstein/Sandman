@@ -129,28 +129,13 @@ Open up the program files folder and delete the Sandman folder.
 ## Helping Out
 It is assumed you already have node installed and therefore npm.
 
-If you already have yarn downloaded skip this step...
-
-### Linux/Mac
-```bash
-sudo npm install -g yarn
-```
-
-### Windows
-Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
-cd to the Sandman directory then run
-```bash
-npm install -g yarn
-```
-Then close that command line and open up a new one then
-
 To download the full source code and install the devDependencies run the following lines:
 ```bash
 git clone https://github.com/alexanderepstein/Sandman
 cd Sandman
-yarn install
+npm install
 cd ..
-yarn start dev # this will run the application with all of the devtools open
+npm start dev # this will run the application with all of the devtools open
 ```   
 
 If you get some error and the application wont run try running the following lines and see if that works.
@@ -158,14 +143,14 @@ If you get some error and the application wont run try running the following lin
 ### Linux/Mac
 ```bash
 cd Sandman
-sudo yarn install -g
+sudo npm install -g
 ```
 
 ### Windows
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
 cd to the Sandman directory then run
 ```bash
-yarn install -g
+npm install -g
 ```
 ### CSS Compilation
 
@@ -201,7 +186,7 @@ This will build a dmg in the build folder
 Right click on the start menu icon at the bottom left and click on the option to open a command prompt in developer mode
 then run
 ```bash
-yarn add -g electron-packager
+npm install -g electron-packager
 ```
 Then once electron packager is installed to package your electron application open up a terminal and cd into the Sandman folder then run
 
