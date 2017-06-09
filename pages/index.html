@@ -5,11 +5,13 @@
       <title>Sandman</title>
       <link rel="stylesheet" href="./css/main.css">
       <script>window.$ = window.jQuery = require('jquery');</script>
+      <script src="./js/script.js"></script>
       <script>
       $(document).ready(function(){
       $("button").click(function(){
           $("#notificationSet").fadeIn(2000);
           $("#notificationSet").fadeOut(2000);
+          setTime();
       });
       });
       </script>
@@ -22,11 +24,11 @@
           <input type="time" id="alarmTime" min="00:00:00" max="23:59:59" />
         </div>
         <div class="button-wrapper col col2 w-30">
-          <button id="setTime" onclick="setTime()">Set wakeup time</button>
+          <button id="setTime" >Set wakeup time</button>
         </div>
       </div>
       <div class="label-group">
-        <span class="label-group-title"><label id="sleepTimes"> </label></span>
+        <span class="label-group-title"><label id="opsleepTimes">Optimal sleeping times</label></span>
         <div class="cols sleep-times">
           <div class="col w-30"><label id="lblcheck0"> </label></div>
           <div class="col w-30"><label id="lblcheck1"> </label></div>
@@ -46,7 +48,9 @@
       </script>
       <script type="text/javascript">
          document.addEventListener("DOMContentLoaded", function() {getLatestReleaseInfo();});
+         document.getElementById("setTime").click(); // Click the button to start
+
       </script>
-      <script src="./js/script.js"></script>
+
    </body>
 </html>

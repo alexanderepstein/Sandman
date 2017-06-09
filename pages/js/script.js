@@ -19,9 +19,6 @@ var latestRelease = null;
 var upTimeJob = null;
 var resetTime = null;
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 function militaryToStandard(hours) {
   /* make sure add radix*/
@@ -57,10 +54,15 @@ function nodeJobs(sleepTimes) {
 
   }
   jobs[6] = schedule.scheduleJob(resetTime, setTime);
-
+if ( settings.get("upTime") === "true")
+{
   upTimeJob = schedule.scheduleJob("0 0 * * * *", function() {
     upTimeJobs();
-  });
+
+      });
+}
+
+
   return;
 }
 
@@ -142,11 +144,10 @@ function generateSleepTimes() {
 }
 
 
-  async function setTime() { //called when set wakeup time button is pressed
+  function setTime() { //called when set wakeup time button is pressed
   settings.set("Version", "v1.9.0");
   var sleepTimes = generateSleepTimes(); //determine sleepTimes based off of wakeuptime
   sleepTimes = setSleepTimes(sleepTimes); //determine the sleepTimes in formatted form to be shown to user
-  document.getElementById("sleepTimes").innerHTML = "Optimal sleeping times"; //change blank text
   nodeJobs(sleepTimes); //set up node-schedule jobs
   //console.log(sleepTimes); //use this line to determine issue of timing
   return;
@@ -183,11 +184,18 @@ function loadPreferences() {
     document.getElementById("timeType").checked = false; //dont set this button
     document.getElementById("timeType2").checked = true; //set radio button
   }
-  if (settings.get("closeOnX", "true") === "true") //mySettings[2] is where the closeOnX setting is stored
+  if (settings.get("closeOnX", "true") === "true")
   {
     document.getElementById("closeOnXcheck").checked = true; //set checkbox
   } else {
     document.getElementById("closeOnXcheck").checked = false; //set check box
+  }
+
+  if (settings.get("upTime", "false") === "true") //mySettings[2] is where the closeOnX setting is stored
+  {
+    document.getElementById("upTime").checked = true; //set checkbox
+  } else {
+    document.getElementById("upTime").checked = false; //set check box
   }
   document.getElementById("defaultTime").value = settings.get("defaultTime", "08:30"); //set time to preference time
   document.getElementById("lagHours").value = settings.get("lagHours", "0");
@@ -208,6 +216,7 @@ function setPreferences() {
   settings.set("lagMinutes", document.getElementById("lagMinutes").value);
   settings.set("upTimeHours", document.getElementById("upTimeHours").value);
   settings.set("upTimeMinutes", document.getElementById("upTimeMinutes").value);
+  settings.set("upTime", (document.getElementById("upTime").checked).toString());
   var tempstring = settings.get("closeOnX") + " Sandman";
   writeFile(tempstring);
   return;
