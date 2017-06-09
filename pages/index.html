@@ -4,7 +4,17 @@
       <meta charset="UTF-8">
       <title>Sandman</title>
       <link rel="stylesheet" href="./css/main.css">
+      <script>window.$ = window.jQuery = require('jquery');</script>
+      <script>
+      $(document).ready(function(){
+      $("button").click(function(){
+          $("#notificationSet").fadeIn(2000);
+          $("#notificationSet").fadeOut(2000);
+      });
+      });
+      </script>
    </head>
+
    <body class="app" id="index">
       <img src="../assets/sleep.png" alt="sleep"class="logo">
       <div class="input-group cols no-label">
@@ -12,7 +22,7 @@
           <input type="time" id="alarmTime" min="00:00:00" max="23:59:59" />
         </div>
         <div class="button-wrapper col col2 w-30">
-          <button onclick="setTime()">Set wakeup time</button>
+          <button id="setTime" onclick="setTime()">Set wakeup time</button>
         </div>
       </div>
       <div class="label-group">
@@ -26,7 +36,9 @@
           <div class="col w-30"><label id="lblcheck5"> </label></div>
         </div>
       </div>
-      <label id="lblTime"> </label>
+      <div class="notificationSet" id="notificationSet" style="display: none;">
+      <label id="lblTime"> Notifications set.</label>
+    </div>
       <!-- All of the Node.js APIs are available in this renderer process. -->
       <script type="text/javascript">
          document.getElementById("alarmTime").value = "07:30:00";
@@ -35,7 +47,6 @@
       <script type="text/javascript">
          document.addEventListener("DOMContentLoaded", function() {getLatestReleaseInfo();});
       </script>
-      <script>window.$ = window.jQuery = require('jquery');</script>
       <script src="./js/script.js"></script>
    </body>
 </html>
