@@ -14,7 +14,6 @@
   "devDependencies": {},
   "dependencies": {
     "debug": "^2.6.8",
-    "electron": "^1.7.3",
     "electron-localshortcut": "^2.0.0",
     "electron-notifications": "^1.0.0",
     "electron-settings": "^3.0.14",
