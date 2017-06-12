@@ -4,7 +4,7 @@ const url = require("url"); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, "/assets/icon.png"); //grab the icon
 const fs = require("fs");
 const filePath = path.join(__dirname, "/assets/settings.txt");
-const electronLocalshortcut = require('electron-localshortcut');
+const electronLocalshortcut = require("electron-localshortcut");
 
 let tray = null; //set the tray to null
 let win = null; //set the main window to null
@@ -42,10 +42,10 @@ function preferencesWindow() {
   if (dev) {
     pref.openDevTools();
   }
-  electronLocalshortcut.register(pref, process.platform === 'darwin' ? 'Cmd+R' : 'Ctrl+R', () => {
+  electronLocalshortcut.register(pref, process.platform === "darwin" ? "Cmd+R" : "Ctrl+R", () => {
     restart();
   });
-  electronLocalshortcut.register(pref, process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q', () => {
+  electronLocalshortcut.register(pref, process.platform === "darwin" ? "Cmd+Q" : "Ctrl+Q", () => {
     app.isQuitting = true;
     app.quit();
   });
@@ -108,16 +108,16 @@ app.on("ready", function() {
     }
   });
 
-  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+P' : 'Ctrl+P', () => {
+  electronLocalshortcut.register(win, process.platform === "darwin" ? "Cmd+P" : "Ctrl+P", () => {
     preferencesWindow();
   });
 
-  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q', () => {
+  electronLocalshortcut.register(win, process.platform === "darwin" ? "Cmd+Q" : "Ctrl+Q", () => {
     app.isQuitting = true;
     app.quit();
   });
 
-  electronLocalshortcut.register(win, process.platform === 'darwin' ? 'Cmd+R' : 'Ctrl+R', () => {
+  electronLocalshortcut.register(win, process.platform === "darwin" ? "Cmd+R" : "Ctrl+R", () => {
     restart();
   });
 
