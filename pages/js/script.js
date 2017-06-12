@@ -44,8 +44,11 @@ function nodeJobs(sleepTimes) {
     } catch (e) {
 
     }
-
-    jobs[i] = schedule.scheduleJob(sleepTimes[i], showNotification); //scheduling notification jobs
+    var notiTime = sleepTimes[i];
+    jobs[i] = schedule.scheduleJob(sleepTimes[i], function()
+  {
+    checkToShowNotification(notiTime);
+  }); //scheduling notification jobs
   }
   try {
     jobs[6].cancel();
@@ -66,7 +69,19 @@ if ( settings.get("upTime") === "true")
   return;
 }
 
-
+function checkToShowNotification(notiTime)
+{
+  var now = new Date();
+  now.setMinutes(now.getMinutes() - 5);
+  if (notiTime.getTime() >= now.getTime())
+  {
+    showNotification();
+  }
+  else {
+    console.log("Notification prevented");
+    console.log(now.getTime() - notiTime.getTime());
+  }
+}
 function setSleepTimes(sleepTimes) //just setting the sleep times the user sees (special formatting exists here)
 {
   var hours = []; //array to hold the hours for formatting
