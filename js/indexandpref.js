@@ -315,7 +315,7 @@ function showUpTimeNotification() {
 
     }
     const notification = notifier.notify("Sandman", { //Notification
-      message: "Your computer needs a break",
+      message: "Stay productive, take a short break",
       icon: iconPath,
       buttons: ["Dismiss", "Restart"],
       vetical: true,
