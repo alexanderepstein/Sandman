@@ -129,7 +129,7 @@ Open up the program files folder and delete the Sandman folder.
 ## Helping Out
 It is assumed you already have node installed and therefore npm.
 
-To download the full source code and install the devDependencies run the following lines:
+To download the full source code and install the Dependencies run the following lines:
 ```bash
 git clone https://github.com/alexanderepstein/Sandman
 cd Sandman
