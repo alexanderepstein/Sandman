@@ -86,7 +86,7 @@ function setSleepTimes(sleepTimes) //just setting the sleep times the user sees 
 {
   var hours = []; //array to hold the hours for formatting
   var mins = []; //array to hold the mins for formatting
-  var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
+
 
   if (settings.get("militaryTime", "false") === "true") {
     for (i = 0; i < 6; i++) {
@@ -100,14 +100,13 @@ function setSleepTimes(sleepTimes) //just setting the sleep times the user sees 
       } else {
         mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
       }
+      document.getElementById("lblcheck"+i).innerHTML = hours[i] + ":" + mins[i];  //add optimal sleep times to the HTML
     }
-    document.getElementById("lblcheck0").innerHTML = hours[0] + ":" + mins[0]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck1").innerHTML = hours[1] + ":" + mins[1]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck2").innerHTML = hours[2] + ":" + mins[2]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck3").innerHTML = hours[3] + ":" + mins[3]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck4").innerHTML = hours[4] + ":" + mins[4]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck5").innerHTML = hours[5] + ":" + mins[5]; //add optimal sleep times to the HTML
+
+
+
   } else {
+    var meridians = []; //array to hold the merdians to respective sleepTimes if militaryTime is false
     for (i = 0; i < 6; i++) {
       if (militaryToStandard(sleepTimes[i].getHours()) < 10) { //if hours is less than 10
         hours[i] = "0" + militaryToStandard(sleepTimes[i].getHours()); //put a zero in front of the string
@@ -120,13 +119,8 @@ function setSleepTimes(sleepTimes) //just setting the sleep times the user sees 
         mins[i] = sleepTimes[i].getMinutes(); //else just the minutes
       }
       meridians[i] = ampm(sleepTimes[i].getHours()); //set up the array of meridians
+      document.getElementById("lblcheck"+i).innerHTML = hours[i] + ":" + mins[i] + meridians[i]; //add optimal sleep times to the HTML
     }
-    document.getElementById("lblcheck0").innerHTML = hours[0] + ":" + mins[0] + meridians[0]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck1").innerHTML = hours[1] + ":" + mins[1] + meridians[1]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck2").innerHTML = hours[2] + ":" + mins[2] + meridians[2]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck3").innerHTML = hours[3] + ":" + mins[3] + meridians[3]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck4").innerHTML = hours[4] + ":" + mins[4] + meridians[4]; //add optimal sleep times to the HTML
-    document.getElementById("lblcheck5").innerHTML = hours[5] + ":" + mins[5] + meridians[5]; //add optimal sleep times to the HTML
   }
   return sleepTimes;
 }
