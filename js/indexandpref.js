@@ -15,6 +15,7 @@ var restNotification = false;
 var upTimeNotification = false;
 var seenRelease = false; //checks if user has already seen update exists and ignored
 var jobs = []; //array of node schedule jobs to be ran
+jobs.fill(null);
 var latestRelease = null;
 var upTimeJob = null;
 var resetTime = null;
@@ -40,9 +41,10 @@ function ampm(hours24) {
 function nodeJobs(sleepTimes) {
   for (i = 0; i < 6; i++) {
     try {
+      if (jobs[i] != null )
       jobs[i].cancel(); //try to cancel respective job
     } catch (e) {
-
+      console.log(e);
     }
     var notiTime = sleepTimes[i];
     jobs[i] = schedule.scheduleJob(sleepTimes[i], function()
@@ -165,14 +167,14 @@ function generateSleepTimes() {
 function writeFile(settingsData) {
   fs.writeFile(filePath, settingsData, (err) => { //write the settings file that will contain the settingsData parameter
     if (err) {
-      throw err;
+      console.log(err);
     }
   });
   try //for error catching
   {
     fs.chmodSync(filePath, "777"); //set up permissions (seems to fix issue of linux reading settings after install)
   } catch (e) {
-    throw e; //log this error to the console (basically occurs everytime after the first run)
+    console.log(e); //log this error to the console (basically occurs everytime after the first run)
   }
   return;
 }
@@ -243,7 +245,7 @@ function showNotification() {
     try {
       audio.play(); //play notifiation sound
     } catch (e) {
-
+      console.log(e);
     }
     const notification = notifier.notify("Sandman", { //Notification
       message: "Time to rest",
@@ -312,7 +314,7 @@ function showUpTimeNotification() {
     try {
       audio.play(); //play notifiation sound
     } catch (e) {
-
+      console.log(e);
     }
     const notification = notifier.notify("Sandman", { //Notification
       message: "Stay productive, take a short break",
@@ -352,7 +354,7 @@ function confirmShutdownNotification() {
   try {
     audio.play(); //play notifiation sound
   } catch (e) {
-
+      console.log(e);
   }
   const notification = notifier.notify("Sandman", { //Notification
     message: "Confirm Shutdown",
@@ -385,7 +387,7 @@ function confirmRestartNotification() {
   try {
     audio.play(); //play notifiation sound
   } catch (e) {
-
+      console.log(e);
   }
   const notification = notifier.notify("Sandman", { //Notification
     message: "Confirm Restart",
