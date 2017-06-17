@@ -53,10 +53,16 @@ function nodeJobs(sleepTimes) {
   }); //scheduling notification jobs
   }
   try {
+  if (jobs[6] != null)
+  {
     jobs[6].cancel();
+  }
+    if (upTimeJob != null)
+    {
     upTimeJob.cancel();
+  }
   } catch (e) {
-
+    console.log(e);
   }
   jobs[6] = schedule.scheduleJob(resetTime, setTime);
 if ( settings.get("upTime") === "true")
@@ -420,7 +426,7 @@ function showLatestUpdateNotification(updateType) {
   try {
     audio.play(); //play notifiation sound
   } catch (e) {
-
+    console.log(e);
   }
   const notification = notifier.notify("Sandman", { //Notification
     message: updateType + " Available",
