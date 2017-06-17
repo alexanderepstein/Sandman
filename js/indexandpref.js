@@ -41,8 +41,10 @@ function ampm(hours24) {
 function nodeJobs(sleepTimes) {
   for (i = 0; i < 6; i++) {
     try {
-      if (jobs[i] != null )
+      if (jobs[i] != null)
+      {
       jobs[i].cancel(); //try to cancel respective job
+    }
     } catch (e) {
       console.log(e);
     }
