@@ -11,7 +11,11 @@
     "type": "git",
     "url": "https://github.com/alexanderepstein/Sandman"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^1.7.2",
+    "mocha": "^3.4.2",
+    "spectron": "^3.6.4"
+  },
   "dependencies": {
     "debug": "^2.6.8",
     "electron-localshortcut": "^2.0.0",
@@ -21,6 +25,7 @@
     "node-schedule": "^1.2.1"
   },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "node tests/unitTest.js;  "
   }
 }
