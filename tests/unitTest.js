@@ -1,14 +1,12 @@
-var exec = require('child_process').exec;
-var cmd = './node_modules/mocha/bin/mocha tests/mainwindowtest.js'
+const exec = require('child_process').exec
 
-exec(cmd, function(error, stdout, stderr) {
-  console.log(stdout);
-  if (error != null)
-  {
-    console.log(error);
-  }
-  if (stderr != null)
-  {
-    console.log("Error");
-  }
-});
+const mainwindowtestpath = "./node_modules/mocha/bin/mocha tests/mainwindowtest.js";
+
+
+function runTest(testfile)
+{
+  var command = exec(testfile)
+  command.stdout.pipe(process.stdout);
+}
+
+runTest(mainwindowtestpath);
