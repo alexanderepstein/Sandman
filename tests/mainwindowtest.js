@@ -16,7 +16,6 @@ var app = new Application({
             args: [appPath]
         });
 
-
 describe('Main Window Test', function () {
   this.timeout(10000);
 
@@ -40,5 +39,24 @@ describe('Main Window Test', function () {
   });
 });
 
+
+it('Check Sleep Time', function () {
+    return app.client.getValue('#alarmTime').then(function (value) {
+        assert.equal(value,"08:30")
+    });
+});
+
+/*it('Set Sleep Time', function () {
+  app.client.waitUntilWindowLoaded();
+  return app.client.setValue('#alarmTime','07:30').then(function(){
+      return app.client.getValue('#alarmTime').then(function (value) {
+        console.log(value);
+        assert.equal(value,"07:30");
+
+    });
+  })
+
+});
+*/
 
 });

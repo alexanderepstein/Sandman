@@ -7,4 +7,8 @@ exec(cmd, function(error, stdout, stderr) {
   {
     console.log(error);
   }
+  if (stderr != null)
+  {
+    console.log("Error");
+  }
 });

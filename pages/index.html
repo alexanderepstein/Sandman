@@ -20,7 +20,7 @@
    <body class="app" id="index">
       <img src="../assets/sleep.png" alt="sleep"class="logo">
       <div class="input-group cols no-label">
-        <div class="input-wrapper col col1 w-70">
+        <div id="alarmTimediv" class="input-wrapper col col1 w-70">
           <input type="time" id="alarmTime" min="00:00:00" max="23:59:59" />
         </div>
         <div class="button-wrapper col col2 w-30">
@@ -43,7 +43,7 @@
     </div>
       <!-- All of the Node.js APIs are available in this renderer process. -->
       <script type="text/javascript">
-         document.getElementById("alarmTime").value = "07:30:00";
+         //document.getElementById("alarmTime").value = "07:30:00";
          document.addEventListener("DOMContentLoaded", function() {readPreferences();});
       </script>
       <script type="text/javascript">
