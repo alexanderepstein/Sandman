@@ -16,8 +16,3 @@ script: ./tests/travis-build.sh
 cache:
   directories:
     - node_modules
-
-notifications:
-  email:
-    on_success: never
-    on_failure: change
