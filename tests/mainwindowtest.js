@@ -66,7 +66,7 @@ describe("Main Window Test", function() {
 
     return app.client.getValue("#alarmTime").then(function(value) {
       app.client.execute(function() {
-        return setTime();
+        return setSleepTimes(generateSleepTimes());
       });
       return app.client.getText("#lblcheck0").then(function(check0) {
         assert.equal(check0, "10:15pm");
