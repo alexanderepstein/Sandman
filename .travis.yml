@@ -12,3 +12,7 @@ branches:
     - master
 
 script: ./tests/travis-build.sh
+
+cache:
+  directories:
+    - node_modules

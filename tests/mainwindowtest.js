@@ -31,14 +31,13 @@ describe("Main Window Test", function() {
 
   it("Main Window Check", function() {
     return app.client.getWindowCount().then(function(count) {
-      assert.equal(count, 1);
-      app.stop();
+      return assert.equal(count, 1);
     });
   });
 
   it("Title Check", function() {
     return app.client.getTitle().then(function(title) {
-      assert.equal(title, "Sandman");
+      return assert.equal(title, "Sandman");
     });
   });
 
@@ -50,14 +49,14 @@ describe("Main Window Test", function() {
     });
 
     return app.client.getValue("#alarmTime").then(function(value) {
-      assert.equal(value, "07:30");
+      return assert.equal(value, "07:30");
 
 
 
     });
 
   });
-
+/*
   it("Check Generated Sleep Times", function() {
     app.client.waitUntilWindowLoaded();
     app.client.execute(function() {
@@ -91,5 +90,5 @@ describe("Main Window Test", function() {
     });
 
   });
-
+*/
 });
