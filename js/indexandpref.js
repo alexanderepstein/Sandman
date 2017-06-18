@@ -3,7 +3,7 @@ const path = require("path"); //allow for use of path
 const os = require("os");
 const exec = require("child_process").exec; //allows the shutdown of the host machine
 const schedule = require("node-schedule"); //allows for jobs scheduled at certain times
-const {shell} = require("electron"); // allows the ability to open a webpage in users default browser
+const {shell,remote} = require("electron"); // allows the ability to open a webpage in users default browser
 const settings = require("electron-settings");
 const fs = require("fs");
 const iconPath = path.join(__dirname, "../assets/","sleep.png"); //grabs the icon for notifications
@@ -20,7 +20,11 @@ var latestRelease = null;
 var upTimeJob = null;
 var resetTime = null;
 
-
+function quit()
+{
+  remote.app.isQuitting = true;
+  remote.app.quit();
+}
 function militaryToStandard(hours) {
   /* make sure add radix*/
   var hours = ((hours + 11) % 12) + 1; //determine standard version of military time
