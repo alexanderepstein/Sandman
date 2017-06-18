@@ -5,14 +5,10 @@ os:
 language: node_js
 
 node_js:
-  - '4'
+  - '7'
 
 branches:
   only:
     - master
 
 script: ./tests/travis-build.sh
-
-cache:
-  directories:
-    - node_modules
