@@ -126,6 +126,15 @@ scoop uninstall sandman
 #### Manual uninstall
 Open up the program files folder and delete the Sandman folder.
 
+## Reviews Of Sandman
+
+<a href="http://www.addictivetips.com/windows-tips/get-bed-time-alerts-based/">Addictive Tips Review</a>
+
+<a href="http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Insomnia.shtml">Softpedia Windows Review</a>
+
+<a href="http://mac.softpedia.com/get/Utilities/Epstein-Insomnia.shtml">Softpedia Mac Review</a>
+
+
 ## Helping Out
 It is assumed you already have node installed and therefore npm.
 
