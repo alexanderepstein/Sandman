@@ -1,0 +1,23 @@
+os:
+  - linux
+  - osx
+
+language: node_js
+
+node_js:
+  - '4'
+
+branches:
+  only:
+    - master
+
+script: ./tests/travis-build.sh
+
+cache:
+  directories:
+    - node_modules
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
