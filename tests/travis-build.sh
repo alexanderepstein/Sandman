@@ -9,5 +9,6 @@ fi
 node --version
 npm --version
 
+npm config set -g production false
 npm install
 npm test
