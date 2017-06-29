@@ -56,7 +56,7 @@ describe("Main Window Test", function() {
     });
 
   });
-/*
+
   it("Check Generated Sleep Times", function() {
     app.client.waitUntilWindowLoaded();
     app.client.execute(function() {
@@ -90,5 +90,5 @@ describe("Main Window Test", function() {
     });
 
   });
-*/
+
 });
