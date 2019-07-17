@@ -17,7 +17,7 @@
     "spectron": "^3.6.4"
   },
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^2.6.9",
     "electron-localshortcut": "^2.0.0",
     "electron-notifications": "^1.0.0",
     "electron-settings": "^3.0.14",
