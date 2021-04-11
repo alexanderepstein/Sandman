@@ -41,7 +41,7 @@ Homebrew casks are the preferred method of installations (easiest to upgrade San
 ```bash
 brew tap caskroom/cask # add homebrew casks if you havent already
 brew update
-brew cask install sandman
+brew install --cask sandman
 ```
 #### Manual install
 Download your respective platforms release from the downloads section.
