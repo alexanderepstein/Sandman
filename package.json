@@ -12,7 +12,7 @@
     "url": "https://github.com/alexanderepstein/Sandman"
   },
   "devDependencies": {
-    "electron": "^1.8.8",
+    "electron": "^15.5.5",
     "mocha": "^3.4.2",
     "spectron": "^3.6.4"
   },
